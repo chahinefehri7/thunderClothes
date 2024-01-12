@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@500&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@300;500;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>THUNDER</title>
+    <style>
+        #moreOptions{
+            width: 30px;
+            height: 30px;
+            margin: 0 0 0 20px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+        @media (max-width:550px) {
+            .divThunderDesign{
+                display: flex;
+                flex-direction: column;
+                align-items:flex-start;
+                justify-content: center;
+            }
+            #thunderspellWelcom p{
+                font-size: 30px;
+            }
+            #thunderspell{
+                font-size: 40px;
+                padding-left: 60px;
+            }
+            #thunderspell p{
+                font-size: 40px;
+            }
+            header ul li{
+                visibility: hidden;
+            }
+            #moreOptions{
+                visibility: visible;
+            }
+        }
+        .profile{
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+ 
+        #moreOptions-container{
+            width:90%;
+            height: 90vh;
+            padding: 5vh 5%;
+            position: fixed;
+            top: 0;
+            right: -100% ;
+            background-color: aliceblue;
+            z-index: 99;
+            transition: 0.7s;
+        }
+        #moreOptions-container a{
+            color: #212121;
+            text-decoration: none;
+        }
+        #moreOptions-container h1{
+            font-family: 'Gabarito';
+            font-size: 50px;
+        }
+        #moreOptions-container ul{
+            list-style: none;
+            font-family: prompt;
+            font-size: 20px;
+            width: 100%;
+        }
+        #moreOptions-container ul li{
+            padding:10px 0;
+            margin: 5px 0;
+        }
+        .header2-nav{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header2-nav img{
+            width: 25px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="newsBar"><p>thunder Clothes</p><br><p>New Collections</p></div>
+    <header>
+       <div>
+            <a href="index.html"><h1>thunder</h1></a>
+            <ul>
+                <a href="store.html"><li>Store</li></a>
+                <a href="newCollection.html"><li>new Collections</li></a>
+                <a href="aboutus.html"><li>About us</li></a>
+                <a href="signin.html"><li>Sign up</li></a>
+                <a href="user.php"><li><img src="images/user.png" alt="your Profile" class="profile"></li></a>
+                <img src="images/dots.png" alt="more" id="moreOptions">
+            </ul>
+       </div>
+    </header>
+    <div id="moreOptions-container">
+        <nav class="header2-nav"><a href="index.html"><h1>thunder</h1></a><img src="images/close.png" alt="close" id="closeMoreOptions"></nav>
+            <ul>
+                <a href="store.html"><li>Store</li></a>
+                <a href="newCollection.html"><li>new Collections</li></a>
+                <a href="aboutus.html"><li>About us</li></a>
+                <a href="signin.html"><li>Sign up</li></a>
+                <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
+            </ul>
+    </div>
+    <main>
+        <div class="title">
+            <img src="images/thunderClothes-stayTuned.png" alt="">
+            <a href="store.html"><button>SHOP</button></a>
+        </div>
+        <div id="collection">
+            <h1>Welcom to Thunder Store</h1>
+            <p>here where you can find an artistic products and more amazing items and clothes for you</p>
+            <div id="clothesContainer">
+                <div class="hidden" onclick="buy(this)" id="1"><nav><a href="buy.html"><img src="images/Threads عقد.png" class="clothes hidden2" id="product1" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName1">Threads عقد</h2><p id="price1">75.00 DT</p></a></nav></div>
+                <div class="hidden" onclick="buy(this)" id="2"><nav><a href="buy.html"><img src="images/Threads عقد New.png" class="clothes hidden2" id="product2" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName2">Threads عقد New</h2><p id="price2">80.00 DT</p></a></nav></div>
+                <div class="hidden" onclick="buy(this)" id="3"><nav><a href="buy.html"><img src="images/its lit thunder.png" class="clothes hidden2" id="product3" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName3">its lit thunder</h2><p id="price3">70.00 DT</p></a></nav></div>
+                <div class="hidden" onclick="buy(this)" id="4"><nav><a href="buy.html"><img src="images/Self respect.png" class="clothes hidden2" id="product4" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName4">Self respect</h2><p id="price4">80.00 DT</p></a></nav></div>
+            </div>
+        </div>
+        <nav class="comments">
+            <a href="store.html"><img src="images/aroundtheworldicon.png"></a>
+            <p style="width: 100%; text-align: center;"><a href="store.html" style="text-decoration: none; color: #212121; font-family: 'Josefin Sans';">Check the Store and Pick Whatever you want</a></p>
+        </nav>
+        <div class="activitys">
+            <h1 class="activitystitle">Some Thunder Posts</h1>
+            <div class="activityDiv hidden">
+                <img src="images/mockup.png" >
+                <nav>
+                    <h1>Thunder Clothes</h1>
+                    <p>be ready for it</p>
+                </nav>
+            </div>
+            <div class="activityDiv hidden">
+                <img src="images/m.png" >
+                <nav>
+                    <h1>Thunder Clothes</h1>
+                    <p>self respect</p>
+                </nav>
+            </div>
+            <div class="activityDiv hidden">
+                <img src="images/mockup2.png" >
+                <nav>
+                    <h1>Thunder Clothes</h1>
+                    <p>self respect hoodie NOW!</p>
+                </nav>
+            </div>
+            <div class="activityDiv hidden">
+                <img src="images/its lit1.png" >
+                <nav>
+                    <h1>Thunder Clothes</h1>
+                    <p>be ready for it</p>
+                </nav>
+            </div>
+        </div>
+        <nav class="comments">
+            <a href="store.html"><img src="images/aroundtheworldicon.png"></a>
+            <p style="width: 100%; text-align: center;"><a href="store.html" style="text-decoration: none; color: #212121; font-family: 'Josefin Sans';">Check the Store and Pick Whatever you want</a></p>
+        </nav>
+        <div class="divThunderDesign">
+            <img src="images/lostyourway.png">
+            <nav class="thunderspellWelcom" id="thunderspellWelcom"><p class="hidden3">Welcom</p><p class="hidden3" style="font-size: 20px;">to</p></nav>
+            <nav class="thunderspell" id="thunderspell">
+                <p class="hidden3">t</p>
+                <p class="hidden3">h</p>
+                <p class="hidden3">u</p>
+                <p class="hidden3">n</p>
+                <p class="hidden3">d</p>
+                <p class="hidden3">e</p>
+                <p class="hidden3">r</p>
+            </nav>
+            <a href="store.html"><button class="hidden3">Shop Now</button></a>
+        </div>
+        <div class="offre hidden show">
+            <img src="images/shadows.png" class="hidden2 show2">
+            <nav>
+                <h3>Shadows</h3>
+                <p>Check it out New thunder Clothes</p><br>
+                <p>Coming Soon</p>
+            </nav>
+        </div>
+        <div class="offre hidden show">
+            <img src="images/thunderOnTheWall.png" class="hidden2 show2">
+            <nav>
+                <h3>on the wall</h3>
+                <p>Check it out New thunder Clothes</p>
+            </nav>
+        </div>
+        <div class="offre hidden show">
+            <img src="images/Selft respect New.png" class="hidden2 show2">
+            <nav>
+                <h3>Self Respect <br> new edition</h3>
+                <p>Check it out New thunder Clothes</p>
+            </nav>
+        </div>
+        <div class="others">
+            <h1>What do You Really Want?</h1>
+            <p>here with thunder you can send us an email or a message asking for a design . <br>thunder clothes will makes you an artistic design <br> and product and that will cost you just 20dt more</p>
+            <div class="othersContainer">
+                <div class="hidden">
+                    <img src="images/messages.png">
+                    <nav>
+                        <h3>Message us</h3>
+                        <p>send us a message or an email describing your design idea and what do you actually want</p>
+                    </nav>
+                </div>
+                <div class="hidden">
+                    <img src="images/design.png">
+                    <nav>
+                        <h3>We Design it</h3>
+                        <p>we design your idea and try to do the best version of it</p>
+                    </nav>
+                </div>
+                <div class="hidden">
+                    <img src="images/giving.png">
+                    <nav>
+                        <h3>We Send it</h3>
+                        <p>We send you the design and you have the desicion to agree or not and please <br> <small>dont ask for a design and then cancel it, <br> becaus that exhust our designers and thanks </small></p>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <h1>Thunder Clothes</h1>
+        <p>You can check our social media and stay tuned</p>
+        <div>
+            <nav>
+                <h3>Send us an Email</h3>
+                <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
+                <button>send</button>
+            </nav>
+            <nav>
+                <h3>Our Social Media</h3>
+                <nav class="socialmedia">
+                    <a href="#"><img src="images/facebook.png"></a>
+                    <a href="#"><img src="images/instagram.png"></a>
+                    <a href="#"><img src="images/twitter.png"></a>
+                    <a href="#"><img src="images/tiktok.png"></a>
+                </nav>
+                <img src="images/aroundtheworldicon.png" style="width: 90px; height: 90px; margin-top: -30px;">
+            </nav>
+        </div>
+        <nav class="devId">Made By Chahine Fehri</nav>
+    </footer>
+    <script src="js.js"></script>
+
+
+    <script>
+        var closeMoreOptions = document.getElementById('closeMoreOptions');
+        var moreOptions = document.getElementById('moreOptions-container');
+        var moreOptionsOpenBtn = document.getElementById('moreOptions');
+        moreOptionsOpenBtn.addEventListener('click' , function(){
+            moreOptions.style.right = "0%"
+        })
+        closeMoreOptions.addEventListener('click' , function(){
+            moreOptions.style.right = "-100%"
+        })
+        function buy(TheProduct){
+            // getting the elements id
+            const id = TheProduct.id;
+            const productId = 'product'+id;
+            const productNameId ='productName'+id
+            const priceId = 'price'+id;
+
+            const product = document.getElementById(productId)
+            const productName = document.getElementById(productNameId);
+            const price = document.getElementById(priceId);
+            // getting the values of the product 
+            productV = product.src;
+            productNameV = productName.innerText;
+            priceV = price.innerText;
+            
+            // local storage the values to move it to the next page (nuy.html)
+            localStorage.setItem('product' , productV);
+            localStorage.setItem('productName' , productNameV);
+            localStorage.setItem('price' , priceV);
+
+            window.location.href = "buy.html";
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#thunderGame{
+    width: 100%;
+    height: 100vh;
+    background-color: #CDDBE2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* the playGround */
+#playGround{
+    width: 90%;
+    height:550px;
+    min-height: 550px;
+    position: relative;
+    background-color: #FC675A;
+    overflow: hidden;
+}
+#playGround h1{
+    width: 100%;
+    font-size: 70px;
+    margin: 50px 0;
+    text-align: center;
+    font-family:'Pixelify Sans';
+    color: #f1f1f1;
+    position: absolute;
+    z-index: 99;
+    animation: floating 3s infinite linear;
+}
+/* the player */
+#player{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 0;
+    left: 1%;
+    margin: 0;
+}
+.animation{
+    animation: jump 500ms forwards;
+}
+/*  */
+.plain{
+    width:200px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+}
+#Rocket{
+    width: 20px;
+    height: 20px;
+    transform: translateY(0);
+    position: absolute;
+    left: 50%;
+    top:-10%;
+    transform: translate(-50% , -50%);
+    z-index: 1;
+}
+.rocketshout{
+    animation: shout infinite linear ;
+    animation-duration: 2000ms;
+}
+.DropItem{
+    animation: itemDrop forwards linear;
+    animation-duration: 2000ms;
+}
+#Rocket img{
+    width: 70px;
+    height: 70px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+.itemStyle{
+    width: 20px;
+    height: 20px;
+    transform: translateY(0);
+    position: absolute;
+    left: 50%;
+    top:-10%;
+    transform: translate(-50% , -50%);
+    z-index: 1;
+}
+.itemStyle img{
+    width: 70px;
+    height: auto;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+#thunderClothe{
+    width: 20px;
+    height: 20px;
+    background-color: #d75757;
+    transform: translateY(0);
+    position: absolute;
+    animation: thunderClothesDrop 5s 5s infinite  linear;
+    left: 50%;
+    top:60%;
+    transform: translate(-50% , -50%);
+    z-index: 1;
+}
+#blocks{
+    position: relative;
+    width: 200px;
+    height: 100px;
+    animation: plain 5s infinite linear;
+}
+/*  */
+#block{
+    position: absolute;
+    bottom: -4px;
+    right: -100px;
+}
+.block{
+    animation:infinite linear;
+    animation-name: anim;
+    animation-duration: 5000ms;
+}
+#block img{
+    width:70px;
+    height: 70px;
+}
+#startingIn{
+    position: absolute;
+    top: 25%;
+    left: 0%;
+    transform: translate(-50% , -50%);
+    font-size: 100px;
+    font-family:'Pixelify Sans';
+    z-index: 1;
+    opacity: 1;
+    transition: 0.7s;
+}
+#alert{
+    color: black;
+    font-size: 20px;
+}
+.fade{
+    animation: fading 1s infinite linear;
+}
+.DropBullet{
+    animation: BulletsDrop 3s forwards linear;
+}
+.bulletStyle{
+    width: fit-content;
+    height: fit-content;
+    transform: translateY(0);
+    position: absolute;
+    left: 50%;
+    top:-10%;
+    transform: translate(-50% , -50%);
+    z-index: 1;
+}
+.bulletStyle img{
+    width: 20px;
+    height: auto;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+/* bullet fire style */
+.bulletfireStyle{
+    width: fit-content;
+    height: fit-content;
+    position:absolute;
+    bottom:6.5%;
+}
+.bulletfireStyle img{
+    width: 20px;
+    height: auto;
+}
+.fireAnimation{
+    animation:fire 1s forwards linear;
+}
+@keyframes fire {
+    100%{
+        left: 100%;
+    }
+}
+@keyframes fading {
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes shout {
+    0%{
+        top: 0%;
+    }
+    50%{
+        top: 50%;
+    }
+    100%{
+        top:100%;
+    }
+}
+@keyframes itemDrop {
+    0%{
+        top: 0%;
+    }
+    50%{
+        top: 50%;
+    }
+    100%{
+        top:99%;
+    }
+}
+@keyframes BulletsDrop {
+    0%{
+        top: 0%;
+    }
+    50%{
+        top: 50%;
+    }
+    100%{
+        top:99%;
+    }
+}
+@keyframes thunderClothesDrop {
+    0%{
+        top: 0;
+    }
+    30%{
+        top: 100%;
+    }
+    70%{
+        top: 200%;
+    }
+    100%{
+        top:400%;
+    }
+}
+@keyframes anim {
+    0%{
+        right: 0;
+    }
+    50%{
+        right: 50%;
+    }
+    100%{
+        right: 100%;
+    }
+}
+@keyframes rocketanim {
+    0%{
+        left: 0;
+        /* transform: translateX(-530px); */
+    }
+    50%{
+        left:100%;
+        /* transform: translateX(530px); */
+    }
+    100%{
+        left:0;
+        /* transform: translateX(-530px); */
+    }
+}
+@keyframes plain {
+    0%{
+        left: 0;
+    }
+    50%{
+        left: 80%;
+    }
+    100%{
+        left:0;
+    }
+}
+@keyframes jump {
+    0%{
+        bottom:0px;
+    }
+    40%{
+        bottom: 150px;
+    }
+    60%{
+        bottom: 150px;
+    }
+    100%{
+        bottom: 0px;
+    }
+}
+@keyframes floating {
+    0%{
+        transform: translateY(0);
+    }
+    25%{
+        transform: translateY(10px);
+    }
+    50%{
+        transform: translateY(0px);
+    }
+    75%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+/* max score */
+.maxScoreDiv{
+    font-family:'Pixelify Sans';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position: absolute;
+    top:5%;
+    color: #f1f1f1;
+    left: 20px;
+}
+.maxScoreDiv p{
+    margin: 0 10px;
+}
+/* the score */
+.scoreDiv{
+    font-family:'Pixelify Sans';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    position: absolute;
+    top:10%;
+    color: #f1f1f1;
+    left: 20px;
+}
+#score{
+    font-family: 'Pixelify Sans';
+    margin: 0 10px;
+    font-size: 15px;
+}
+/* bullets div style */
+.bulletsDiv{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'prompt';
+    position: absolute;
+    top:20%;
+    color: #f1f1f1;
+    left: 20px;
+}
+.bulletsDiv img{
+    margin: 5px 0;
+    width: 25px;
+    height: 25px;
+}
+/* item score */
+.itemScoreDiv{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-family: 'prompt';
+    position: absolute;
+    top:10%;
+    color: #f1f1f1;
+    right: 20px;
+}
+.itemScoreDiv img{
+    width: 70px;
+    height: auto;
+    margin: 0 10px;
+}
+/* popup for the game */
+#playPopupBackground{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #21212177;
+    z-index: 99;
+    visibility: visible;
+}
+#playPopup{
+    width: 280px;
+    height: 150px;
+    background-color: aliceblue;
+    color: #212121;
+    font-family: 'Pixelify Sans';
+    text-align: center;
+    padding: 40px 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+#playPopup p{
+    font-family: 'Roboto';
+    font-size: 13px;
+    font-weight: lighter;
+    color: lightgray;
+    margin: 15px 0;
+    width: 100%;
+}
+#playPopup button{
+    width: 100px;
+    padding: 10px 20px;
+    font-family: 'Roboto';
+    background-color: #5089A7;
+    color: #F6F6F6;
+    border: none;
+    margin: 20px 0;
+    cursor: pointer;
+}
+.background{
+    position: absolute;
+    width: 100%;
+    height: 105%;
+    top: 0;
+    left: 0;
+}
+@media (max-width:1000px) {
+    #playPopup{
+        width: 200px;
+        height: 100px;
+    }
+    #playPopup button{
+        font-size: 12px;
+        padding: 10px;
+        width: 50px;
+        height:fit-content;
+        margin-top: -30px;
+    }
+    
+}

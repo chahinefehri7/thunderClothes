@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@500&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@300;500;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        main{
+            width: 90%;
+            padding: 0 5%;
+        }
+        .title{
+            width: 100%;
+            height: fit-content;
+            margin: 8% 0;
+        }
+        .title h1{
+            font-family: 'Gabarito';
+            font-size: 80px;
+        }
+        .title p{
+            font-family: 'prompt';
+            font-weight: lighter;
+        }
+        h2{
+            font-family: 'Josefin Sans';
+            margin: 0;
+            margin: 10px 0;
+        }
+        .text{
+            width: 95%;
+            font-family: 'Gabarito';
+            margin: 20px 0;
+            font-weight: lighter;
+            color: lightgray;
+            transition: 0.5s;
+        }
+        .text:hover{
+            color: black;
+        }
+        .teamNames{
+            margin: 30px 20px;
+            font-family: prompt;
+            font-weight: lighter;
+            list-style-type:circle;
+        }
+        .images img:nth-child(2){
+            float: right;
+            margin-top: -100px;
+        }
+        .images img:nth-child(3){
+            margin-top: -100px;
+        }
+        .images img:nth-child(4){
+            float: right;
+            margin-top: -100px;
+        }
+        .images img:nth-child(5){
+            margin-top: -100px;
+        }
+        /* hover */
+        .images img:nth-child(1):hover{
+            position: relative;
+            z-index: 99;
+            transform: scale(1.05);
+        }
+        .images img:nth-child(2):hover{
+            position: relative;
+            z-index: 99;
+            transform: scale(1.05);
+        }
+        .images img:nth-child(3):hover{
+            position: relative;
+            z-index: 99;
+            transform: scale(1.05);
+        }
+        .images img:nth-child(4):hover{
+            position: relative;
+            z-index: 99;
+            transform: scale(1.05);
+        }
+        .images img:nth-child(5):hover{
+            position: relative;
+            z-index: 99;
+            transform: scale(1.05);
+        }
+        .images img{
+            width: 600px;
+            height: 400px;
+            margin-top: 50px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        #moreOptions{
+            width: 30px;
+            height: 30px;
+            margin: 0 0 0 20px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+        #moreOptions-container{
+            width:90%;
+            height: 90vh;
+            padding: 5vh 5%;
+            position: fixed;
+            top: 0;
+            right: -100% ;
+            background-color: aliceblue;
+            z-index: 99;
+            transition: 0.7s;
+        }
+        #moreOptions-container a{
+            color: #212121;
+            text-decoration: none;
+        }
+        #moreOptions-container h1{
+            font-family: 'Gabarito';
+            font-size: 50px;
+        }
+        #moreOptions-container ul{
+            list-style: none;
+            font-family: prompt;
+            font-size: 20px;
+            width: 100%;
+        }
+        #moreOptions-container ul li{
+            padding:10px 0;
+            margin: 5px 0;
+        }
+        .header2-nav{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header2-nav img{
+            width: 25px;
+            height: 25px;
+        }
+        @media (max-width:550px) {
+            header ul li{
+                visibility: hidden;
+            }
+            #moreOptions{
+                visibility: visible;
+            }
+            .images{
+                width: 100%;
+                height: fit-content;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-self: center;
+                padding: 20px 0;
+            }
+            .images img{
+                width: 100%;
+                margin:0 0 40% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newsBar"><p>thunder Clothes</p><br><p>new collections coming soon</p></div>
+    <header>
+        <div>
+             <a href="index.html"><h1>thunder</h1></a>
+             <ul>
+                 <a href="store.html"><li>Store</li></a>
+                 <a href="newCollection.html"><li>new Collections</li></a>
+                 <a href="aboutus.html"><li>About us</li></a>
+                 <a href="signin.html"><li>Sign up</li></a>
+                 <a href="user.php"><li><img src="images/user.png" alt="your Profile" class="profile"></li></a>
+                 <img src="images/dots.png" alt="more" id="moreOptions">
+             </ul>
+        </div>
+     </header>
+     <div id="moreOptions-container">
+         <nav class="header2-nav"><a href="index.html"><h1>thunder</h1></a><img src="images/close.png" alt="close" id="closeMoreOptions"></nav>
+             <ul>
+                 <a href="store.html"><li>Store</li></a>
+                 <a href="newCollection.html"><li>new Collections</li></a>
+                 <a href="aboutus.html"><li>About us</li></a>
+                 <a href="signin.html"><li>Sign up</li></a>
+                 <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
+             </ul>
+     </div>
+    <main>
+        <div class="title">
+            <h1>About us</h1>
+            <p>know more about thunder comunity</p>
+        </div>
+        <ul><li><h2>What are We ?</h2></li></ul>
+        <p class="text">
+            we are a group of a tunisian people that sits together while drinking and smoking pots, decided to create our own brand after a long discussion and discover that
+            we have such a wide vision and such a creatiove mind we're not saying that we are perfect,
+            we made mistakes in our journey and made such a miserable designs and clothes <br>
+            and still not satisfied with it becaus what's on our mind is more artistic and more professional.
+            but the time is going and we get better and know more about how it is to run a good brand and get such good costumer Like u. <br>
+            learning about designing and searching for a good clothing quality here and there so we can finally gives our costumers the best of the best clothes . 
+            our goal is to make the best quality and a highly proffesional and creative designs for you.
+        </p><br>
+        <ul><li><h2>Mission and Values</h2></li></ul>
+        <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti eius suscipit quibusdam maxime, aperiam dignissimos maiores a beatae consequatur, neque, reiciendis cumque molestias quae deserunt expedita numquam tempora ratione. Quam?</p>
+        <ul><li><h2>Team Members</h2></li></ul>
+        <ul class="teamNames">
+            <li>Chahine Fehri</li>
+            <li>Aziz Ben Abdallah</li>
+        </ul>
+        <ul><li><h2>Achievements and Milestones</h2></li></ul>
+        <div class="images">
+            <img class="hidden" src="images/iron-the-clothes.png">
+            <img class="hidden" src="images/someitems.jfif">
+            <img class="hidden" src="images/TRUST THE PROCESS PORTO.jfif">
+            <img class="hidden" src="images/download.jfif">
+            <img class="hidden" src="images/gardrop.jfif" >
+        </div>
+        <ul><li><h2>Company Culture</h2></li></ul>
+        <ul><li><h2>Quotes</h2></li></ul>
+        <ul><li><h2>Future Plans</h2></li></ul>
+        <ul><li><h2>Social Media</h2></li></ul>
+    </main>
+
+    <script src="js.js"></script>
+    <script>
+        var closeMoreOptions = document.getElementById('closeMoreOptions');
+        var moreOptions = document.getElementById('moreOptions-container');
+        var moreOptionsOpenBtn = document.getElementById('moreOptions');
+        moreOptionsOpenBtn.addEventListener('click' , function(){
+            moreOptions.style.right = "0%"
+        })
+        closeMoreOptions.addEventListener('click' , function(){
+            moreOptions.style.right = "-100%"
+        })
+    </script>
+</body>
+</html>

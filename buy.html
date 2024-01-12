@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@500&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@300;500;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>THUNDER</title>
+    <style>
+        main{
+            width: 100%;
+            height: fit-content;
+            margin-top: 50px;
+        }
+        #container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        #container div{
+            width: 50%;
+            height: 100%;
+        }
+        #container div img:nth-child(1){
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #container div:nth-child(2){
+            width: 48%;
+            padding: 20px 2%;
+        }
+        #container div:nth-child(2) h2{
+            font-family: 'Josefin Sans';
+            font-size: 40px;
+            margin: 5px 0;
+        }
+        small{
+            font-family: prompt;
+            font-weight: lighter;
+            color: gray;
+        }
+        .price{
+            display:flex;
+            font-family: prompt;
+            font-weight: 300;
+            font-size: 18px;
+            letter-spacing: 1px;
+            align-items: center;
+        }
+        hr{
+            margin: 20px 0;
+            color: lightgray;
+        }
+        .sizes{
+            position: relative;
+            width: 70%;
+            margin: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            transition:all 0.7s;
+        }
+        .sizes nav{
+            position: relative;
+            min-width:55px;
+            min-height: 55px;
+            border: 2px solid #212121;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Josefin Sans';
+            cursor: pointer;
+        }
+        .sizes input{
+            opacity: 0;
+            width:55px;
+            height:55px;
+            position: absolute;
+            cursor: pointer;
+            z-index: 2;
+            transition: 0.7s;
+        }
+        .sizesLabel{
+            position: relative;
+            width:100%;
+            height:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Josefin Sans';
+            cursor: pointer;
+            transition: 0.7s;
+        }
+        input[type="radio"]:checked + .sizesLabel{
+            background-color: #212121;
+            color: aliceblue;
+            border: none;
+        }
+        #quantity{
+            width: 130px;
+            height: 40px;
+            margin: 10px 0;
+            text-align: center;
+            outline: none;
+            font-size: 18px;
+        }
+        #quantity::-webkit-inner-spin-button,
+        #quantity::-webkit-outer-spin-button{
+            -webkit-appearance: none;
+        }
+        .button{
+            width: 100%;
+            padding: 20px 0 ;
+            font-family: 'Josefin Sans';
+            margin: 2px 0;
+            background-color: #212121;
+            border: none;
+            text-align: center;
+            font-size: 20px;
+        }
+        .button:nth-of-type(1){
+            margin-top: 20px;
+            background-color: #ffff;
+            color: #212121;
+            border: 2px solid #212121;
+            cursor:no-drop;
+        }
+        .button:nth-of-type(2){
+            background-color: #212121;
+            color: aliceblue;
+            border: none;
+            cursor: pointer;
+        }
+        .shirt-discription{
+            font-family: 'Josefin Sans';
+            color: gray;
+            margin-top: 25px;
+        }
+        h4{
+            font-family: 'Josefin Sans';
+            margin: 20px 0 5px 0;
+        }
+
+
+
+        @media (max-width:900px) {
+            #container{
+                flex-direction: column;
+                height: fit-content;
+                align-items: flex-start;
+            }
+            #container div img:nth-child(1){
+                width: 100%;
+                height:auto;
+                object-fit: cover;
+            }
+            #container div:nth-child(2){
+                width: 96%;
+                padding: 20px 2%;
+            }
+            #container div{
+                width: 100%;
+                height:fit-content;
+            }
+            .sizes{
+                width: 90%;
+                margin:5% 0;
+            }
+            header ul{
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newsBar"><p>thunder Clothes</p><br><p>Buy Now!</p></div>
+    <header>
+       <div>
+            <a href="index.html"><h1>thunder</h1></a>
+            <ul>
+                <a href="store.html"><li>Store</li></a>
+                <a href="newCollection.html"><li>new Collections</li></a>
+                <a href="aboutus.html"><li>About us</li></a>
+                <a href="signin.html"><li>Sign up</li></a>
+            </ul>
+       </div>
+    </header>
+    <main>
+        <div id="container">
+            <div>
+                <img src="images/tshirtMockup-front.png" alt="t-shirt" class="hidden" id="productimg">
+            </div>
+            <div>
+                <small>thunder clothes</small>
+                <form action="buy.php" method="post" onsubmit="return verif()">
+                    <h2 id="theProductName" name="productName">T-shirt Name</h2>
+                    <nav class="price"><p id="thePrice" name="price">00.00</p><pre> </pre><small>sold out</small></nav>
+                    <hr>
+                    <small>Size</small>
+                    <nav class="sizes">
+                        <nav><input type="radio" name="size" id="xs" class="input" value="XS"><label for="size" class="sizesLabel">XS</label></nav>
+                        <nav><input type="radio" name="size" id="s" class="input" value="S"><label for="size" class="sizesLabel">S</label></nav>
+                        <nav><input type="radio" name="size" id="m" class="input" value="M"><label for="size" class="sizesLabel">M</label></nav>
+                        <nav><input type="radio" name="size" id="l" class="input" value="L"><label for="size" class="sizesLabel">L</label></nav>
+                        <nav><input type="radio" name="size" id="xl" class="input" value="XL"><label for="size" class="sizesLabel">XL</label></nav>
+                    </nav>
+                    <small>Quantity</small><br>
+                    <input type="number" name="quantity" id="quantity" value="1" min="1" max="5"><br>
+                    <button class="button">Sold out</button><br>
+                    <input type="submit" value="Buy it now" class="button">
+                </form>
+                <p class="shirt-discription">
+                    this T-shirt was created and designed <br>
+                    with tunisian Designers Tailors and our team members <br>
+                    to deliver it to you where you are thunder clothes <br>
+                    create artistic products just for you to wear and look special<br>
+                </p>
+                <h4>Materials</h4>
+                <small>100% cuttons</small>
+                <h4>Shipping & Returns</h4>
+                <small>Shipping takes 2-6 business days for tunisian orders. <br>All sales are final.</small>
+                <h4>Care Instructions</h4>
+                <small>DO NOT BLEACH</small>
+                <hr>
+            </div>
+        </div>
+        <div class="offre hidden show">
+            <img src="images/Its lit.png" class="hidden2 show2">
+            <nav>
+                <h3>Thunder Clothes</h3>
+                <p>Check it out New thunder Clothes</p>
+            </nav>
+        </div>
+        <div id="clothesContainer">
+            <div class="hidden" onclick="buy(this)" id="1"><nav><a href="buy.html"><img src="images/threads-T-shirt.png" class="clothes hidden2" id="product1" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName1">Threads عقد</h2><p id="price1">75.00 DT</p></a></nav></div>
+            <div class="hidden" onclick="buy(this)" id="2"><nav><a href="buy.html"><img src="images/threads-T-shirt2.png" class="clothes hidden2" id="product2" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName2">Threads عقد</h2><p id="price2">80.00 DT</p></a></nav></div>
+            <div class="hidden" onclick="buy(this)" id="3"><nav><a href="buy.html"><img src="images/its lit thunder.png" class="clothes hidden2" id="product3" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName3">its lit thunder</h2><p id="price3">70.00 DT</p></a></nav></div>
+            <div class="hidden" onclick="buy(this)" id="4"><nav><a href="buy.html"><img src="images/Self respect.png" class="clothes hidden2" id="product4" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName4">Selft respect</h2><p id="price4">80.00 DT</p></a></nav></div>
+        </div>
+    </main>
+    <footer>
+        <h1>Thunder Clothes</h1>
+        <p>You can check our social media and stay tuned</p>
+        <div>
+            <nav>
+                <h3>Send us an Email</h3>
+                <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
+                <button>send</button>
+            </nav>
+            <nav>
+                <h3>Our Social Media</h3>
+                <nav class="socialmedia">
+                    <a href="#"><img src="images/facebook.png"></a>
+                    <a href="#"><img src="images/instagram.png"></a>
+                    <a href="#"><img src="images/twitter.png"></a>
+                    <a href="#"><img src="images/tiktok.png"></a>
+                </nav>
+                <img src="images/aroundtheworldicon.png" style="width: 90px; height: 90px; margin-top: -30px;">
+            </nav>
+        </div>
+        <nav class="devId">Made By Chahine Fehri</nav>
+    </footer>
+
+    <script src="js.js"></script>
+
+    <script>
+
+        function verif(){
+            var xs = document.getElementById('xs');
+            var s = document.getElementById('s');
+            var m = document.getElementById('m');
+            var l = document.getElementById('l');
+            var xl = document.getElementById('xl')
+
+            if(!xs.checked && !s.checked && !m.checked && !l.checked && !xl.checked){
+                alert('select your Size');
+                return false;
+            }
+
+        }
+        // getting the value of the quantity
+        var quantity = document.getElementById('quantity');
+        quantityV = quantity.value;
+
+        // getting the items from the local storage
+        var product = localStorage.getItem('product');
+        var productName = localStorage.getItem('productName');
+        var price = localStorage.getItem('price');
+        
+        // calling the elements we need of the product
+        var productimg = document.getElementById('productimg');
+        var theProductName = document.getElementById('theProductName');
+        var thePrice = document.getElementById('thePrice');
+
+        productimg.src = product;
+        theProductName.innerText = productName;
+        thePrice.innerText = price;
+
+
+        let order = {
+                orderName :productName,
+                orderPrice : price,
+        }
+        // other options 
+        function buy(TheProduct){
+            // getting the elements id
+            const id = TheProduct.id;
+            const productId = 'product'+id;
+            const productNameId ='productName'+id
+            const priceId = 'price'+id;
+
+            const product = document.getElementById(productId)
+            const productName = document.getElementById(productNameId);
+            const price = document.getElementById(priceId);
+
+            // getting the values of the product 
+            productV = product.src;
+            productNameV = productName.innerText;
+            priceV = price.innerText;
+            
+            // local storage the values to move it to the next page (nuy.html)
+            localStorage.setItem('product' , productV);
+            localStorage.setItem('productName' , productNameV);
+            localStorage.setItem('price' , priceV);
+
+            window.location.href = "buy.html";
+        }
+
+
+
+
+
+
+
+        document.cookie = "orderName = "+order.orderName;
+        document.cookie = "orderPrice = "+order.orderPrice;
+    </script>
+</body>
+</html>

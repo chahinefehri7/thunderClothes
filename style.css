@@ -1,0 +1,687 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+small{
+    font-size: 13px;
+}
+body{
+    background-color: #FAFDFF;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'prompt';
+    background-color:#fffffff1;
+    width: 100%;
+    height: 70px;
+}
+header div{
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+header a{
+    text-decoration: none;
+    color: black;
+}
+header h1{
+    font-family: 'Gabarito';
+}
+header ul{
+    width:fit-content;
+    padding: 0 40px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+header ul li{
+    padding: 10px 15px;
+    margin: 0 10px;
+    font-weight: lighter;
+    transition: 0.3s;
+}
+header ul li:hover{
+    transform: translateY(-3px);
+}
+.profile{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.title{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 20px 0;
+}
+.title img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+}
+.title button{
+    padding: 20px 30px;
+    background-color: #FAFDFF;
+    color: #121815;
+    font-family: 'Josefin Sans';
+    border: none;
+    border-radius: 50px;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    cursor: pointer;
+}
+.newsBar{
+    width: 100%;
+    height: 20px;
+    font-family: 'prompt';
+    background-color: #1D1FB8;
+    text-align: center;
+    padding: 10px 0;
+    color: #FAFDFF;
+    overflow: hidden;
+}
+.newsBar p{
+    animation:slideUp 5s 3s ease-out 4;
+}
+@keyframes slideUp {
+    0%{
+        transform: translateY(0);
+    }
+    0%{
+        transform: translateY(0);
+    }
+    20%{
+        transform: translateY(-50px);
+    }
+    60%{
+        transform: translateY(-50px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-50px);
+    }
+}
+#collection{
+    width: 95%;
+    padding: 50px 2.5%;
+    height: fit-content;
+}
+#collection h1{
+    font-family: 'Josefin Sans';
+    font-size: 80px;
+    font-weight: 900;
+}
+#collection p{
+    font-family: 'prompt';
+    font-weight: lighter;
+    padding: 0 10px;
+}
+/* clothes container */
+#clothesContainer{
+    width: 100%;
+    height:fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 60px 0;
+}
+#clothesContainer div:nth-child(1){
+    transition-delay: 100ms;
+}
+#clothesContainer div:nth-child(2){
+    transition-delay: 200ms;
+}
+#clothesContainer div:nth-child(3){
+    transition-delay: 300ms;
+}
+#clothesContainer div:nth-child(4){
+    transition-delay: 400ms;
+}
+#clothesContainer a{
+    color: #121815;
+    text-decoration: none;
+}
+#clothesContainer div{
+    width:290px;
+    min-width: 290px;
+    height: 400px
+}
+#clothesContainer nav img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+#clothesContainer p{
+    padding: 0 0;
+    font-size: 15px;
+}
+.productDiscription{
+    padding: 10px 0;
+    padding-left: 30px;
+    text-align: start;
+}
+.productDiscription span{
+    display: flex;
+    padding: 5px 10px;
+    background-color: #121815;
+    color: #FAFDFF;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50px;
+    font-family: 'prompt';
+    font-size: 12px;
+}
+.productDiscription h2{
+    font-family: 'Josefin Sans';
+    margin: 15px 0 0 0;
+}
+.productDiscription p{
+    padding: 0  0;
+    margin: 0;
+}
+/* offre in thunder store */
+.offre{
+    width: 80%;
+    height:fit-content;
+    margin: 20px 5%;
+    background-color: #121815;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 5%;
+    color: #FAFDFF;
+    font-family: 'Josefin Sans';
+    border-radius: 30px;
+}
+.offre nav{
+    height:300px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px 40px;
+}
+.offre h3{
+    font-size: 70px;
+    margin: 10px 0;
+}
+.offre img{
+    height:300px;
+    width:300px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+.clothes:hover{
+    transition: 0.3s;
+    transform: translateY(-20px);
+}
+/* activitys */
+.activitys{
+    width: 90%;
+    height: fit-content;
+    padding: 50px 5%;
+    position: relative;
+    margin:50px 0 100px 0;
+}
+.activitystitle{
+    font-size: 80px;
+    margin:0 0 150px 0;
+    font-family: 'Josefin Sans';
+}
+.activityDiv{
+    width: 600px;
+    height: 600px;
+    border-radius: 40px;
+    background-color: #121815;
+    color: #FAFDFF;
+    overflow: hidden;
+    box-shadow: 0px 0px 30px -5px #121815;
+    text-align: center;
+    margin: -60px 0;
+}
+.activitys nav{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    padding: 20px 0;
+}
+.activitys img{
+    width:100%;
+    height: 85%;
+    object-fit: cover;
+}
+.activityDiv h1{
+    font-family: 'Josefin Sans';
+}
+.activityDiv p{
+    font-family: 'prompt';
+    font-weight: lighter;
+    letter-spacing: 2px;
+}
+.activityDiv:nth-child(1){
+    float: left;
+}
+.activityDiv:nth-child(2){
+    float: right;
+    z-index: 50;
+}
+.activityDiv:nth-child(3){
+    float: left;
+    z-index: 51;
+}
+.activityDiv:nth-child(4){
+    float: right;
+    z-index: 50;
+}
+/* divThunderDesign its like just showing our graphic design on the web */
+.divThunderDesign{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 200px 0 50px 0;
+}
+.divThunderDesign img{
+    width: 90%;
+    height: 500px;
+    margin: 0 5%;
+    border-radius: 40px;
+    object-fit: cover;
+}
+.divThunderDesign a{
+    width:fit-content;
+    position:absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+.divThunderDesign button{
+    padding: 15px 20px;
+    border-radius: 50px;
+    background-color: #1D1FB8;
+    color: #FAFDFF;
+    font-family: 'Poppins';
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: -40px;
+}
+.thunderspellWelcom{
+    position:absolute;
+    top: 30%;
+    left: 32%;
+    transform: translate(-50% , -50%);
+    font-size: 70px;
+    color: #FAFDFF;
+    font-family: 'Poppins';
+    text-transform: uppercase;
+    display: flex;
+    align-items: baseline;
+}
+.thunderspellWelcom p:nth-child(0){
+    transition-delay:00ms;
+}
+.thunderspellWelcom p:nth-child(2){
+    transition-delay:500ms;
+}
+.thunderspell{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    color: #FAFDFF;
+    font-family: 'Poppins';
+    text-transform: uppercase;
+    display: flex;
+}
+.thunderspell p{
+    font-size: 120px;
+}
+.thunderspell p:nth-child(0){
+    transition-delay: 200ms;
+}
+.thunderspell p:nth-child(2){
+    transition-delay: 500ms;
+}
+.thunderspell p:nth-child(3){
+    transition-delay: 800ms;
+}
+.thunderspell p:nth-child(4){
+    transition-delay: 1100ms;
+}
+.thunderspell p:nth-child(5){
+    transition-delay: 1400ms;
+}
+.thunderspell p:nth-child(6){
+    transition-delay: 1700ms;
+}
+.thunderspell p:nth-child(7){
+    transition-delay: 2000ms;
+}
+/* some comments while you're scrolling down */
+.comments{
+    width: 100%;
+    text-align: center;
+    transition:0.5s;
+}
+.comments img{
+    width: 100px;
+    height: 100px;
+    transition:0.2s;
+}
+.comments img:hover{
+    transform: scale(1.05);
+}
+/* other things that thunder want to say to her clients */
+.others{
+    width: 90%;
+    height: fit-content;
+    margin: 30px 5%;
+    font-family: 'Poppins';
+    position: relative;
+}
+.others p{
+    font-family:'Josefin Sans';
+    font-size: 25px;
+    font-weight: lighter;
+}
+.others h1{
+    font-size: 100px;
+}
+.othersContainer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.othersContainer div{
+    text-align: center;
+    width: 400px;
+    height: fit-content;
+    margin: 50px 0;
+}
+.othersContainer div img{
+    width: 100px;
+    height:100px;
+}
+.othersContainer div h3{
+    font-size: 30px;
+}
+.othersContainer div p{
+    font-size: 20px;
+    font-family: 'Poppins';
+}
+/* the footer  */
+footer{
+    width: 100%;
+    height: 350px;
+    border-top: 2px solid #121815;
+    padding: 50px 0;
+    margin: 100px 0 0 0;
+    text-align: center;
+}
+footer h1{
+    font-family: 'Poppins';
+    color: #121815;
+}
+footer p{
+    font-family: 'Josefin Sans';
+    color: #121815;
+}
+footer div{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer nav{
+    width: 90%;
+    height:200px;
+    text-align: start;
+    margin: 30px 0;
+    font-family:'Josefin Sans';
+    padding: 20px 5%;
+}
+footer nav:nth-child(1){
+    border-right: 1px solid #121815;
+}
+footer nav input{
+    width: 300px;
+    height: 30px;
+    padding:10px;
+    margin:30px 10px 10px 10px;
+    border: 1px solid #121815;
+    background: none;
+}
+footer nav button{
+    padding: 15px 20px;
+    width: 90px;
+    background-color: #1D1FB8;
+    color: #FAFDFF;
+    font-family: 'prompt';
+    border: none;
+    border-radius: 50px;
+    margin: 10px;
+    cursor: pointer;
+}
+.socialmedia{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.socialmedia img{
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    transition: 0.5ms;
+}
+.socialmedia img:hover{
+    transform: translateY(-1px);
+}
+.devId{
+    width: 100%;
+    height: 20px;
+    padding: 5px 0;
+    background-color: #121815;
+    color: #FAFDFF;
+    text-align:center;
+}
+@media (min-width:1280px) {
+    .activitys{
+        margin:50px 0 100px 0;
+    }
+}
+@media (max-width:1000px){
+    .activitystitle{
+        margin: 10px 0;
+    }
+    .activitys{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+        height: fit-content;
+        margin-bottom: 0px;
+    }
+    .activitys div{
+        width: 90%;
+        margin: 30px 0;
+    }
+    .activitys img{
+        height: 100%;
+    }
+    .title button{
+        margin-top: -50px;
+    }
+    .title img{
+        border-radius: 0;
+    }
+    .offre{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+    .offre nav {
+        text-align: start;
+    }
+    .offre nav h3{
+        width: 80%;
+    }
+    .offre nav p{
+        width: 79%;
+    }
+    .offre img{
+        width: 90%;
+    }
+
+}
+@media (max-width:800px){
+    footer div{
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    footer nav:nth-child(1){
+        border: none;
+    }
+    .othersContainer div{
+        width: 300px;
+    }
+    .activitystitle{
+        font-size: 40px;
+        text-align: start;
+    }
+    .others h1{
+        font-size: 30px;
+    }
+    #clothesContainer div{
+        width:300px;
+        min-width: 290px;
+        margin-bottom: 50px;
+        height: 400px
+    }
+    .title h1{
+        font-size: 20px;
+    }
+    .offre{
+        justify-content: center;
+    }
+
+}
+@media (max-width:700px) {
+    .offre{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 20px 0;
+        margin: 10%;
+    }
+    .offre img{
+        height: auto
+    }
+    .offre nav:nth-child(2){
+        width: 100%;
+        margin:20px 0;
+        padding: 0;
+        height: 10%;
+    }
+    .offre nav h3{
+        width: 100%;
+        font-size: 40px;
+    }
+    .offre nav{
+        margin: 20px 0;
+        text-align: center;
+        align-items: center;
+        width: 70%;
+    }
+}
+.hidden{
+    transform: translateY(125px);
+    opacity: 0;
+    filter: blur(4px);
+    transition: all 1s;
+}
+.show{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0px);
+    transition: 0.7s;
+}
+.hidden2{
+    transform: translateY(100px);
+    opacity: 0;
+    filter: blur(4px);
+    transition: 1s;
+}
+.show2{
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0px);
+    transition: 0.7s 0.3s;
+}
+.hidden3{
+    transform: translateX(-150px);
+    opacity: 0;
+    filter: blur(4px);
+    transition: 1s;
+}
+.show3{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0px);
+    transition: 0.7s 0.3s;
+}
+.hidden4{
+    transform: translateX(-100px);
+    opacity: 0;
+    filter: blur(4px);
+    transition: 1s 3s;
+}
+.show4{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0px);
+    transition: 1s 2.5s;
+    animation: textAnimationButton 1s 7s forwards;
+}
+@keyframes textanimation {
+    0%{
+        transform: translateX(0);
+        opacity: 1;
+        filter: blur(0px);
+    }
+    100%{
+        transform: translateX(100px);
+        filter: blur(10px);
+        opacity: 0;
+    }
+}
+@keyframes textAnimationButton {
+    100%{
+        transform: translateX(0);
+        opacity: 0;
+        filter: blur(15px);
+    }
+}
+@media(prefers-reduced-motion){
+    .hidden{
+        transition: none;
+    }
+}

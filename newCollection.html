@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@500&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@300;500;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
+    <title>New Collections</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="newCollections.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            scroll-behavior: smooth;
+        }
+        .theCollectionCards nav{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: rgba(39, 39, 39, 0.422);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            color: aliceblue;
+            opacity: 0;
+            cursor: pointer;
+            transition: 0.7s;
+        }
+        .theCollectionCards nav:hover{
+            opacity: 1;
+        }
+        .theCollectionCards nav h2{
+            font-family: 'Josefin Sans';
+            font-size: 20px;
+        }
+        .theCollectionCards nav p{
+            font-family: 'prompt';
+            font-size: 12px;
+            font-weight: lighter;
+        }
+        .profile{
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+        #moreOptions{
+            width: 30px;
+            height: 30px;
+            margin: 0 0 0 20px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+        @media (max-width:550px) {
+            header ul li{
+                visibility: hidden;
+            }
+            #moreOptions{
+                visibility: visible;
+            }
+        }
+        #moreOptions-container{
+            width:90%;
+            height: 90vh;
+            padding: 5vh 5%;
+            position: fixed;
+            top: 0;
+            right: -100% ;
+            background-color: aliceblue;
+            z-index: 99;
+            transition: 0.7s;
+        }
+        #moreOptions-container a{
+            color: #212121;
+            text-decoration: none;
+        }
+        #moreOptions-container h1{
+            font-family: 'Gabarito';
+            font-size: 50px;
+        }
+        #moreOptions-container ul{
+            list-style: none;
+            font-family: prompt;
+            font-size: 20px;
+            width: 100%;
+        }
+        #moreOptions-container ul li{
+            padding:10px 0;
+            margin: 5px 0;
+        }
+        .header2-nav{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header2-nav img{
+            width: 25px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="newsBar"><p>thunder Clothes</p> <br><p>Check our new Collections</p></div>
+    <header>
+        <div>
+             <a href="index.html"><h1>thunder</h1></a>
+             <ul>
+                 <a href="store.html"><li>Store</li></a>
+                 <a href="newCollection.html"><li>new Collections</li></a>
+                 <a href="aboutus.html"><li>About us</li></a>
+                 <a href="signin.html"><li>Sign up</li></a>
+                 <a href="user.php"><li><img src="images/user.png" alt="your Profile" class="profile"></li></a>
+                 <img src="images/dots.png" alt="more" id="moreOptions">
+             </ul>
+        </div>
+     </header>
+     <div id="moreOptions-container">
+         <nav class="header2-nav"><a href="index.html"><h1>thunder</h1></a><img src="images/close.png" alt="close" id="closeMoreOptions"></nav>
+             <ul>
+                 <a href="store.html"><li>Store</li></a>
+                 <a href="newCollection.html"><li>new Collections</li></a>
+                 <a href="aboutus.html"><li>About us</li></a>
+                 <a href="signin.html"><li>Sign up</li></a>
+                 <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
+             </ul>
+     </div>
+    <main>
+        <div class="frontPost">
+            <nav class="hidden2">
+                <h1>Thunder New Collection</h1>
+                <p>Check it Now</p>
+            </nav>
+            <img src="images/iron-the-clothes.png">
+        </div>
+        <div class="newCollections">
+            <!-- <img src="images/thunder-NewCollection.png" class="newCollectionImg"> -->
+            <h1 class="hidden2">Whats New ?</h1>
+            <h3 class="hidden2">Take a look on the new Events and the new Collections</h3>
+            <div>
+                <ul class="hidden3"><li><h2>thunder secret</h2></li></ul>
+                <img src="images/thunder-secret2.png" class="new new1 hidden">
+            </div>
+            <div>
+                <ul class="hidden3"><li><h2>thunder Music event</h2></li></ul>
+                <img src="images/musicDisk.png" class="new  hidden">
+            </div>
+            <div>
+                <ul class="hidden3"><li><h2>thunder pills event</h2></li></ul>
+                <img src="images/thunder-pill2.png" class="new  hidden">
+            </div>
+        </div>
+        <div class="undertitle">
+            <h1>Pick Your Thunder !</h1>
+            <p>this will Gives you much more benifets so don't be just a costumer <br> and be one of the the thunder comunity</p>
+        </div>
+        <nav class="theCollectionCards">
+            <div class="hidden3"><img src="images/threads.png"><a href="pickingCard.php?pickedCard=threads"><nav id="threads" onclick="pickCard(this)"><h2>threads</h2><p>threads card gives you 10% offre on threads collections.</p></nav></a></div>
+            <div class="hidden3"><img src="images/Its lit.png"><a href="pickingCard.php?pickedCard=its lit"><nav id="its lit" onclick="pickCard(this)"><h2>its lit</h2><p>a great opertunity with 5% on all "its lit" collections from 1 to 4 and 10% if you order more than tow "its lit" shirts.</p></nav></a></div>
+            <div class="hidden3"><img src="images/thunder Rock.png"><a href="pickingCard.php?pickedCard=thunder Rock"><nav id="thunder Rock" onclick="pickCard(this)"><h2>thunder Rock</h2><p>thunder Rock collection is coming soon. <br> you can pick this card and see what thunder can gives you <br><b>Like a mestery card</b></p></nav></a></div>
+            <div class="hidden3"><img src="images/On the Wall.png"><a href="pickingCard.php?pickedCard=On the Wall"><nav id="On the Wall" onclick="pickCard(this)"><h2>On the Wall</h2><p>"on the wall" collection is coming soon. <br> you can pick this card and see what thunder can gives you <br><b>Like a mestery card</b></p></nav></a></div>
+        </nav>
+        <div class="joinComunity">
+            <nav class="hidden">
+                <h1>Join Thunder Comunity Now!</h1>
+                <p>And know more about us</p>
+            </nav>
+            <div>
+                <img src="images/thunder-illustrators3.png" class="hidden3">
+                <img src="images/banner2.png" class="hidden3">
+                <img src="images/thunder-illustrators.png" class="hidden3">
+            </div><br>
+            <a href="#sendUsEmail"><button>Join Now</button></a>
+        </div>
+    </main>
+    <footer>
+        <h1>Thunder Clothes</h1>
+        <p>You can check our social media and stay tuned</p>
+        <div>
+            <nav>
+                <h3>Send us an Email</h3>
+                <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
+                <button>send</button>
+            </nav>
+            <nav>
+                <h3>Our Social Media</h3>
+                <nav class="socialmedia">
+                    <a href="#"><img src="images/facebook.png"></a>
+                    <a href="#"><img src="images/instagram.png"></a>
+                    <a href="#"><img src="images/twitter.png"></a>
+                    <a href="#"><img src="images/tiktok.png"></a>
+                </nav>
+                <img src="images/aroundtheworldicon.png" style="width: 90px; height: 90px; margin-top: -30px;">
+            </nav>
+        </div>
+        <nav class="devId">Made By Chahine Fehri</nav>
+    </footer>
+    <script src="js.js"></script>
+    <script>
+        function pickCard(card){
+            var cardName = card.id
+            var result = confirm('Do you Wanna pick "'+cardName+'" Card as your Thunder?');
+            if(result == false){
+                event.preventDefault();
+            }
+            return result;
+        }
+        var closeMoreOptions = document.getElementById('closeMoreOptions');
+        var moreOptions = document.getElementById('moreOptions-container');
+        var moreOptionsOpenBtn = document.getElementById('moreOptions');
+        moreOptionsOpenBtn.addEventListener('click' , function(){
+            moreOptions.style.right = "0%"
+        })
+        closeMoreOptions.addEventListener('click' , function(){
+            moreOptions.style.right = "-100%"
+        })
+    </script>
+</body>
+</html>

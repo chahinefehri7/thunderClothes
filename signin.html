@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signin</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            overflow: hidden;
+        }
+        .theDiv{
+            width: 50%;
+            height: 100vh;
+            float: left;
+        }
+        .thunder{
+            background-color: #000;
+            position: relative;
+            text-align: center;
+        }
+        .thunder img{
+            width: 98%;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+        }
+        .thunder h1{
+            font-size: 20px;
+            margin: 20px 0;
+            color: #f1f1f1;
+            font-family:'Josefin Sans';
+        }
+        .thunder nav h2{
+            margin-left: 5px;
+            font-size: 30px;
+        }
+        .thunder nav small{
+            font-family:'prompt';
+            margin: 5px 10px;
+        }
+        fieldset{
+            margin: 30px 0;
+            padding:0 15px;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            text-align: strat;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        legend{
+            font-family: 'Josefin Sans';
+            font-size: 15px;
+        }
+        .input{
+            transition: 0.5s;
+            margin-bottom: 20px;
+            font-family: 'prompt';
+            font-weight: lighter;
+            width:300px;
+            border: none;
+            border-bottom: 1.5px solid lightgray;
+            border-radius: 1px;
+            font-size: 17px;
+            outline: none;
+            padding: 5px 20px 10px 0px;
+        }
+        .submit{
+            padding: 15px 30px;
+            width: 200px;
+            border: 1px solid #1a1a1a;
+            border-radius: 50px;
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+            cursor: pointer;
+            cursor: pointer;
+            transition: 0.7s;
+        }
+        .submit:hover{
+            width: 80%;
+            background-color: #f1f1f1;
+            color: #000;
+        }
+        .already-have-acc{
+            color: #000;
+            font-family: prompt;
+            text-decoration: none;
+            font-weight: bolder;
+            margin: 5px 0 ;
+        }
+        .already-have-acc:hover{
+            text-decoration: underline;
+        }
+        @media (max-width:1000px) {
+          .input{
+            font-size: 14px;
+          }
+          body{
+                overflow-x: hidden;
+                overflow-y: scroll;
+            }
+        }
+        @media (max-width:900px) {
+            .theDiv{
+                width: 100%;
+            }
+        }
+        @media (max-width:500px) {
+            .f{
+                margin: 50px 0;
+            }
+            .input{
+                width: 130%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="theDiv thunder">
+            <h1>Welcom to</h1>
+            <a href="index.html"><img src="images/thundersticker.png" alt="back home"></a>
+        </div>
+        <div class="theDiv">
+            <fieldset class="f"><legend>login</legend>
+                <form action="signup.php" method="post">
+                    <input type="text" name="name" id="name" class="input" placeholder="name">
+                    <input type="text" name="lastName" id="lastName" class="input" placeholder="lastName">
+                    <input type="email" name="email" id="email" class="input" placeholder="Email">
+                    <input type="password" name="passw" id="passw" class="input" placeholder="password">
+                    <input type="text" name="state" id="state" class="input" placeholder="State">
+                    <input type="text" name="adresse" id="adresse" class="input" placeholder="Adresse">
+                    <input type="number" name="phoneNumber" id="phoneNumber" class="input" placeholder="Phone Number">
+                    <a href="login.html" class="already-have-acc">Already have an account ?</a>
+                    <input type="submit" value="login" class="submit" id="submit">
+                </form>
+            </fieldset>
+        </div>
+    </main>
+</body>
+</html>
+<script>
+    var submit = document.getElementById('submit');
+    submit.addEventListener('click' , function(){
+        var phoneNumber = document.getElementById('phoneNumber');
+        var itemScore = 0;
+        var phoneNumberV = phoneNumber.value;
+        document.cookie = "userPhoneNumber = "+phoneNumberV , time() +60 * 60 * 24 * 30;
+        document.cookie = "itemGameScore = "+itemScore , time() +60 * 60 * 24 * 30;
+
+    })
+
+
+
+    // var email = document.getElementById('email');
+    // var passw = document.getElementById('passw');
+    // var name = document.getElementById('name');
+    // var lastName = document.getElementById('lastName');
+    // name.addEventListener('click', function(){
+    //     name.style.paddingBottom="15px"
+    // })
+    // name.addEventListener('blur', function(){
+    //     name.style.paddingBottom="10px"
+    // })
+    // lastName.addEventListener('click', function(){
+    //     lastName.style.paddingBottom="15px"
+    // })
+    // lastName.addEventListener('blur', function(){
+    //     lastName.style.paddingBottom="10px"
+    // })
+    // email.addEventListener('click', function(){
+    //     email.style.paddingBottom="15px"
+    // })
+    // email.addEventListener('blur', function(){
+    //     email.style.paddingBottom="10px"
+    // })
+    // passw.addEventListener('click', function(){
+    //     passw.style.paddingBottom="15px"
+    // })
+    // passw.addEventListener('blur', function(){
+    //     passw.style.paddingBottom="10px"
+    // })
+
+</script>
