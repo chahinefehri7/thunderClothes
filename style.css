@@ -661,6 +661,11 @@ footer nav button{
     transition: 1s 2.5s;
     animation: textAnimationButton 1s 7s forwards;
 }
+@media (max-width:550px) {
+    header ul li{
+        pointer-events: none;        
+    }
+}
 @keyframes textanimation {
     0%{
         transform: translateX(0);

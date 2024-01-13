@@ -320,6 +320,9 @@ while($rows2 = $res->fetch_assoc()){
             .delete{
                 margin: 30px 0 0 0;
             }
+            #cardDiscription{
+                padding: 20px 10px;
+            }
         }
         @media (max-width:800px) {
             #cardDiscription{
