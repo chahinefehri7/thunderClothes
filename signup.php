@@ -64,9 +64,9 @@ $adresse = $_POST['adresse'];
 $phoneNumber = $_POST['phoneNumber'];
 
 
-$req = ("SELECT * FROM `clients` WHERE email =  '$email' && password = '$passw'") or die('query Failed');
-$req2 = ("INSERT INTO clients VALUES('$name','$lastName','$state','$adresse','$email','$passw',$phoneNumber)") or die("query Failed");
-$req3 = ("SELECT * FROM `clients` WHERE phoneNumber =  $phoneNumber") or die('query Failed');
+$req = ("SELECT * FROM `clients` WHERE email =  '$email' && password = '$passw'") or die('query Failed');//testing the email and the password if it exists in the data base
+$req2 = ("INSERT INTO clients VALUES('$name','$lastName','$state','$adresse','$email','$passw',$phoneNumber)") or die("query Failed");//inserting values
+$req3 = ("SELECT * FROM `clients` WHERE phoneNumber =  $phoneNumber") or die('query Failed'); // searching for the phone number if it exists in the data base
 
 $res = mysqli_query($conn , $req);
 $res3 = mysqli_query($conn , $req3);
@@ -89,6 +89,8 @@ if(mysqli_num_rows($res) > 0){
         ';
     }else{
         $res = mysqli_query($conn , $req2);
+        $rows = $res->fetch_assoc();
+        setcookie("userPhoneNumber" , $rows["phoneNumber"]);
         echo '
             <div>
                 <h1 class="wlecom">Welcom to thunder ' . $name . '</h1>

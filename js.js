@@ -1,5 +1,3 @@
-
-
 // first observer for elements animation
 const observer = new IntersectionObserver(entries =>{
     entries.forEach((entry) =>{

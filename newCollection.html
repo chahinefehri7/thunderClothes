@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,6 +108,21 @@
             width: 25px;
             height: 25px;
         }
+        #emailBtn{
+            padding: 15px 20px;
+            width: 90px;
+            height: fit-content;
+            background-color: #1D1FB8;
+            color: #FAFDFF;
+            font-family: 'prompt';
+            border: none;
+            border-radius: 50px;
+            margin: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -188,8 +204,10 @@
         <div>
             <nav>
                 <h3>Send us an Email</h3>
-                <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
-                <button>send</button>
+                <form action="EmailComunity.php" method="post">
+                    <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
+                    <input type="submit" value="submit" id="emailBtn">
+                </form>
             </nav>
             <nav>
                 <h3>Our Social Media</h3>

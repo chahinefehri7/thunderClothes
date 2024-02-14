@@ -458,7 +458,7 @@ footer nav{
 footer nav:nth-child(1){
     border-right: 1px solid #121815;
 }
-footer nav input{
+#sendUsEmail{
     width: 300px;
     height: 30px;
     padding:10px;
@@ -466,7 +466,7 @@ footer nav input{
     border: 1px solid #121815;
     background: none;
 }
-footer nav button{
+#emailBtn{
     padding: 15px 20px;
     width: 90px;
     background-color: #1D1FB8;

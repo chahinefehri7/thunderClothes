@@ -14,9 +14,12 @@ if (isset($_GET["pickedCard"])){
 
     $req2 = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userPhoneNumber";
     $res2 = mysqli_query($conn,$req2);
-    $rows2 = $res2->fetch_assoc();
-
-
+    $sameCardRepeated = 0;
+    while($rows2 = $res2->fetch_assoc()){
+        if($rows2["cardName"]==$pickedCard){
+            $sameCardRepeated++;
+        }
+    }
 }
 
 ?>
@@ -148,37 +151,49 @@ if (isset($_GET["pickedCard"])){
             <?php 
                 $valid = true;
                 $currentDate = new DateTime();
-                if($currentDate<$rows2["expiration"]){
-                    $valid = false;
-                }
-                 if(mysqli_num_rows($res2)>0 && $valid){
+                if($sameCardRepeated>0){
                     echo '
                     <div class="pickedCard-div2">
                         <h1>Sorry '. $rows["name"] . '</h1>
-                        <p>You already have a card You cant pick more than one until ' . $rows2["expiration"] . '</p>
+                        <p>You cant Pick The Same Card Twice</p>
                     </div>';
-                 }else{
-                    echo '<img src="images/cardborder.png" class="cardBorder">
-                    <img src="images/cardborder2.png" class="cardBorder2">';
+                }else{
+                    $req4 = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userPhoneNumber";
+                    $res4 = mysqli_query($conn,$req4);
+                    $rows2 = $res4->fetch_assoc();
 
-                    $name = $rows['name'];
-                    $lastName = $rows['lastName'];
-                    $date = new DateTime();
-                    $date = $date->format('Y-m-d');
-                    $validity = '1 month';
-                    $expiration = new DateTime('last day of this month +' . $validity);
-                    $expiration = $expiration->format('Y-m-d');
+                    if($currentDate<$rows2["expiration"]){
+                        $valid = false;
+                    }
+                    if(mysqli_num_rows($res2)>0 && $valid){
+                        echo '
+                        <div class="pickedCard-div2">
+                            <h1>Sorry '. $rows["name"] . '</h1>
+                            <p>You already have a card You cant pick more than one until ' . $rows2["expiration"] . '</p>
+                        </div>';
+                    }else{
+                        echo '<img src="images/cardborder.png" class="cardBorder">
+                        <img src="images/cardborder2.png" class="cardBorder2">';
 
-                    $req3 = "INSERT INTO `fidelity card` values('$name' , '$lastName' , $userPhoneNumber , '$pickedCard' ,'$persontage', '$date' , '$expiration')";
-                    $res3 = mysqli_query($conn,$req3);
+                        $name = $rows['name'];
+                        $lastName = $rows['lastName'];
+                        $date = new DateTime();
+                        $date = $date->format('Y-m-d');
+                        $validity = '2 month';
+                        $expiration = new DateTime('last day of next month +' . $validity);
+                        $expiration = $expiration->format('Y-m-d');
 
-                    echo '
-                    <div class="pickedCard-div">
-                        <img src="images/'.$pickedCard.'.png" alt="">
-                        <h4>your thunder is ' . $pickedCard . '</h4>
-                        <p>congrats '. $rows["name"] . '! <br> you are now one of the '. $pickedCard .' Members</p>
-                    </div>';
-                 }
+                        $req3 = "INSERT INTO `fidelity card` values('$name' , '$lastName' , $userPhoneNumber , '$pickedCard' ,'$persontage', '$date' , '$expiration')";
+                        $res3 = mysqli_query($conn,$req3);
+
+                        echo '
+                        <div class="pickedCard-div">
+                            <img src="images/'.$pickedCard.'.png" alt="">
+                            <h4>your thunder is ' . $pickedCard . '</h4>
+                            <p>congrats '. $rows["name"] . '! <br> you are now one of the '. $pickedCard .' Members</p>
+                        </div>';
+                    }
+                }
             ?>
         </nav>
     </div>

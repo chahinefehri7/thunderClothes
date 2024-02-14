@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500;600;700&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Orelega+One&family=Outfit:wght@100;200;300;400;500;700;800;900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@200;300;500;600;700;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Aroud The World</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #moreOptions-container{
+            width:90%;
+            height: 90vh;
+            padding: 5vh 5%;
+            position: fixed;
+            top: 0;
+            right: -100% ;
+            background-color: aliceblue;
+            z-index: 99;
+            transition: 0.7s;
+        }
+        #moreOptions-container a{
+            color: #212121;
+            text-decoration: none;
+        }
+        #moreOptions-container h1{
+            font-family: 'Gabarito';
+            font-size: 50px;
+        }
+        #moreOptions-container ul{
+            list-style: none;
+            font-family: prompt;
+            font-size: 20px;
+            width: 100%;
+        }
+        #moreOptions-container ul li{
+            padding:10px 0;
+            margin: 5px 0;
+        }
+        .header2-nav{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header2-nav img{
+            width: 25px;
+            height: 25px;
+        }
+        #moreOptions{
+            width: 30px;
+            height: 30px;
+            margin: 0 0 0 20px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+        @media (max-width:830px) {
+            header ul li{
+                visibility: hidden;
+                display: none;
+            }
+            #moreOptions{
+                visibility: visible;
+            }
+        }
+        /* title */
+        .title{
+            width: 90%;
+            height:fit-content;
+            margin-bottom: 15%;
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .title img{
+            width: 250px;
+            height: auto;
+        }
+        .title h1{
+            font-family: 'josefin sans';
+            font-size: 90px;
+        }
+        .title p{
+            font-family: 'outfit';
+            color: gray;
+            font-weight: 300;
+        }
+        /* container news */
+        .Container{
+            width: 95%;
+            height: fit-content;
+            float: right;
+            background-color: #212121;
+            border-top-left-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .news{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap:wrap;
+            transform: translateY(-10%);
+            margin-bottom: 100px;
+        }
+        .news div{
+            width: 30%;
+            height: 400px;
+            background-color: aliceblue;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .news div img{
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+        }
+        .news div nav{
+            padding: 10px 20px;
+        }
+        .news div h3{
+            font-family:"josefin sans";
+            font-size: 25px;
+            margin: 10px 0;
+        }
+        .news div p{
+            font-family: 'outfit';
+            height: 0;
+            min-height: 50px;
+            overflow: hidden;
+            overflow-y: scroll;
+            font-size: 15px;
+            color: gray;
+            margin-top: 5%;
+            transition: 0.5s;
+        }
+        .news div p::-webkit-scrollbar{
+            width: 5px;
+            background-color: #212121;
+            border-radius: 50px;
+            
+        }
+        .newsDivActive{
+            position: absolute;
+            width: 80%;
+
+        }
+        .news div p:hover{
+            color: #000;
+        }
+        .btn-read-more{
+            padding: 10px 15px;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            background-color: #1D1FB8;
+            color: aliceblue;
+            margin: 15px 0;
+            font-size: 13px;
+            font-family: 'outfit';
+            cursor: pointer;
+        }
+        /* Others */
+        .Others{
+            width: 100%;
+            height: 400px;
+            margin: 0 0 10% 0;
+            background-color: #ebebeb;
+            display: flex;
+            padding: 0px 20px;
+            align-items: center;
+            position: relative;
+        }
+        .Others div{
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+        }
+        .Others div:nth-child(1){
+            width: 60%;
+        }
+        .Others img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .Others div nav{
+            position: absolute;
+        }
+        .Others nav h1{
+            font-family: 'josefin sans';
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="onblur" onblur=""></div>
+    <header>
+       <div>
+            <a href="index.html"><h1>thunder</h1></a>
+            <ul>
+                <a href="store.html"><li>Store</li></a>
+                <a href="newCollection.html"><li>new Collections</li></a>
+                <a href="aboutus.html"><li>About us</li></a>
+                <a href="signin.html"><li>Sign up</li></a>
+                <a href="user.php"><li><img src="images/user.png" alt="your Profile" class="profile"></li></a>
+                <img src="images/dots.png" alt="more" id="moreOptions">
+            </ul>
+       </div>
+    </header>
+    <div id="moreOptions-container">
+        <nav class="header2-nav"><a href="index.html"><h1>thunder</h1></a><img src="images/close.png" alt="close" id="closeMoreOptions"></nav>
+            <ul>
+                <a href="store.html"><li>Store</li></a>
+                <a href="newCollection.html"><li>new Collections</li></a>
+                <a href="aboutus.html"><li>About us</li></a>
+                <a href="signin.html"><li>Sign up</li></a>
+                <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
+            </ul>
+    </div>    
+    <main>
+        <div class="title">
+            <img src="images/aroundtheworldicon.png" alt="around the world icon">
+            <div>
+                <h1>Around The World</h1>
+                <p>You Can find All the news about Thunder and other things about Clothing</p>
+            </div>
+        </div>
+        <div class="Container">
+            <div class="news">
+                <div class="TheNew" id="News1" onclick="openNews(this)" onmousewheel="closeNews(this)">
+                    <img src="images/gardrop.jfif" alt="">
+                    <nav>
+                        <h3>title</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                        </p>
+                        <a href="#"><button class="btn-read-more">Read More</button></a>
+                    </nav>
+                </div>
+                <div class="TheNew" id="News2" onclick="openNews(this)" onmousewheel="closeNews(this)">
+                    <img src="images/download.jfif" alt="">
+                    <nav>
+                        <h3>title</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus accusantium vel. Maxime facere tempora assumenda repellendus aperiam, quod et aliquid, labore quibusdam, 
+                        </p>
+                        <a href="#"><button class="btn-read-more">Read More</button></a>
+                    </nav>
+                </div>
+                <div class="TheNew" id="News3" onclick="openNews(this)" onmousewheel="closeNews(this)">
+                    <img src="images/thunder-secret2.png" alt="">
+                    <nav>
+                        <h3>title</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus 
+                        </p>
+                        <a href="#"><button class="btn-read-more">Read More</button></a>
+                    </nav>
+                </div>
+            </div>
+            <div class="Others">
+                <div>
+                    <img src="" alt="">
+                    <nav>
+                        <h1>Title</h1>
+                    </nav>
+                </div>
+                <div>
+                    <img src="" alt="">
+                    <nav>
+                        <h1>Title</h1>
+                    </nav>
+                </div>
+                <div>
+                    <img src="" alt="">
+                    <nav>
+                        <h1>Title</h1>
+                    </nav>
+                </div>
+            </div>
+            <div class="news">
+                <div class="TheNew" id="News4" onclick="openNews(this)" onmousewheel="closeNews(this)">
+                    <img src="images/gardrop.jfif" alt="">
+                    <nav>
+                        <h3>title</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                        </p>
+                        <a href="#"><button class="btn-read-more">Read More</button></a>
+                    </nav>
+                </div>
+                <div class="TheNew" id="News5" onclick="openNews(this)" onmousewheel="closeNews(this)">
+                    <img src="images/download.jfif" alt="">
+                    <nav>
+                        <h3>title</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus accusantium vel. Maxime facere tempora assumenda repellendus aperiam, quod et aliquid, labore quibusdam, 
+                        </p>
+                        <a href="#"><button class="btn-read-more">Read More</button></a>
+                    </nav>
+                </div>
+                <div class="TheNew" id="News6" onclick="openNews(this)" onmousewheel="closeNews(this)">
+                    <img src="images/thunder-secret2.png" alt="">
+                    <nav>
+                        <h3>title</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus 
+                        </p>
+                        <a href="#"><button class="btn-read-more">Read More</button></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+    <script>
+        function openNews(News){
+            // alert(News.className)
+            var TheNew = document.getElementById(News.id);
+            TheNew.style.position = "absolute";
+            TheNew.style.width = "80%";
+            TheNew.style.height = "450px";
+            TheNew.style.zIndex = "80";
+        }
+        function closeNews(News){
+            var TheNew = document.getElementById(News.id);
+            TheNew.style.position = "relative";
+            TheNew.style.width = "30%";
+            TheNew.style.height = "400px";
+            TheNew.style.zIndex = "0";
+
+        }
+        var closeMoreOptions = document.getElementById('closeMoreOptions');
+        var moreOptions = document.getElementById('moreOptions-container');
+        var moreOptionsOpenBtn = document.getElementById('moreOptions');
+        moreOptionsOpenBtn.addEventListener('click' , function(){
+            moreOptions.style.right = "0%"
+        })
+        closeMoreOptions.addEventListener('click' , function(){
+            moreOptions.style.right = "-100%"
+        })
+    </script>
+</body>
+</html>

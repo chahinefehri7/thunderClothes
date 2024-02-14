@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" type="x-icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@500&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@300;500;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,7 +146,25 @@
             font-family: 'Josefin Sans';
             margin: 20px 0 5px 0;
         }
-
+        l{
+            text-decoration: line-through;
+            color: lightgray;
+        }
+        #emailBtn{
+            padding: 15px 20px;
+            width: 90px;
+            height: fit-content;
+            background-color: #1D1FB8;
+            color: #FAFDFF;
+            font-family: 'prompt';
+            border: none;
+            border-radius: 50px;
+            margin: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
 
         @media (max-width:900px) {
@@ -248,9 +267,11 @@
         <p>You can check our social media and stay tuned</p>
         <div>
             <nav>
-                <h3>Send us an Email</h3>
-                <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
-                <button>send</button>
+                <h3>Thunder Email</h3>
+                <form action="EmailComunity.php" method="post" onsubmit="return emailVerif()">
+                    <input type="email" name="sendUsEmail" id="sendUsEmail" placeholder="Email" ><br>
+                    <input type="submit" value="submit" id="emailBtn">
+                </form>
             </nav>
             <nav>
                 <h3>Our Social Media</h3>
@@ -281,7 +302,17 @@
                 alert('select your Size');
                 return false;
             }
-
+        }
+        function emailVerif(){
+            var mail = document.getElementById('sendUsEmail').value;
+            if(mail==""){
+                alert("you have to write your email first");
+                return false;
+            }
+            if(mail.indexOf(".")==-1){
+                alert("your email is wrong try again");
+                return false;
+            }
         }
         // getting the value of the quantity
         var quantity = document.getElementById('quantity');
@@ -298,8 +329,8 @@
         var thePrice = document.getElementById('thePrice');
 
         productimg.src = product;
-        theProductName.innerText = productName;
-        thePrice.innerText = price;
+        theProductName.innerHTML = productName;
+        thePrice.innerHTML = price;
 
 
         let order = {

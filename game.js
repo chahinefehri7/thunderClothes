@@ -266,8 +266,8 @@ playTheGameBtn.addEventListener('click' , function(){
             } 
             if(GameOver){
                 if(scoreCounter>maxScoreCounter){
-                    maxScoreCounter=print(maxScore.innerText)
-                    maxScore.innerText=scoreCounter
+                    maxScoreCounter=maxScore.innerText;
+                    maxScore.innerText=scoreCounter;
                 }
                 var itemGameScore = document.cookie = "itemGameScore = "+itemScore;
                 if(itemScore>itemGameScore){
@@ -286,7 +286,7 @@ playTheGameBtn.addEventListener('click' , function(){
                 clearInterval(checkDead);
                 clearInterval(dropItem);
                 clearInterval(DropBullets);
-                alert("you died")
+                alert("you died");
                 playPopupBackground.style.visibility="visible";
             }
     },1);
@@ -328,7 +328,7 @@ playTheGameBtn.addEventListener('click' , function(){
                     if(bulletStock==0){
                         var outOfBullets = setTimeout(() => {
                             player.src="images/charachter.png";
-                            clearInterval(shoutingBullets)
+                            clearInterval(shoutingBullets);
                             clearInterval(outOfBullets);
                         },600);
                     }

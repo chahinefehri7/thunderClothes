@@ -71,6 +71,11 @@
             font-family: 'Josefin Sans';
             cursor: pointer;
         }
+        @media (max-width:600px) {
+            .welcomBack{
+                margin-top: 40%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -93,10 +98,6 @@ if(mysqli_num_rows($res) > 0){
     </div>';
 
     setcookie("userPhoneNumber" , $rows["phoneNumber"]);
-    if($_COOKIE["itemGameScore"]<1){
-        $itemScore = 0;
-        setcookie("itemGameScore" , $itemScore , time() +60 * 60 * 24 * 30);
-    }
     // header('location:index.html');
 }
 else{

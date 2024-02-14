@@ -5,6 +5,12 @@ if($_COOKIE['userPhoneNumber']==""){
     header("location:signin.html");
 }
 $userphoneNumber = $_COOKIE['userPhoneNumber'];
+$findUserRq = "SELECT * FROM `clients` WHERE phoneNumber=$userphoneNumber";
+$findUserResult = mysqli_query($conn,$findUserRq);
+if(mysqli_num_rows($findUserResult)<1){
+    setcookie("userPhoneNumber" , "");
+    header("location:userNotFound.html");
+}
 $req = ("SELECT * FROM `orders` WHERE phoneNumber = $userphoneNumber");
 $res = mysqli_query($conn , $req);
 
@@ -68,6 +74,8 @@ while($rows2 = $res->fetch_assoc()){
         }
     }
 }
+
+
 ?>
 
 
@@ -75,6 +83,7 @@ while($rows2 = $res->fetch_assoc()){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -385,9 +394,20 @@ while($rows2 = $res->fetch_assoc()){
             width: 25px;
             height: 25px;
         }
+        #log-out-icon{
+            width: 20px;
+            height: auto;
+            cursor: pointer;
+        }
         @media (max-width:800px) {
             .thunderCard-div{
                 justify-content: center;
+            }
+            header ul li{
+                display: none;
+            }
+            #moreOptions{
+                visibility: visible;
             }
         }
     </style>
@@ -405,6 +425,7 @@ while($rows2 = $res->fetch_assoc()){
                  <a href="signin.html"><li>Sign up</li></a>
                  <a href="user.php"><li><img src="images/user.png" alt="your Profile" class="profile"></li></a>
                  <img src="images/dots.png" alt="more" id="moreOptions">
+                 <a href="logout.php"><li><img src="images/logout.png" alt="logout" id="log-out-icon"></li></a>
              </ul>
         </div>
      </header>
@@ -416,6 +437,7 @@ while($rows2 = $res->fetch_assoc()){
                  <a href="aboutus.html"><li>About us</li></a>
                  <a href="signin.html"><li>Sign up</li></a>
                  <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
+                 <a href="logout.php"><li><img src="images/logout.png" alt="logout" id="log-out-icon"></li></a>
              </ul>
      </div>
     <main>
@@ -446,6 +468,18 @@ while($rows2 = $res->fetch_assoc()){
                 <p id="cardDiscription-p">
 
                 </p>
+                <h4>card expiration</h4>
+                <?php
+                    $cardName = $_COOKIE["cardName"];
+                    if($cardName ==''){
+                        echo '<p style ="font-family:prompt;">soryy please reload</p>';
+                    }else{
+                        $cardExpirationRq = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userphoneNumber AND cardName='$cardName'";
+                        $cardExpirationResult = mysqli_query($conn,$cardExpirationRq);
+                        $cardExpirationRows = $cardExpirationResult ->fetch_assoc();
+                        echo '<p style ="font-family:prompt;">'.$cardExpirationRows["expiration"].'</p>';
+                    }
+                ?>
             </nav>
         </div>
         <hr>
@@ -495,6 +529,8 @@ while($rows2 = $res->fetch_assoc()){
         var cardImg = document.getElementById('cardDiscriptionImg');
 
         var cardName = card.id;
+        document.cookie="cardName="+cardName; //setting cookie
+
         cardTitle.innerText = cardName;
         var cardSrc = "images/"+cardName+".png";
 

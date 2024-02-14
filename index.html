@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@500&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@300;500;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
@@ -33,11 +34,37 @@
             #thunderspell p{
                 font-size: 40px;
             }
+        }
+        @media (max-width:830px) {
             header ul li{
                 visibility: hidden;
+                display: none;
             }
             #moreOptions{
                 visibility: visible;
+            }
+        }
+        @media (max-width:300px) {
+            .divThunderDesign{
+                display: flex;
+                flex-direction: column;
+                align-items:center;
+                justify-content: center;
+            }
+            .thunderspellWelcom{
+                left: 50%;
+            }
+            .thunderspellWelcom p{
+                font-size: 40px;
+            }
+            #thunderspell{
+                font-size: 40px;
+                padding-left: 0;
+                left: 50%;
+            }
+            #thunderspell p{
+                transform: translateX(10px);
+                font-size: 30px;
             }
         }
         .profile{
@@ -85,10 +112,46 @@
             width: 25px;
             height: 25px;
         }
+        #emailBtn{
+            padding: 15px 20px;
+            width: 90px;
+            height: fit-content;
+            background-color: #1D1FB8;
+            color: #FAFDFF;
+            font-family: 'prompt';
+            border: none;
+            border-radius: 50px;
+            margin: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .aroundtheworldicon{
+            width: 90px; 
+            height: 90px; 
+            margin-top: -30px;
+            transition: 0.2s;
+        }
+        .aroundtheworldicon:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+        }
         @media (max-width:550px) {
             header ul li{
                 pointer-events: none;        
             }
+            .activityDiv{
+                height: 400px;
+            }
+        }
+        @media (max-width:900px) {
+            #collection h1{
+                font-size: 40px;
+            }
+        }
+        l{
+            text-decoration: line-through;
         }
     </style>
 </head>
@@ -123,11 +186,11 @@
             <a href="store.html"><button>SHOP</button></a>
         </div>
         <div id="collection">
-            <h1>Welcom to Thunder Store</h1>
+            <h1>Welcom to Thunder</h1>
             <p>here where you can find an artistic products and more amazing items and clothes for you</p>
             <div id="clothesContainer">
                 <div class="hidden" onclick="buy(this)" id="1"><nav><a href="buy.html"><img src="images/Threads عقد.png" class="clothes hidden2" id="product1" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName1">Threads عقد</h2><p id="price1">75.00 DT</p></a></nav></div>
-                <div class="hidden" onclick="buy(this)" id="2"><nav><a href="buy.html"><img src="images/Threads عقد New.png" class="clothes hidden2" id="product2" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName2">Threads عقد New</h2><p id="price2">80.00 DT</p></a></nav></div>
+                <div class="hidden" onclick="buy(this)" id="2"><nav><a href="buy.html"><img src="images/Threads عقد New.png" class="clothes hidden2" id="product2" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName2">Threads عقد New</h2><nav style="display: flex; width: fit-content;"><p><l>100.00 DT</l><p id="price2" style="margin: 0px 10px;">80.00 DT</p></p></nav></a></nav></div>
                 <div class="hidden" onclick="buy(this)" id="3"><nav><a href="buy.html"><img src="images/its lit thunder.png" class="clothes hidden2" id="product3" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName3">its lit thunder</h2><p id="price3">70.00 DT</p></a></nav></div>
                 <div class="hidden" onclick="buy(this)" id="4"><nav><a href="buy.html"><img src="images/Self respect.png" class="clothes hidden2" id="product4" ></a></nav><nav class="productDiscription"><span>sold out</span><a href="buy.html"><h2 id="productName4">Self respect</h2><p id="price4">80.00 DT</p></a></nav></div>
             </div>
@@ -168,12 +231,12 @@
             </div>
         </div>
         <nav class="comments">
-            <a href="store.html"><img src="images/aroundtheworldicon.png"></a>
+            <a href="aroundTheWorld.html"><img src="images/aroundtheworldicon.png"></a>
             <p style="width: 100%; text-align: center;"><a href="store.html" style="text-decoration: none; color: #212121; font-family: 'Josefin Sans';">Check the Store and Pick Whatever you want</a></p>
         </nav>
         <div class="divThunderDesign">
             <img src="images/lostyourway.png">
-            <nav class="thunderspellWelcom" id="thunderspellWelcom"><p class="hidden3">Welcom</p><p class="hidden3" style="font-size: 20px;">to</p></nav>
+            <nav class="thunderspellWelcom" id="thunderspellWelcom"><p class="hidden3">Welcom</p><p class="hidden3" style="font-size: 20px; margin-left: 10px;"> to</p></nav>
             <nav class="thunderspell" id="thunderspell">
                 <p class="hidden3">t</p>
                 <p class="hidden3">h</p>
@@ -203,7 +266,7 @@
         <div class="offre hidden show">
             <img src="images/Selft respect New.png" class="hidden2 show2">
             <nav>
-                <h3>Self Respect <br> new edition</h3>
+                <h3>Self Respect <br> New</h3>
                 <p>Check it out New thunder Clothes</p>
             </nav>
         </div>
@@ -215,7 +278,7 @@
                     <img src="images/messages.png">
                     <nav>
                         <h3>Message us</h3>
-                        <p>send us a message or an email describing your design idea and what do you actually want</p>
+                        <p>send us a message or an <a href="aboutus.html">email</a> describing your design idea and what do you actually want</p>
                     </nav>
                 </div>
                 <div class="hidden">
@@ -240,9 +303,11 @@
         <p>You can check our social media and stay tuned</p>
         <div>
             <nav>
-                <h3>Send us an Email</h3>
-                <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
-                <button>send</button>
+                <h3>Thunder Email</h3>
+                <form action="EmailComunity.php" method="post">
+                    <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
+                    <input type="submit" value="submit" id="emailBtn">
+                </form>
             </nav>
             <nav>
                 <h3>Our Social Media</h3>
@@ -252,7 +317,7 @@
                     <a href="#"><img src="images/twitter.png"></a>
                     <a href="#"><img src="images/tiktok.png"></a>
                 </nav>
-                <img src="images/aroundtheworldicon.png" style="width: 90px; height: 90px; margin-top: -30px;">
+                <a href="aroundTheWorld.html"><img src="images/aroundtheworldicon.png" class="aroundtheworldicon"></a>
             </nav>
         </div>
         <nav class="devId">Made By Chahine Fehri</nav>
@@ -282,8 +347,8 @@
             const price = document.getElementById(priceId);
             // getting the values of the product 
             productV = product.src;
-            productNameV = productName.innerText;
-            priceV = price.innerText;
+            productNameV = productName.innerHTML;
+            priceV = price.innerHTML;
             
             // local storage the values to move it to the next page (nuy.html)
             localStorage.setItem('product' , productV);
