@@ -25,6 +25,40 @@ $thePrice = $thePrice[0];
 $thePrice = (float)$thePrice;
 // calculating the total of the price
 $totalPrice = $thePrice*$quantity;
+// checking thunder cards
+$CardRq = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userPhoneNumber";
+$CardRes = mysqli_query($conn,$CardRq);
+while($CardRows = $CardRes->fetch_assoc()){
+    if($CardRows['persontage']!='unknown'){
+        $persontage = $CardRows['persontage'];
+        $persontage = explode("%" , $persontage);
+        $persontage = $persontage[0];
+        $persontage = (float)$persontage;
+        $CardName = $CardRows['cardName'];
+        if($CardName." عقد" == $orderName || $CardName." عقد New" == $orderName){
+            $totalPrice = $totalPrice - ($totalPrice * $persontage)/100;
+        }else{
+            if($CardName." thunder" == $orderName || $CardName." thunder 2" == $orderName || $CardName." thunder 3" == $orderName || $CardName." thunder 4" == $orderName){
+                $itsLitOrdersNumber = 0;
+                $itsLitOrdersNumberReq = "SELECT * FROM `orders` WHERE phoneNumber=$userPhoneNumber";
+                $itsLitOrdersNumberResult = mysqli_query($conn,$itsLitOrdersNumberReq);
+                while($itsLitOrdersNumberRows = $itsLitOrdersNumberResult->fetch_assoc()){
+                    $TheOrderName=$itsLitOrdersNumberRows["orderName"];
+                    if($CardName." thunder" == $TheOrderName || $CardName." thunder 2" == $TheOrderName || $CardName." thunder 3" == $TheOrderName || $CardName." thunder 4" == $TheOrderName){
+                        $itsLitOrdersNumber = $itsLitOrdersNumber+$itsLitOrdersNumberRows['quantity'];
+                    }
+                }
+                if($itsLitOrdersNumber>=2){
+                    $totalPrice = $totalPrice - ($totalPrice * ($persontage*2))/100;
+                }else{
+                    $totalPrice = $totalPrice - ($totalPrice * $persontage)/100;
+                }
+            }
+        }
+    }
+}
+
+
 // converting the total price to a string the concat with "DT"
 $totalPrice = (string)$totalPrice ." DT";
 

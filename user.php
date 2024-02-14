@@ -505,7 +505,7 @@ while($rows2 = $res->fetch_assoc()){
 
         switch(cardName){
             case "On the Wall" :cardDiscriptionP.innerText = '"on the wall" collection is coming soon. you can pick this card and see what thunder can gives you Like a mestery card. keep this card and thunder will gives you many benefits when "On the Wall" collection is coming out stay tuned';break;
-            case "threads" :cardDiscriptionP.innerText = 'threads card gives you 10% offre on threads collections. and if you got this card you get threds Stickers and FreeThreads Poster';break;
+            case "Threads" :cardDiscriptionP.innerText = 'threads card gives you 10% offre on threads collections. and if you got this card you get threds Stickers and FreeThreads Poster';break;
             case "its lit" :cardDiscriptionP.innerText = 'a great opertunity with 5% on all "its lit" collections from 1 to 4 and 10% if you order more than tow "its lit" shirts. + Its Lit Stickers';break;
             case "thunder Rock" :cardDiscriptionP.innerText = 'thunder Rock collection is coming soon. you can pick this card and see what thunder can gives you Like a mestery card';break;
         }

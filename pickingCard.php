@@ -6,6 +6,7 @@ if($_COOKIE["userPhoneNumber"]==""){
 }
 if (isset($_GET["pickedCard"])){
     $pickedCard = $_GET["pickedCard"];
+    $persontage = $_GET["persontage"];
     $userPhoneNumber = $_COOKIE["userPhoneNumber"];
     $req = "SELECT * FROM `clients` WHERE phoneNumber=$userPhoneNumber";
     $res = mysqli_query($conn,$req);
@@ -168,7 +169,7 @@ if (isset($_GET["pickedCard"])){
                     $expiration = new DateTime('last day of this month +' . $validity);
                     $expiration = $expiration->format('Y-m-d');
 
-                    $req3 = "INSERT INTO `fidelity card` values('$name' , '$lastName' , $userPhoneNumber , '$pickedCard' , '$date' , '$expiration')";
+                    $req3 = "INSERT INTO `fidelity card` values('$name' , '$lastName' , $userPhoneNumber , '$pickedCard' ,'$persontage', '$date' , '$expiration')";
                     $res3 = mysqli_query($conn,$req3);
 
                     echo '
