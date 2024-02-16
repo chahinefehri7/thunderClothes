@@ -73,7 +73,7 @@
         .title{
             width: 90%;
             height:fit-content;
-            margin-bottom: 15%;
+            margin-bottom: 10%;
             display: flex;
             flex-direction: row;
             justify-content: start;
@@ -95,21 +95,19 @@
         }
         /* container news */
         .Container{
-            width: 95%;
+            width: 100%;
             height: fit-content;
             float: right;
-            background-color: #212121;
-            border-top-left-radius: 20px;
-            overflow: hidden;
+            background-color: #303030;
+            border-radius: 20px;
             position: relative;
         }
         .news{
-            width: 100%;
+            width: 90%;
             display: flex;
             justify-content: space-evenly;
-            flex-wrap:wrap;
-            transform: translateY(-10%);
-            margin-bottom: 100px;
+            margin: 100px 5%;
+            position: relative;
         }
         .news div{
             width: 30%;
@@ -118,6 +116,8 @@
             border-radius: 20px;
             overflow: hidden;
             transition: 0.5s;
+            box-shadow: 0 0 20px 0px #212121;
+
         }
         .news div img{
             width: 100%;
@@ -173,22 +173,21 @@
         .Others{
             width: 100%;
             height: 400px;
-            margin: 0 0 10% 0;
-            background-color: #ebebeb;
             display: flex;
-            padding: 0px 20px;
             align-items: center;
-            position: relative;
         }
         .Others div{
-            width: 20%;
+            width: 35%;
             height: 100%;
             display: flex;
             justify-content: center;
-            align-self: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            transition: 0.5s;
         }
-        .Others div:nth-child(1){
-            width: 60%;
+        .Others div:hover{
+            width: 80%;
         }
         .Others img{
             width: 100%;
@@ -196,165 +195,232 @@
             object-fit: cover;
         }
         .Others div nav{
+            width: 100%;
+            height: 100%;
+            text-align: center;
             position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.5s;
+            filter: blur(4px);
+            background-color: #21212162;
         }
         .Others nav h1{
             font-family: 'josefin sans';
             font-size: 50px;
+            color: #FAFDFF;
+        }
+        .Others nav p{
+            font-family: 'Outfit';
+            font-size: 10px;
+            width: 50%;
+            min-width: 50%;
+            max-width: 50%;
+            color: #FAFDFF;
         }
     </style>
 </head>
 <body>
-    <div class="onblur" onblur=""></div>
-    <header>
-       <div>
-            <a href="index.html"><h1>thunder</h1></a>
-            <ul>
-                <a href="store.html"><li>Store</li></a>
-                <a href="newCollection.html"><li>new Collections</li></a>
-                <a href="aboutus.html"><li>About us</li></a>
-                <a href="signin.html"><li>Sign up</li></a>
-                <a href="user.php"><li><img src="images/user.png" alt="your Profile" class="profile"></li></a>
-                <img src="images/dots.png" alt="more" id="moreOptions">
-            </ul>
-       </div>
-    </header>
-    <div id="moreOptions-container">
-        <nav class="header2-nav"><a href="index.html"><h1>thunder</h1></a><img src="images/close.png" alt="close" id="closeMoreOptions"></nav>
-            <ul>
-                <a href="store.html"><li>Store</li></a>
-                <a href="newCollection.html"><li>new Collections</li></a>
-                <a href="aboutus.html"><li>About us</li></a>
-                <a href="signin.html"><li>Sign up</li></a>
-                <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
-            </ul>
-    </div>    
-    <main>
-        <div class="title">
-            <img src="images/aroundtheworldicon.png" alt="around the world icon">
+<header>
+    <div>
+        <a href="index.html"><h1>thunder</h1></a>
+        <ul>
+            <a href="store.html"><li>Store</li></a>
+            <a href="newCollection.html"><li>new Collections</li></a>
+            <a href="aboutus.html"><li>About us</li></a>
+            <a href="signin.html"><li>Sign up</li></a>
+            <a href="user.php"><li><img src="images/user.png" alt="your Profile" class="profile"></li></a>
+            <img src="images/dots.png" alt="more" id="moreOptions">
+        </ul>
+    </div>
+</header>
+<div id="moreOptions-container">
+    <nav class="header2-nav"><a href="index.html"><h1>thunder</h1></a><img src="images/close.png" alt="close" id="closeMoreOptions"></nav>
+        <ul>
+            <a href="store.html"><li>Store</li></a>
+            <a href="newCollection.html"><li>new Collections</li></a>
+            <a href="aboutus.html"><li>About us</li></a>
+            <a href="signin.html"><li>Sign up</li></a>
+            <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
+        </ul>
+</div>    
+<main>
+    <div class="title">
+        <img src="images/aroundtheworldicon.png" alt="around the world icon">
+        <div>
+            <h1>Around The World</h1>
+            <p>You Can find All the news about Thunder and other things about Clothing</p>
+        </div>
+    </div>
+    <div class="Container">
+        <div class="news">
+            <div class="TheNew" id="News1" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+                <img src="images/gardrop.jfif" alt="">
+                <nav >
+                    <h3>title</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                    </p>
+                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                </nav>
+            </div>
+            <div class="TheNew" id="News2" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+                <img src="images/download.jfif" alt="">
+                <nav>
+                    <h3>title</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus accusantium vel. Maxime facere tempora assumenda repellendus aperiam, quod et aliquid, labore quibusdam, 
+                    </p>
+                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                </nav>
+            </div>
+            <div class="TheNew" id="News3" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+                <img src="images/thunder-secret2.png" alt="">
+                <nav>
+                    <h3>title</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus 
+                    </p>
+                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                </nav>
+            </div>
+        </div>
+        <div class="Others">
             <div>
-                <h1>Around The World</h1>
-                <p>You Can find All the news about Thunder and other things about Clothing</p>
+                <img src="images/wise.png" alt="">
+                <nav id="text1" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Title</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum necessitatibus minima dicta delectus dolores magni!
+                    </p>
+                </nav>
+            </div>
+            <div>
+                <img src="images/Work mood_.jfif" alt="">
+                <nav id="text2" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Title</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla,
+                    </p>
+                </nav>
+            </div>
+            <div>
+                <img src="images/thunderClothes-stayTuned.png" alt="">
+                <nav id="text3" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Title</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum 
+                    </p>
+                </nav>
             </div>
         </div>
-        <div class="Container">
-            <div class="news">
-                <div class="TheNew" id="News1" onclick="openNews(this)" onmousewheel="closeNews(this)">
-                    <img src="images/gardrop.jfif" alt="">
-                    <nav>
-                        <h3>title</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-                        </p>
-                        <a href="#"><button class="btn-read-more">Read More</button></a>
-                    </nav>
-                </div>
-                <div class="TheNew" id="News2" onclick="openNews(this)" onmousewheel="closeNews(this)">
-                    <img src="images/download.jfif" alt="">
-                    <nav>
-                        <h3>title</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus accusantium vel. Maxime facere tempora assumenda repellendus aperiam, quod et aliquid, labore quibusdam, 
-                        </p>
-                        <a href="#"><button class="btn-read-more">Read More</button></a>
-                    </nav>
-                </div>
-                <div class="TheNew" id="News3" onclick="openNews(this)" onmousewheel="closeNews(this)">
-                    <img src="images/thunder-secret2.png" alt="">
-                    <nav>
-                        <h3>title</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus 
-                        </p>
-                        <a href="#"><button class="btn-read-more">Read More</button></a>
-                    </nav>
-                </div>
+        <div class="Others">
+            <div>
+                <img src="images/musicDisk.png" alt="">
+                <nav id="text4" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Title</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum necessitatibus minima dicta delectus dolores magni!
+                    </p>
+                </nav>
             </div>
-            <div class="Others">
-                <div>
-                    <img src="" alt="">
-                    <nav>
-                        <h1>Title</h1>
-                    </nav>
-                </div>
-                <div>
-                    <img src="" alt="">
-                    <nav>
-                        <h1>Title</h1>
-                    </nav>
-                </div>
-                <div>
-                    <img src="" alt="">
-                    <nav>
-                        <h1>Title</h1>
-                    </nav>
-                </div>
+            <div>
+                <img src="images/thunder-pill2.png" alt="">
+                <nav id="text5" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Title</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla,
+                    </p>
+                </nav>
             </div>
-            <div class="news">
-                <div class="TheNew" id="News4" onclick="openNews(this)" onmousewheel="closeNews(this)">
-                    <img src="images/gardrop.jfif" alt="">
-                    <nav>
-                        <h3>title</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-                        </p>
-                        <a href="#"><button class="btn-read-more">Read More</button></a>
-                    </nav>
-                </div>
-                <div class="TheNew" id="News5" onclick="openNews(this)" onmousewheel="closeNews(this)">
-                    <img src="images/download.jfif" alt="">
-                    <nav>
-                        <h3>title</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus accusantium vel. Maxime facere tempora assumenda repellendus aperiam, quod et aliquid, labore quibusdam, 
-                        </p>
-                        <a href="#"><button class="btn-read-more">Read More</button></a>
-                    </nav>
-                </div>
-                <div class="TheNew" id="News6" onclick="openNews(this)" onmousewheel="closeNews(this)">
-                    <img src="images/thunder-secret2.png" alt="">
-                    <nav>
-                        <h3>title</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus 
-                        </p>
-                        <a href="#"><button class="btn-read-more">Read More</button></a>
-                    </nav>
-                </div>
+            <div>
+                <img src="images/thunder-secret2.png" alt="">
+                <nav id="text6" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Title</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum 
+                    </p>
+                </nav>
             </div>
         </div>
-    </main>
+        <div class="news">
+            <div class="TheNew" id="News4" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+                <img src="images/gardrop.jfif" alt="">
+                <nav>
+                    <h3>title</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                    </p>
+                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                </nav>
+            </div>
+            <div class="TheNew" id="News5" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+                <img src="images/download.jfif" alt="">
+                <nav>
+                    <h3>title</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus accusantium vel. Maxime facere tempora assumenda repellendus aperiam, quod et aliquid, labore quibusdam, 
+                    </p>
+                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                </nav>
+            </div>
+            <div class="TheNew" id="News6" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+                <img src="images/thunder-secret2.png" alt="">
+                <nav>
+                    <h3>title</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus 
+                    </p>
+                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</main>
 
+<script src="js.js"></script>
+<script>
+    function openNews(News){
+        // alert(News.className)
+        var TheNew = document.getElementById(News.id);
+        TheNew.style.width = "80%";
+        TheNew.style.height = "400px";
+        TheNew.style.zIndex = "80";
+        News.style.margin="0 10px"
+    }
+    function closeNews(News){
+        var TheNew = document.getElementById(News.id);
+        TheNew.style.position = "relative";
+        TheNew.style.width = "30%";
+        TheNew.style.height = "400px";
+        TheNew.style.zIndex = "0";
 
+    }
+    function showText(text){
+        var textId = text.id;
+        var Text = document.getElementById(textId);
+        Text.style.opacity="1";
+        Text.style.filter="blur(0)";
 
-
-
-    <script>
-        function openNews(News){
-            // alert(News.className)
-            var TheNew = document.getElementById(News.id);
-            TheNew.style.position = "absolute";
-            TheNew.style.width = "80%";
-            TheNew.style.height = "450px";
-            TheNew.style.zIndex = "80";
-        }
-        function closeNews(News){
-            var TheNew = document.getElementById(News.id);
-            TheNew.style.position = "relative";
-            TheNew.style.width = "30%";
-            TheNew.style.height = "400px";
-            TheNew.style.zIndex = "0";
-
-        }
-        var closeMoreOptions = document.getElementById('closeMoreOptions');
-        var moreOptions = document.getElementById('moreOptions-container');
-        var moreOptionsOpenBtn = document.getElementById('moreOptions');
-        moreOptionsOpenBtn.addEventListener('click' , function(){
-            moreOptions.style.right = "0%"
-        })
-        closeMoreOptions.addEventListener('click' , function(){
-            moreOptions.style.right = "-100%"
-        })
-    </script>
+    }
+    function hideText(text){
+        var textId = text.id;
+        var Text = document.getElementById(textId);
+        Text.style.opacity="0";
+        Text.style.filter="blur(4px)";
+    }
+    var closeMoreOptions = document.getElementById('closeMoreOptions');
+    var moreOptions = document.getElementById('moreOptions-container');
+    var moreOptionsOpenBtn = document.getElementById('moreOptions');
+    moreOptionsOpenBtn.addEventListener('click' , function(){
+        moreOptions.style.right = "0%"
+    })
+    closeMoreOptions.addEventListener('click' , function(){
+        moreOptions.style.right = "-100%"
+    })
+</script>
 </body>
 </html>
