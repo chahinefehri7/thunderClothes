@@ -88,9 +88,8 @@ if(mysqli_num_rows($res) > 0){
             </div>
         ';
     }else{
-        $res = mysqli_query($conn , $req2);
-        $rows = $res->fetch_assoc();
-        setcookie("userPhoneNumber" , $rows["phoneNumber"]);
+        $res = mysqli_query($conn,$req2);
+        setcookie("userPhoneNumber" , $phoneNumber);
         echo '
             <div>
                 <h1 class="wlecom">Welcom to thunder ' . $name . '</h1>

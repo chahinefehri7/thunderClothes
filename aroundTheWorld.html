@@ -103,10 +103,10 @@
             position: relative;
         }
         .news{
-            width: 90%;
+            width:95%;
             display: flex;
             justify-content: space-evenly;
-            margin: 100px 5%;
+            margin: 100px 2.5%;
             position: relative;
         }
         .news div{
@@ -185,6 +185,8 @@
             text-align: center;
             position: relative;
             transition: 0.5s;
+            border-radius: 20px;
+            overflow: hidden;
         }
         .Others div:hover{
             width: 80%;
@@ -193,6 +195,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 20px;
         }
         .Others div nav{
             width: 100%;
@@ -207,6 +210,7 @@
             transition: 0.5s;
             filter: blur(4px);
             background-color: #21212162;
+            overflow: hidden;
         }
         .Others nav h1{
             font-family: 'josefin sans';
@@ -221,9 +225,55 @@
             max-width: 50%;
             color: #FAFDFF;
         }
+        @media (max-width:860px) {
+            .Others{
+                flex-direction: column;
+                height: fit-content;
+            }
+            .Others div{
+                width: 95%;
+                min-height: 400px;
+                max-height: 400px;
+                border-radius:20px;
+                margin: 10px 0;
+                overflow: hidden;
+            }
+            .Others div:hover{
+                width: 90%;
+            }
+            .title{
+                flex-direction: column;
+                align-items: start;
+            }
+            .title img{
+                width: 150px;
+                height: 150px;
+            }
+            .title h1{
+                font-size: 70px;
+            }
+            .news{
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .news div{
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .theNew{
+                width: 100%;
+            }
+        }
+        .Container{
+            margin-bottom: 100px;
+        }
+        .aroundtheworldicon{
+            width: 120px;
+        }
     </style>
 </head>
-<body>
+<body id="body">
 <header>
     <div>
         <a href="index.html"><h1>thunder</h1></a>
@@ -257,7 +307,7 @@
     </div>
     <div class="Container">
         <div class="news">
-            <div class="TheNew" id="News1" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+            <div class="TheNew hidden2" id="News1" onmouseover="openNews(this)" onmouseout="closeNews(this)">
                 <img src="images/gardrop.jfif" alt="">
                 <nav >
                     <h3>title</h3>
@@ -267,7 +317,7 @@
                     <a href="#"><button class="btn-read-more">Read More</button></a>
                 </nav>
             </div>
-            <div class="TheNew" id="News2" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+            <div class="TheNew hidden2" id="News2" onmouseover="openNews(this)" onmouseout="closeNews(this)">
                 <img src="images/download.jfif" alt="">
                 <nav>
                     <h3>title</h3>
@@ -277,7 +327,7 @@
                     <a href="#"><button class="btn-read-more">Read More</button></a>
                 </nav>
             </div>
-            <div class="TheNew" id="News3" onmouseover="openNews(this)" onmouseout="closeNews(this)">
+            <div class="TheNew hidden2" id="News3" onmouseover="openNews(this)" onmouseout="closeNews(this)">
                 <img src="images/thunder-secret2.png" alt="">
                 <nav>
                     <h3>title</h3>
@@ -288,11 +338,11 @@
                 </nav>
             </div>
         </div>
-        <div class="Others">
+        <div class="Others hidden">
             <div>
                 <img src="images/wise.png" alt="">
                 <nav id="text1" onmouseover="showText(this)" onmouseout="hideText(this)">
-                    <h1>Title</h1>
+                    <h1>Wise</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum necessitatibus minima dicta delectus dolores magni!
                     </p>
@@ -301,7 +351,7 @@
             <div>
                 <img src="images/Work mood_.jfif" alt="">
                 <nav id="text2" onmouseover="showText(this)" onmouseout="hideText(this)">
-                    <h1>Title</h1>
+                    <h1>Working Time</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla,
                     </p>
@@ -310,18 +360,18 @@
             <div>
                 <img src="images/thunderClothes-stayTuned.png" alt="">
                 <nav id="text3" onmouseover="showText(this)" onmouseout="hideText(this)">
-                    <h1>Title</h1>
+                    <h1>Stay Tuned</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum 
                     </p>
                 </nav>
             </div>
         </div>
-        <div class="Others">
+        <div class="Others hidden">
             <div>
                 <img src="images/musicDisk.png" alt="">
                 <nav id="text4" onmouseover="showText(this)" onmouseout="hideText(this)">
-                    <h1>Title</h1>
+                    <h1>Music Disk</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum necessitatibus minima dicta delectus dolores magni!
                     </p>
@@ -330,7 +380,7 @@
             <div>
                 <img src="images/thunder-pill2.png" alt="">
                 <nav id="text5" onmouseover="showText(this)" onmouseout="hideText(this)">
-                    <h1>Title</h1>
+                    <h1>Thunder Pills</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla,
                     </p>
@@ -339,71 +389,127 @@
             <div>
                 <img src="images/thunder-secret2.png" alt="">
                 <nav id="text6" onmouseover="showText(this)" onmouseout="hideText(this)">
-                    <h1>Title</h1>
+                    <h1>Thunder Secret</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum 
                     </p>
                 </nav>
             </div>
         </div>
-        <div class="news">
-            <div class="TheNew" id="News4" onmouseover="openNews(this)" onmouseout="closeNews(this)">
-                <img src="images/gardrop.jfif" alt="">
-                <nav>
-                    <h3>title</h3>
+        <div class="Others hidden">
+            <div>
+                <img src="images/thunder-north-africa-collection.png" alt="">
+                <nav id="text7" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>North Africa</h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum necessitatibus minima dicta delectus dolores magni!
                     </p>
-                    <a href="#"><button class="btn-read-more">Read More</button></a>
                 </nav>
             </div>
-            <div class="TheNew" id="News5" onmouseover="openNews(this)" onmouseout="closeNews(this)">
-                <img src="images/download.jfif" alt="">
-                <nav>
-                    <h3>title</h3>
+            <div>
+                <img src="images/thunder-without-body.png" alt="">
+                <nav id="text8" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>With Out Body</h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus accusantium vel. Maxime facere tempora assumenda repellendus aperiam, quod et aliquid, labore quibusdam, 
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla,
                     </p>
-                    <a href="#"><button class="btn-read-more">Read More</button></a>
                 </nav>
             </div>
-            <div class="TheNew" id="News6" onmouseover="openNews(this)" onmouseout="closeNews(this)">
-                <img src="images/thunder-secret2.png" alt="">
-                <nav>
-                    <h3>title</h3>
+            <div>
+                <img src="images/thunder-fuckTheSystem-Post.png" alt="">
+                <nav id="text9" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Fuck The System</h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus 
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum 
                     </p>
-                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                </nav>
+            </div>
+        </div>
+        <div class="Others hidden">
+            <div>
+                <img src="images/good-health-post.png" alt="">
+                <nav id="text10" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Good Health <br> post</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum necessitatibus minima dicta delectus dolores magni!
+                    </p>
+                </nav>
+            </div>
+            <div>
+                <img src="images/good-health-mockup.png" alt="">
+                <nav id="text11" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Good Health <br> T-shirt</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla,
+                    </p>
+                </nav>
+            </div>
+            <div>
+                <img src="images/thunder-world-mockup.png" alt="">
+                <nav id="text12" onmouseover="showText(this)" onmouseout="hideText(this)">
+                    <h1>Thunder World</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sint vel cupiditate praesentium perspiciatis at vitae molestias recusandae earum unde repudiandae maiores nulla, nostrum 
+                    </p>
                 </nav>
             </div>
         </div>
     </div>
 </main>
+<footer>
+    <h1>Thunder Clothes</h1>
+    <p>You can check our social media and stay tuned</p>
+    <div>
+        <nav>
+            <h3>Thunder Email</h3>
+            <form action="EmailComunity.php" method="post">
+                <input type="text" name="sendUsEmail" id="sendUsEmail" placeholder="Email"><br>
+                <input type="submit" value="submit" id="emailBtn">
+            </form>
+        </nav>
+        <nav>
+            <h3>Our Social Media</h3>
+            <nav class="socialmedia">
+                <a href="#"><img src="images/facebook.png"></a>
+                <a href="#"><img src="images/instagram.png"></a>
+                <a href="#"><img src="images/twitter.png"></a>
+                <a href="#"><img src="images/tiktok.png"></a>
+            </nav>
+            <a href="aroundTheWorld.html"><img src="images/aroundtheworldicon.png" class="aroundtheworldicon"></a>
+        </nav>
+    </div>
+    <nav class="devId">Made By Chahine Fehri</nav>
+</footer>
 
 <script src="js.js"></script>
 <script>
     function openNews(News){
         // alert(News.className)
-        var TheNew = document.getElementById(News.id);
-        TheNew.style.width = "80%";
-        TheNew.style.height = "400px";
-        TheNew.style.zIndex = "80";
-        News.style.margin="0 10px"
+        var ww = window.outerWidth;
+        if(ww>870){
+            var TheNew = document.getElementById(News.id);
+            TheNew.style.width = "80%";
+            TheNew.style.height = "400px";
+            TheNew.style.zIndex = "80";
+            News.style.margin="0 10px"
+        }
     }
     function closeNews(News){
-        var TheNew = document.getElementById(News.id);
-        TheNew.style.position = "relative";
-        TheNew.style.width = "30%";
-        TheNew.style.height = "400px";
-        TheNew.style.zIndex = "0";
-
+        var ww = window.outerWidth;
+        if(ww>870){
+            var TheNew = document.getElementById(News.id);
+            TheNew.style.position = "relative";
+            TheNew.style.width = "30%";
+            TheNew.style.height = "400px";
+            TheNew.style.zIndex = "0";
+        }
     }
     function showText(text){
         var textId = text.id;
         var Text = document.getElementById(textId);
         Text.style.opacity="1";
         Text.style.filter="blur(0)";
+        Text.style.height="100%";
 
     }
     function hideText(text){

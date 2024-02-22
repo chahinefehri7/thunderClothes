@@ -132,7 +132,7 @@ include "connect-db.php";
 
             echo "<img src='images/$orderName.png' alt=''>";
             echo "<h2>$orderName</h2>";
-            echo "<p>Price $orderPrice</p>";
+            echo "<p>Price $orderPrice Dt</p>";
     ?>
 </div>
 
