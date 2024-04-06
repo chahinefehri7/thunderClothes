@@ -65,7 +65,6 @@ while($rows2 = $res->fetch_assoc()){
 
         while($quantityRows2 = $res3->fetch_assoc()){
             if($quantityRows2["quantity"]<$ordersQuantity){
-
                 $deletedQuantity = $quantityRows2["quantity"];
                 $deleteQuery = "DELETE FROM `orders` WHERE `orders`.`phoneNumber` = $userphoneNumber AND `orders`.`orderName` = '$orderName' AND `orders`.`size` = '$orderSize' AND `orders`.quantity = $deletedQuantity LIMIT 1";
                 $deleteResult = mysqli_query($conn,$deleteQuery);

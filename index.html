@@ -167,6 +167,7 @@
                 <a href="aboutus.html"><li>About us</li></a>
                 <a href="signin.html"><li>Sign up</li></a>
                 <a href="user.php"><li><img src="images/user.png" alt="your Profile" class="profile"></li></a>
+                <a href="thunderCards.php"><img src="images/thunderCardsIcon.png" alt="thunder Cards" class="thunderCards"></a>
                 <img src="images/dots.png" alt="more" id="moreOptions">
             </ul>
        </div>
@@ -178,7 +179,10 @@
                 <a href="newCollection.html"><li>new Collections</li></a>
                 <a href="aboutus.html"><li>About us</li></a>
                 <a href="signin.html"><li>Sign up</li></a>
-                <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
+                <div class="headericons">
+                    <a href="user.php"><img src="images/user.png" alt="your Profile" class="profile"></a>
+                    <a href="thunderCards.php"><img src="images/thunderCardsIcon.png" alt="thunder Cards" class="thunderCards"></a>
+                </div>
             </ul>
     </div>    
     <main>
@@ -233,7 +237,7 @@
         </div>
         <nav class="comments">
             <a href="aroundTheWorld.html"><img src="images/aroundtheworldicon.png"></a>
-            <p style="width: 100%; text-align: center;"><a href="store.html" style="text-decoration: none; color: #212121; font-family: 'Josefin Sans';">Check the Store and Pick Whatever you want</a></p>
+            <p style="width: 100%; text-align: center;"><a href="store.html" style="text-decoration: none; color: #212121; font-family: 'Josefin Sans';">Check Thunder Around the World</a></p>
         </nav>
         <div class="divThunderDesign">
             <img src="images/lostyourway.png">
@@ -249,12 +253,12 @@
             </nav>
             <a href="store.html"><button class="hidden3">Shop Now</button></a>
         </div>
-        <div class="offre hidden show">
-            <img src="images/shadows.png" class="hidden2 show2">
+        <div class="offre hidden show" onclick="buy(this)" id="5">
+            <a href="comingSoon.html"><img src="images/shadows.png" class="hidden2 show2" id="product5"></a>
             <nav>
-                <h3>Shadows</h3>
+                <h3 id="productName5">Shadows</h3>
                 <p>Check it out New thunder Clothes</p><br>
-                <p>Coming Soon</p>
+                <p id="price5">Coming Soon</p>
             </nav>
         </div>
         <div class="offre hidden show">
@@ -264,10 +268,11 @@
                 <p>Check it out New thunder Clothes</p>
             </nav>
         </div>
-        <div class="offre hidden show">
-            <img src="images/Selft respect New.png" class="hidden2 show2">
+        <div class="offre hidden show" onclick="buy(this)" id="6">
+            <a href="buy.html"><img src="images/Self respect New.png" class="hidden2 show2" id="product6"></a>
             <nav>
-                <h3>Self Respect <br> New</h3>
+                <h3 id="productName6">Self Respect New</h3>
+                <p style="margin: 10px 0;" id="price6">98 DT</p>
                 <p>Check it out New thunder Clothes</p>
             </nav>
         </div>

@@ -47,6 +47,17 @@ header ul li{
 header ul li:hover{
     transform: translateY(-3px);
 }
+.headericons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.thunderCards{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
 .profile{
     width: 25px;
     height: 25px;
@@ -218,7 +229,9 @@ header ul li:hover{
 }
 .offre img{
     height:300px;
+    min-height: 300px;
     width:300px;
+    min-width: 300px;
     object-fit: cover;
     border-radius: 30px;
 }
@@ -501,6 +514,9 @@ footer nav:nth-child(1){
     color: #FAFDFF;
     text-align:center;
 }
+.aroundtheworldicon{
+    width: 120px;
+}
 @media (min-width:1280px) {
     .activitys{
         margin:50px 0 100px 0;
@@ -612,6 +628,14 @@ footer nav:nth-child(1){
         width: 70%;
     }
 }
+@media (max-width:800px) {
+    .offre img{
+        min-width: 300px;
+    }
+    .offre nav{
+       width: 40%; 
+    }
+}
 .hidden{
     transform: translateY(125px);
     opacity: 0;
@@ -661,9 +685,13 @@ footer nav:nth-child(1){
     transition: 1s 2.5s;
     animation: textAnimationButton 1s 7s forwards;
 }
-@media (max-width:550px) {
+@media (max-width:800px) {
     header ul li{
-        pointer-events: none;        
+        pointer-events: none;  
+        display: none;
+    }
+    #moreOptions{
+        visibility: visible;
     }
 }
 @keyframes textanimation {

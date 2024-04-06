@@ -13,6 +13,10 @@
         *{
             margin: 0;
             padding: 0;
+            transition: 0.5s;
+        }
+        body{
+            background-color: #FFFF;
         }
         #moreOptions-container{
             width:90%;
@@ -185,7 +189,6 @@
             text-align: center;
             position: relative;
             transition: 0.5s;
-            border-radius: 20px;
             overflow: hidden;
         }
         .Others div:hover{
@@ -195,7 +198,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 20px;
         }
         .Others div nav{
             width: 100%;
@@ -238,6 +240,12 @@
                 margin: 10px 0;
                 overflow: hidden;
             }
+            .Others img{
+                border-radius: 20px;
+            }
+            .Others nav{
+                height: 100%;
+            }
             .Others div:hover{
                 width: 90%;
             }
@@ -269,7 +277,7 @@
             margin-bottom: 100px;
         }
         .aroundtheworldicon{
-            width: 120px;
+            width: 100px;
         }
     </style>
 </head>
@@ -445,7 +453,7 @@
                 </nav>
             </div>
             <div>
-                <img src="images/thunder-world-mockup.png" alt="">
+                <img src="images/thunder world.png" alt="">
                 <nav id="text12" onmouseover="showText(this)" onmouseout="hideText(this)">
                     <h1>Thunder World</h1>
                     <p>

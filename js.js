@@ -51,3 +51,15 @@ const observer4 = new IntersectionObserver(entries =>{
 
 const hiddenElements4 = document.querySelectorAll('.hidden4');
 hiddenElements4.forEach((el) => observer4.observe(el));
+
+
+
+var closeMoreOptions = document.getElementById('closeMoreOptions');
+var moreOptions = document.getElementById('moreOptions-container');
+var moreOptionsOpenBtn = document.getElementById('moreOptions');
+moreOptionsOpenBtn.addEventListener('click' , function(){
+    moreOptions.style.right = "0%"
+})
+closeMoreOptions.addEventListener('click' , function(){
+    moreOptions.style.right = "-100%"
+})

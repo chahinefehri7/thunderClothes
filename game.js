@@ -229,7 +229,7 @@ playTheGameBtn.addEventListener('click' , function(){
             return movementSpeed;
         }
     }, 100);
-    // 
+    // jumping animation
     window.addEventListener('keydown' , e =>{
         if(e.keyCode==32){
             if(player.classList != "animation"){
@@ -286,7 +286,6 @@ playTheGameBtn.addEventListener('click' , function(){
                 clearInterval(checkDead);
                 clearInterval(dropItem);
                 clearInterval(DropBullets);
-                alert("you died");
                 playPopupBackground.style.visibility="visible";
             }
     },1);

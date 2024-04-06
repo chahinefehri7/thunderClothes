@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" type="x-icon" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@500&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@300;500;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waiting Page</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0;
+        }
+        body{
+            overflow: hidden;
+        }
+        .button{
+            font-family: prompt;
+        }
+        .btn1{
+            width: 130px;
+            padding: 20px 10px;
+            border-radius: 50px;
+            background-color: #d0d0d0;
+            color: black;
+            border: none;
+            position: absolute;
+            top: 78%;
+            left: 75%;
+            transform: translate(-50% , -50%);
+            z-index: 99;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .btn2{
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: #d0d0d0;
+            color: black;
+            border: none;
+            cursor: pointer;
+            margin: 20px 0 ;
+        }
+        button:hover{
+            animation: bright 0.5s forwards;
+            background-color: rgb(32, 32, 32);
+            color:#d0d0d0;
+            border: 1px solid #d0d0d0;
+        }
+        @keyframes bright {
+            0%{
+                box-shadow: 0px 0px 20px -5px white;
+            }
+            100%{
+                box-shadow: 0px 0px 80px 40px white;
+            }
+        }
+        .hideLogo{
+            width: 200px;
+            height: 40px;
+            background-color: black;
+            position: absolute;
+            bottom: 20px;
+            right: 120px;
+            transform: translate(50% , 50%);
+            z-index: 95;
+        }
+        #logo{
+            display: none;
+        }
+        .mobileBackground div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        @media (max-width:1020px) {
+            body{
+                background-color: #000000;
+            }
+            .mobileBackground{
+                width: 90%;
+                height: 90vh;
+                padding: 5%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .mobileBackground h1{
+                font-size: 30px;
+                color: whitesmoke;
+                font-weight: 900;
+                font-family: "josefin sans";
+                
+            }
+            .script{
+                display: none;
+            }
+            .btn1{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html"><button class="btn1">Continue</button></a>
+
+    <div class="hideLogo"></div>
+    <div class="script">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.93/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/fxQpQpBfZlOKx7KJ/scene.splinecode"></spline-viewer>
+    </div>
+    <div class="mobileBackground">
+        <div>
+            <h1>Thunder . <br>
+                remember <br>
+                that even the <br>
+                sky screams <br>
+                sometimes.</h1>
+            <a href="index.html"><button class="btn2">Continue</button></a>
+        </div>
+    </div>
+</body>
+</html>

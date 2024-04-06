@@ -86,6 +86,16 @@
                 visibility: visible;
             }
         }
+        @media (max-width:800px) {
+            #moreOptions{
+                z-index: 99;
+                visibility: visible;
+            }
+            header ul li{
+                pointer-events: none;  
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -165,7 +175,7 @@
         </div>
         <audio src="images/gate-latch-click.wav" id="scoreup"></audio>
     <script src="js.js"></script>
-    <!-- <script src="game.js"></script> -->
+    <script src="game.js"></script>
     <script>
         function buy(TheProduct){
             // getting the elements id
@@ -190,7 +200,7 @@
             window.location.href = "buy.html";
         }
     </script>
-    <script>
+    <!-- <script>
         var playGround = document.getElementById('playGround');
         var player = document.getElementById('player');
         var block = document.getElementById('block');
@@ -592,9 +602,7 @@
                     move = 0;
                 })
             });
-        });
-
-
+        }); 
         // click and hold class
         // class clickAndHold{
         //     /**
@@ -633,6 +641,6 @@
         // call the class to move player while holding down key (arrowRight / arrowLeft)
         // new clickAndHold(buttonToHold, () =>{
         // })
-    </script>
+    </script>-->
 </body>
 </html>
