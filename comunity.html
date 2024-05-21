@@ -80,8 +80,9 @@
                     <h1>What You Looking For</h1>
                     <p>stay tuned with thunder clothes you can miss some good shit Right here</p>
                 </nav>
-                <img src="images/IMG_3912.JPG" alt="the news" class="theNewsImg" style="object-fit: fill;">
-                <div class="theNewsImg"></div>
+                <div class="theNewsImg">
+                    <img src="images/IMG_3912.JPG" alt="the news" style="object-fit: fill;">
+                </div>
             </div>
         </div>
         <hr>
@@ -89,10 +90,10 @@
            <nav>
             <h1>Take a Look</h1>
             <i><p>you can take a look on whats coming soon don't worrey bud we will keep you updated <br><a href="comingSoon.html">Click Here</a></p></i>
-            <a href="store.html"><button class="btn">Check it Now</button></a>
+            <a href="store.html"><button class="btn" id="eyes">Check it Now</button></a>
            </nav>
             <nav>
-                <img src="" alt="">
+                <img src="images/pain-eye.png" id="paineyes" style="transition: 2s;">
             </nav>
         </div>
         
@@ -108,9 +109,8 @@
                         <h1>Talking About..</h1>
                         <p>if we human didn't create justice would it be a huge mess in the World and Why</p>
                     </div>
-                    <div id="comunityTalkSection-container">
-                        <div id="top" style="visibility: hidden; height: 10px;"></div>
-                        <div id="comunityTalkSection">
+                    <div id="comunityTalkSection-container" class="comunityTalkSection-container">
+                        <div id="comunityTalkSectionPost1" class="comunityTalkSection">
                             <div class="cmnt hidden">
                                 <span></span>
                                 <h4 class="name">chahine fehri</h4>
@@ -164,7 +164,7 @@
                         </div>
                         <a href="#top" id="comunityTalkSectionTop"></a>
                     </div>
-                    <div class="post"><input type="text" name="comunityTalk" id="comunityTalkInput" placeholder="What do you think About This...?"><button id="post">POST</button></div>
+                    <div class="post"><input type="text" name="comunityTalk" id="comunityTalkInputPost1" class="comunityTalkInput" placeholder="What do you think About This...?"><button id="Post1" onclick="post(this)">POST</button></div>
                 </nav>
             </div>
         </div>
@@ -304,7 +304,7 @@
                     </div>
                     <div id="comunityTalkSection-container" class="comunityTalkSection-container">
                         <div id="top" class="top" style="visibility: hidden; height: 10px;"></div>
-                        <div id="comunityTalkSection" class="comunityTalkSection">
+                        <div id="comunityTalkSectionPost2" class="comunityTalkSection">
                             <div class="cmnt hidden">
                                 <span></span>
                                 <h4 class="name">chahine fehri</h4>
@@ -358,7 +358,7 @@
                         </div>
                         <a href="#top" id="comunityTalkSectionTop"></a>
                     </div>
-                    <div class="post"><input type="text" name="comunityTalk" id="comunityTalkInput" class="comunityTalkInput" placeholder="What do you think About This...?"><button id="post">POST</button></div>
+                    <div class="post"><input type="text" name="comunityTalk" id="comunityTalkInputPost2" class="comunityTalkInput" placeholder="What do you think About This...?"><button id="Post2" onclick="post(this)">POST</button></div>
                 </nav>
             </div>
         </div>
@@ -382,7 +382,7 @@
         </div>
     </main>
 
-
+    <script src="comunity.js"></script>
     <script>
         // first observer for elements animation
         const observer = new IntersectionObserver(entries =>{
@@ -446,43 +446,16 @@
         function AdAnimationOff(ad){
             ad.classList.remove("adAnimation");
         }
-        var post = document.getElementById('post');
-        var comunityTalkSection = document.getElementById('comunityTalkSection');
-        var comunityTalkInput = document.getElementById('comunityTalkInput');
 
-        post.addEventListener('click' , ()=>{
-            let cmnt = document.createElement('div');
-            let span = document.createElement('span');
-            let h4cmnt = document.createElement('h4');
-            let p = document.createElement('p');
-            let cmntTime = document.createElement('small');
-            let dateNow = new Date();
-            // dateNow = dateNow.getDate();
-            console.log(dateNow);
+        var eyes = document.getElementById('eyes');
+        var paineye = document.getElementById('paineyes');
 
-            let UserName = document.createTextNode("Username")
-            inputV = comunityTalkInput.value;
-            comunityTalkInput.value ="";
-            let theComment = document.createTextNode(inputV)
-            cmntTime.innerHTML = dateNow
-
-            cmnt.classList.add('cmnt');
-            h4cmnt.classList.add('name');
-            p.classList.add('content');
-            cmntTime.classList.add('time');
-
-
-            cmnt.appendChild(span);
-            h4cmnt.appendChild(UserName);
-            p.appendChild(theComment);
-            cmnt.appendChild(h4cmnt);
-            cmnt.appendChild(p);
-            cmnt.appendChild(cmntTime)
-            comunityTalkSection.prepend(cmnt);
-            comunityTalkSectionTop.click()
-
+        eyes.addEventListener('mouseover' , ()=>{
+            paineye.src = "images/pain-eye2.png";
         })
-        
+        eyes.addEventListener('mouseout' , ()=>{
+            paineye.src = "images/pain-eye.png";
+        })
     </script>
 </body>
 </html>
