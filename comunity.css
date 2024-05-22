@@ -18,6 +18,7 @@ header h2{
 }
 header h2 i{
     font-family: serif;
+    font-weight: bolder;
 }
 header ul{
     margin: 0 30px;
