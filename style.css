@@ -215,6 +215,12 @@ header ul li:hover{
     font-family: 'Josefin Sans';
     border-radius: 30px;
 }
+.offre a{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .offre nav{
     height:300px;
     width: 50%;
@@ -261,7 +267,7 @@ header ul li:hover{
     overflow: hidden;
     box-shadow: 0px 0px 30px -5px #121815;
     text-align: center;
-    margin: -60px 0;
+    transform: translateY(20px);
 }
 .activitys nav{
     width: 100%;

@@ -140,6 +140,45 @@
             cursor: pointer;
             transform: scale(1.05);
         }
+        .joincommunity{
+            width: 100%;
+            height: fit-content;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 100px 0;
+        }
+        .joincommunity nav{
+            width: 100%;
+            height: fit-content;
+            /* border-top: 3px solid #212121;
+            border-bottom: 3px solid #212121; */
+        }
+        .joincommunity nav img{
+            width: 100%;
+            height: auto;
+        }
+        .joincommunity p{
+            font-family: 'outfit';
+            color: #c1c1c1;;
+        }
+        .banner-mobile{
+            display: none;
+        }
+        /* .join-community-btn{
+            width:200px;
+            padding: 20px;
+            border-radius: 50px;
+            background-color: #000000;
+            border: none;
+            color: #FAFDFF;
+            font-family: 'outfit';
+            transform: translateY(-325px);
+            cursor: pointer;
+        } */
         @media (max-width:550px) {
             header ul li{
                 pointer-events: none;  
@@ -147,6 +186,12 @@
             }
             .activityDiv{
                 height: 400px;
+            }
+            .banner{
+                display: none;
+            }
+            .banner-mobile{
+                display: block;
             }
         }
         @media (max-width:900px) {
@@ -156,6 +201,13 @@
         }
         l{
             text-decoration: line-through;
+        }
+        @media (min-width:1200px) {
+            .activityDiv{
+                margin: 0;
+                transform: translate(0);
+                margin-bottom: 50px;
+            }
         }
     </style>
 </head>
@@ -279,6 +331,12 @@
                 <h3 id="productName6">Self Respect New</h3>
                 <p style="margin: 10px 0;" id="price6">98 DT</p>
                 <p>Check it out New thunder Clothes</p>
+            </nav>
+        </div>
+        <div class="joincommunity">
+            <nav>
+                <a href="comunity.html"><img src="images/thunder-comunity-banner.png" alt="banner" class="banner"></a>
+                <a href="comunity.html"><img src="images/thunder-comunity-banner-mobile.png" alt="banner mobile" class="banner-mobile"></a>
             </nav>
         </div>
         <div class="others">

@@ -76,6 +76,7 @@ main{
 .community-title h1 i{
     font-family: 'PPeditorial light italic';
     font-weight: 100;
+    width: 500px;
 }
 .community-title p{
     width: 70%;
@@ -267,7 +268,7 @@ main{
     border-radius: 50px;
     margin: 25px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color:rgb(21, 0, 253);
+    background-color:#1500fd;
     color: aliceblue;
     border: none;
     cursor: pointer;
@@ -384,6 +385,7 @@ a{
     outline: none;
     /* border: 2px solid rgb(234, 234, 234); */
     background-color: #ffff;
+    border: 1px solid #c1c1c1;
 }
 .cmnt{
     width: 80%;
