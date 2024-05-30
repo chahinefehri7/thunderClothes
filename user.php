@@ -467,17 +467,17 @@ while($rows2 = $res->fetch_assoc()){
                 <p id="cardDiscription-p">
 
                 </p>
-                <h4>card expiration</h4>
+                <!-- <h4>card expiration</h4> -->
                 <?php
-                    $cardName = $_COOKIE["cardName"];
-                    if($cardName ==''){
-                        echo '<p style ="font-family:prompt;">soryy please reload</p>';
-                    }else{
-                        $cardExpirationRq = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userphoneNumber AND cardName='$cardName'";
-                        $cardExpirationResult = mysqli_query($conn,$cardExpirationRq);
-                        $cardExpirationRows = $cardExpirationResult ->fetch_assoc();
-                        echo '<p style ="font-family:prompt;">'.$cardExpirationRows["expiration"].'</p>';
-                    }
+                    // $cardName = $_COOKIE["cardName"];
+                    // if($cardName ==''){
+                    //     echo '<p style ="font-family:prompt;">soryy please reload</p>';
+                    // }else{
+                    //     $cardExpirationRq = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userphoneNumber AND cardName='$cardName'";
+                    //     $cardExpirationResult = mysqli_query($conn,$cardExpirationRq);
+                    //     $cardExpirationRows = $cardExpirationResult ->fetch_assoc();
+                    //     echo '<p style ="font-family:prompt;">'.$cardExpirationRows["expiration"].'</p>';
+                    // }
                 ?>
             </nav>
         </div>
@@ -528,7 +528,6 @@ while($rows2 = $res->fetch_assoc()){
         var cardImg = document.getElementById('cardDiscriptionImg');
 
         var cardName = card.id;
-        document.cookie="cardName="+cardName; //setting cookie
 
         cardTitle.innerText = cardName;
         var cardSrc = "images/"+cardName+".png";

@@ -41,6 +41,7 @@ if($userPhoneNumber==""){
     // calculating the total of the price
     $totalPrice = $thePrice*$quantity;
     // checking thunder cards
+    // if he got a card matches the product we gives him an offre
     $CardRq = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userPhoneNumber";
     $CardRes = mysqli_query($conn,$CardRq);
     while($CardRows = $CardRes->fetch_assoc()){
@@ -74,7 +75,7 @@ if($userPhoneNumber==""){
     }
     
     
-    // converting the total price to a string the concat with "DT"
+    // converting the total price to a string the concat with the word "DT" so it became "(price)DT"
     $totalPrice = (string)$totalPrice ." DT";
     
     $req1 = "SELECT * FROM `clients` WHERE phoneNumber=$userPhoneNumber";
