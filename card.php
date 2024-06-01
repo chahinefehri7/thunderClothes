@@ -282,6 +282,27 @@ if(mysqli_num_rows($res2)>0){
             margin: 0;
             padding: 0;
         }
+        .error{
+            width: 100%;
+            height:fit-content;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            margin-bottom:100px;
+        }
+        .error img{
+            width: 20%;
+            height:auto;
+            margin-bottom:50px;
+        }
+        .error h1{
+            font-family:"josefin sans";
+            font-size:50px;
+        }
+        .error p{
+            font-family:'Outfit';
+        }
         @media (max-width:900px) {
             #container{
                 flex-direction: column;
@@ -358,24 +379,43 @@ if(mysqli_num_rows($res2)>0){
        </div>
     </header>
     <main>
-        <div id="container">
-            <div class="hidden2">
-                <small>thunder clothes</small>
-                <h2 id="cardName" name="cardNAme" class="hidden3"><?php echo $cardName; ?></h2>
-                <nav class="cardRarity hidden3"><small>Card Rarity</small><pre> </pre><p id="cardRarity" name="cardRarity"><?php echo $cardRarity;?></p></nav>
-                <nav class="cardOwner hidden3"><small>Card Owner <?php echo $rows['name'] ." ". $rows['lastName'] ." ".$AlreadyHavetheCard;?> ... <br><?php echo '<a id="owners" href="cardsOwners.php?cardName='.$cardName.'">';?>See this Card Owners</a></small></nav>
-                <img src="images/<?php echo $cardRarity;?>.png" class="rarityIcon" id="cardRarityIcon">
-                <hr>
-            </div>
-            <div>
-                <img src="images/<?php echo $cardName;?>.png" alt="t-shirt" class="hidden" id="productimg">
-            </div>
-        </div>
+    <?php
+            if(mysqli_num_rows($res2)>0){
+                $AlreadyHavetheCard = "You already have this Card";
+                echo '
+                    <div class="error">
+                        <img src="images/nothing found.png" alt="nothing found">
+                        <h1>'.$AlreadyHavetheCard.'</h1>
+                        <p>You Already Win a Free Card You Need To Start Collecting Your Own</p>
+                    </div>
+                    <hr>
+                ';
+            }else{
+                $insertNewCard = "INSERT INTO `cardscollection`(`cardName`, `cardRarity`, `cardOwner`, `ownerPhoneNumber`) VALUES('$cardName','$cardRarity','$fullUserName',$userPhoneNumber)";
+                $insertNewCardResult = mysqli_query($conn,$insertNewCard);
+                echo '
+                    <div id="container">
+                        <div class="hidden2">
+                            <small>thunder clothes</small>
+                            <h2 id="cardName" name="cardNAme" class="hidden3"><?php echo $cardName; ?></h2>
+                            <nav class="cardRarity hidden3"><small>Card Rarity</small><pre> </pre><p id="cardRarity" name="cardRarity"><?php echo $cardRarity;?></p></nav>
+                            <nav class="cardOwner hidden3"><small>Card Owner ' . $rows["name"] .'" "'. $rows['lastName'] .'" "' . $AlreadyHavetheCard . ' ... <br><a id="owners" href="cardsOwners.php?cardName='.$cardName.'"> See this Card Owners</a></small></nav>
+                            <img src="images/'.$cardRarity.'.png" class="rarityIcon" id="cardRarityIcon">
+                            <hr>
+                        </div>
+                        <div>
+                            <img src="images/'.$cardName.'.png" alt="t-shirt" class="hidden" id="productimg">
+                        </div>
+                    </div>
+                ';
+            }
+        ?>
         <div class="Other-products hidden">
             <nav>
                 <h3>Cards you Have</h3>
                 <p>these is the cards you own hope you're Taking care of them.</p>
             </nav>
+            
         </div>
         <!-- <div class="Coming-soon">
             <div>

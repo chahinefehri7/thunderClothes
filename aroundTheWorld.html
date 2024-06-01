@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="x-icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display&family=Dela+Gothic+One&family=Gabarito:wght@400;500;900&family=Josefin+Sans:wght@200;300;400;500;600;700&family=Libre+Bodoni&family=Montserrat:wght@400;600;700;800;900&family=Noto+Serif+Display:ital,wght@0,100;0,700;0,800;0,900;1,900&family=Orelega+One&family=Outfit:wght@100;200;300;400;500;700;800;900&family=Oxygen&family=Pacifico&family=Pixelify+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,800;1,400;1,500;1,800&family=Poppins:wght@200;500;800;900&family=Prompt:wght@200;300;500;600;700;800;900&family=Roboto&family=Sacramento&family=Sono:wght@400;500&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Cinzel:wght@400..900&family=Dancing+Script:wght@400..700&family=Danfo&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Gabarito:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orelega+One&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&family=Sedan+SC&family=Tajawal:wght@200;300;400;500;700;800;900&family=Yatra+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Aroud The World</title>
@@ -121,7 +121,6 @@
             overflow: hidden;
             transition: 0.5s;
             box-shadow: 0 0 20px 0px #212121;
-
         }
         .news div img{
             width: 100%;
@@ -136,6 +135,11 @@
             font-size: 25px;
             margin: 10px 0;
         }
+        .news-discription-title{
+            font-family: 'Outfit';
+            font-weight: 500;
+            color: #C1C1C1;
+        }
         .news div p{
             font-family: 'outfit';
             height: 0;
@@ -146,6 +150,8 @@
             color: gray;
             margin-top: 5%;
             transition: 0.5s;
+            padding: 0 20px;
+            display: none;
         }
         .news div p::-webkit-scrollbar{
             width: 5px;
@@ -234,7 +240,6 @@
             }
             .Others div{
                 width: 95%;
-                min-height: 400px;
                 max-height: 400px;
                 border-radius:20px;
                 margin: 10px 0;
@@ -279,6 +284,93 @@
         .aroundtheworldicon{
             width: 100px;
         }
+        #readNewsContainer{
+            width: 80%;
+            height: 90%;
+            padding: 8% 5%;
+            margin-top: 10%;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: aliceblue;
+            border-radius: 25px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+            z-index: 99;
+            overflow-y: scroll;
+            display: none;
+            box-shadow: 0 0 20px 0px #212121;
+        }
+        .read-news-img-nav{
+            width: 100%;
+            height: 35%;
+            overflow: hidden;
+            position: relative;
+            margin: 2.5% 0;
+            background-color: blue;
+            overflow: hidden;
+            border-radius: 25px;
+        }
+        .read-news-img-nav img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #readNewsTextDiv{
+            width: 100%;
+            height: fit-content;
+        }
+        #readNewsTitle{
+            font-family: 'josefin sans';
+            font-size: 25px;
+            margin-top: 30px;
+        }
+        #readNewsText{
+            font-family: 'outfit';
+        }
+        .closeReadNews{
+            width: 90%;
+            height: fit-content;
+            position: relative;
+            padding: 0 5%;
+            margin-bottom:30px;
+        }
+        #readNewsDiscription{
+            color: #C1C1C1;
+            font-family:'raleway';
+            margin: 20px 0;
+            font-weight: bolder;
+        }
+        .closeReadNews img{
+            width: 15px;
+            height: auto;
+            float: right;
+            cursor: pointer;
+        }
+        @media (min-width:500px) {
+            #readNewsContainer{
+                height: 70%;
+                margin: 5% 0;
+            }
+            .read-news-img-nav{
+                height: 80%;
+            }
+            .read-news-img-nav img{
+                object-position: top;
+            }
+            #readNewsTitle{
+                font-size: 50px;
+                width: 80%;
+            }
+        }
+        @media (max-width:500px) {
+            #readNewsContainer{
+                margin-top: 2.5%;
+            }
+        }
     </style>
 </head>
 <body id="body">
@@ -313,36 +405,87 @@
             <p>You Can find All the news about Thunder and other things about Clothing</p>
         </div>
     </div>
+    <div id="readNewsContainer">
+        <nav class="closeReadNews"><img src="images/close.png" onclick="closeReadNews()"></nav>
+        <nav class="read-news-img-nav">
+            <img src="" alt="news" id="readNewsImg">
+        </nav>
+        <nav id="readNewsTextDiv">
+            <h1 id="readNewsTitle">title</h1>
+            <small id="readNewsDiscription">none</small>
+            <p id="readNewsText">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum delectus dolore et quod quas quis. Accusamus culpa mollitia dignissimos explicabo at adipisci. Necessitatibus repellendus quam pariatur, sapiente numquam blanditiis.
+            </p>
+        </nav>
+    </div>
     <div class="Container">
         <div class="news">
             <div class="TheNew hidden2" id="News1" onmouseover="openNews(this)" onmouseout="closeNews(this)">
-                <img src="images/gardrop.jfif" alt="">
+                <img src="https://fashionunited.com/r/fit=cover,format=auto,gravity=center,height=480,quality=70,width=720/https://fashionunited.com/img/upload/2023/10/30/screenshot-2023-10-27-at-10-17-51-k14zhk26-2023-10-30.png" id="NewsImg1">
                 <nav >
-                    <h3>title</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+                    <h3 id="NewsTitle1">London streetwear brand Unknown sees 175,000 waitlist for latest drop</h3>
+                    <h5 class="news-discription-title" id="NewsDiscription1">
+                        By Don-Alvin Adegeest
+                        Oct 30, 2023
+                    </h5>
+                    <p id="NewsText1">
+                        Emerging streetwear brand Unknown London launched its AW23 collection on Sunday, after it confirmed it had a waiting list over 175,000 customers.
+
+                        This is the brand’s second release of the season, which the company said it aims to reshape the UK streetwear landscape with their "controlled chaos" inspired AW23 collection, consisting of 21 unique pieces. With timed drops the brand hopes to keep its releases fresh and exclusive, maintaining consumer interest. In a statement Unknown said it chose to shoot its limited edition 21-piece collection in the world of "motocross," using stunt models and a variety of undisclosed locations.
+
+                        The British streetwear brand emerged from a creative partnership of Joe Granger and Callum Vineer in 2015. Despite lacking formal fashion backgrounds, both Granger and Vineer established the label in response to emerging micro-trends and local demand. Their brand has since grown exponentially, guided by instinct and intuition, and is now stocked in exclusive retailers across multiple continents.
+
+                        Speaking to their fanbase, the company has fostered a dedicated shopper that eagerly anticipates each new collection release.
+
+                        Co-founder Callum Vineer said in an interview with Complex: We started Unknown because we wanted to make clothes that represented us and what we wanted to wear. We then started selling clothes to friends, and as word got out about the brand, sales started picking up.”
+
+                        Products are competitively priced, with puffer jackets retailing for 195 pounds and t-shirts starting at 48 pounds.
                     </p>
-                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                    <button class="btn-read-more" id="1" onclick="ReadNews(this)">Read More</button>
                 </nav>
             </div>
             <div class="TheNew hidden2" id="News2" onmouseover="openNews(this)" onmouseout="closeNews(this)">
-                <img src="images/download.jfif" alt="">
+                <img src="https://fashionunited.com/r/fit=cover,format=auto,gravity=center,height=480,quality=70,width=720/https://fashionunited.com/img/upload/2022/02/16/supreme-tremaine-emory-1-70b9t1d1-2022-02-16.jpeg" id="NewsImg2">
                 <nav>
-                    <h3>title</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus accusantium vel. Maxime facere tempora assumenda repellendus aperiam, quod et aliquid, labore quibusdam, 
+                    <h3 id="NewsTitle2">VF Corporation is mulling a sale of streetwear brand Supreme</h3>
+                    <h5 class="news-discription-title" id="NewsDiscription2">
+                        By Don-Alvin Adegeest
+                        May 15, 2024
+                    </h5>
+                    <p id="NewsText2">
+                        In less than four years since its acquisition, VF Corporation is reportedly mulling a sale of its streetwear brand Supreme. Back in December 2020, the group bought the New York skater brand, valuing it at 2.1 million dollars, making it one of the largest fashion transactions of the year.
+
+                        According to WWD, VF Corp is considering divesting Supreme as part of a broader portfolio review, which also operates The North Face, Vans, Eastpak and Kipling. The group's backpack business is thought to already be up for sale. The group has thus far not confirmed reports of divesting Supreme, with a spokesperson telling WWD: “As a matter of policy, we don’t comment on market rumours or speculation.”
+
+                        The brand's post-acquisition performance has been volatile, which struggled to keep its DNA of a niche and cult brand, as its drops no longer generated the buzz seen in its heyday. Despite notable luxury collaborations with Louis Vuitton, Missoni and Gucci, when a streetwear brand is available in every city in every country it can no longer be considered cult.
+
+                        When Supreme’s creative director Tremaine Emory departed after just 18 months into his tenure, citing “systemic racism,’ it may have set a tone.
+
+                        VF Corporation's financial report for 2023 indicated a marginal 2 percent decline in revenues, mirroring the 3 percent sales decrease in the fourth quarter, reflecting ongoing obstacles confronting the conglomerate, WWD said.
+
+                        Bracken Darrell, VF Corporation’s new chief executive who joined the company in 2023, aims to trim down the portfolio as it focuses on innovation.
                     </p>
-                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                    <a href="#"><button class="btn-read-more" id="2" onclick="ReadNews(this)">Read More</button></a>
                 </nav>
             </div>
             <div class="TheNew hidden2" id="News3" onmouseover="openNews(this)" onmouseout="closeNews(this)">
-                <img src="images/thunder-secret2.png" alt="">
+                <img src="https://maft.com.tn/static/covers/8dfcf81f-d14f-42ab-930c-d201deb338fe.webp" id="NewsImg3">
                 <nav>
-                    <h3>title</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ex doloribus 
+                    <h3 id="NewsTitle3">4 innovative Tunisian leather brands you need to discover</h3>
+                    <h5 class="news-discription-title" id="NewsDiscription3">
+                        by Zeineb Ouertatani
+                        Oct 06, 2023
+                    </h5>
+                    <p id="NewsText3">
+                        The fashion industry is known for its innovative and creative designs, but it has also been notorious for its environmental impact. In recent years, however, there has been a shift in the industry towards adopting eco-friendly materials and sustainable practices.
+
+                        One of the most significant developments in this shift is the adoption of sustainable leather.
+                        
+                        AWA, SAMCH, QUARK, and POINT SELLIER are a quartet of Tunisian leather brands that encourage this shift and promote the development of new leather materials and production processes that are more eco-friendly. <br>
+                        <b>AWA: Where Tradition Meets Innovation</b><br>
+                        AWA is a Tunisian brand of high-quality leather goods and accessories that seamlessly blends the architect's passions with the vernacular craftsmanship of artisans. All whilst showcasing its linear, innovative architectural heritage in its designs. It also reflects the spirit of Mediterranean art. In fact, if you take a closer look at the stitching used in its products, you’ll realize the adaptation of old Tunisian stitching techniques. All serve as a testament to the brand’s dedication to tradition and innovation. The brand is also branching out towards a more sustainable approach through its latest Spring/Summer collection which has been showcased at the Palais Brongniart from 28 September to 1 October for the women's collections edition of Tranoï.
                     </p>
-                    <a href="#"><button class="btn-read-more">Read More</button></a>
+                    <button class="btn-read-more" id="3" onclick="ReadNews(this)">Read More</button>
                 </nav>
             </div>
         </div>
@@ -535,6 +678,35 @@
     closeMoreOptions.addEventListener('click' , function(){
         moreOptions.style.right = "-100%"
     })
+    function closeReadNews(){
+        var readNewContainer = document.getElementById('readNewsContainer');
+        readNewContainer.style.display="none";
+    }
+    function ReadNews(News){
+        // making the read news visible
+        var readNewContainer = document.getElementById('readNewsContainer');
+        readNewContainer.style.display="block";
+        // calling the element that will be displayed
+        let newsTitleId = "NewsTitle"+News.id;
+        let newsDiscriptionId ="NewsDiscription"+News.id;
+        let newsTextId = "NewsText"+News.id;
+        let newsImgId = "NewsImg"+News.id;
+        // calling the elements that will be displayed in the read news container
+        var newsTitle = document.getElementById(newsTitleId);
+        var newsDiscription = document.getElementById(newsDiscriptionId);
+        var newsText = document.getElementById(newsTextId);
+        var newsImg = document.getElementById(newsImgId);
+        // calling the read news container element
+        var readNewsTitle = document.getElementById('readNewsTitle');
+        var readNewsDiscription = document.getElementById('readNewsDiscription');
+        var readNewsText = document.getElementById('readNewsText');
+        var readNewsImg = document.getElementById('readNewsImg');
+
+        readNewsTitle.innerText = newsTitle.innerText;
+        readNewsDiscription.innerText = newsDiscription.innerText;
+        readNewsText.innerText = newsText.innerText;
+        readNewsImg.src = newsImg.src;
+    }
 </script>
 </body>
 </html>

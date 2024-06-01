@@ -12,7 +12,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'prompt';
+    font-family: 'Outfit';
     background-color:#fffffff1;
     width: 100%;
     height: 70px;
@@ -28,6 +28,7 @@ header a{
 }
 header h1{
     font-family: 'Gabarito';
+    font-weight: 900;
 }
 header ul{
     width:fit-content;
@@ -41,7 +42,7 @@ header ul{
 header ul li{
     padding: 10px 15px;
     margin: 0 10px;
-    font-weight: lighter;
+    font-weight: 500;
     transition: 0.3s;
 }
 header ul li:hover{
@@ -414,7 +415,7 @@ header ul li:hover{
 .others p{
     font-family:'Josefin Sans';
     font-size: 25px;
-    font-weight: lighter;
+    font-weight: 300;
 }
 .others h1{
     font-size: 100px;
