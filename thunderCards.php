@@ -460,7 +460,7 @@
     <a href="card.php?cardName=Its Lit&rarity=common" class="win-card">Win a Card</a>
     <nav class="cards-pack">
         <h1>a Cards Pack!</h1>
-        <p>this is a cards pack that contain the same Name but different cards Rarity</p>
+        <p>this is a cards pack that contain the same style&themes but different cards Rarity</p>
     </nav>
     <div class="container">
         <nav class="cards">

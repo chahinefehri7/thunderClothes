@@ -51,6 +51,34 @@
     width:100%;
     height: fit-content;
     margin: 70px 0 0 0;
+    position: relative;
+    overflow: hidden;
+}
+.newCollectionNav nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    background-color: #21212194;
+    display: flex;
+    flex-direction: column ;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.7s;
+    color: #FAFDFF;
+}
+.newCollectionNav p{
+    font-family: 'outfit';
+    width: 70%;
+}
+.newCollectionNav ul{
+    text-align: start;
+}
+.newCollectionNav nav:hover{
+    opacity: 1;
 }
 .newCollections h1{
     font-size: 70px;
@@ -66,11 +94,22 @@
     margin:20px;
     font-family: 'Josefin Sans';
 }
-.new{
+.newCollectionNav{
     width: 100%;
-    margin: 2% 0%;
     height: 500px;
     border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+.newCollectionNav img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+.new{
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center center;
 }
@@ -79,10 +118,6 @@
 }
 .new2{
     object-position: top ;
-}
-.newCollectionImg{
-    width: 50%;
-    height: auto;
 }
 /* theCollectionCards */
 .theCollectionCards{
@@ -106,7 +141,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
 }
 .theCollectionCards nav{
     position: absolute;
@@ -254,6 +289,22 @@
         width: 10px;
     }
 }
+@media (max-width:750px) {
+    .theCollectionCards{
+        height: fit-content;
+    }
+    .theCollectionCards nav h2{
+        font-size: 50px;
+    }
+    .theCollectionCards nav p{
+        font-size: 25px;
+    }
+    .theCollectionCards div{
+        width: 90%;
+        height: 400px;
+        margin: 20px;
+    }
+}
 @media (max-width:675px) {
     .frontPost nav h1{
         font-size: 50px;
@@ -265,13 +316,5 @@
     }
     .frontPost nav h1{
         font-size: 50px;
-    }
-    .theCollectionCards{
-        height: fit-content;
-    }
-    .theCollectionCards div{
-        width: 90%;
-        height: 400px;
-        margin: 20px;
     }
 }
