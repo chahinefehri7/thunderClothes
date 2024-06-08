@@ -134,7 +134,7 @@ header ul li:hover{
 }
 #collection p{
     font-family: 'prompt';
-    font-weight: lighter;
+    font-weight: 300;
     padding: 0 10px;
 }
 /* clothes container */
@@ -594,10 +594,19 @@ footer nav:nth-child(1){
         font-size: 30px;
     }
     #clothesContainer div{
-        width:300px;
-        min-width: 290px;
+        width:150px;
+        min-width: 150px;
         margin-bottom: 50px;
         height: 400px
+    }
+    .productDiscription span{
+        font-size:8px;
+    }
+    .productDiscription h2{
+        font-size:15px;
+    }
+    #collection p{
+        font-size:11px;
     }
     .title h1{
         font-size: 20px;
