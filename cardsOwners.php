@@ -12,6 +12,8 @@
         $res = mysqli_query($conn,$req);
         $rows = $res->fetch_assoc();
         $userName = $rows['name'];
+        $userLastName = $rows['lastName'];
+        $userFullName = $userName.' '.$userLastName;
         $req2 = "SELECT * FROM `cardscollection` WHERE cardName='$cardName'";
         $res2 = mysqli_query($conn,$req2);
         $rows2 = $res2->fetch_assoc();
@@ -130,6 +132,10 @@
             width: 20px;
             height: 20px;
         }
+        .theUser{
+            color:#1D1FB8;
+            font-weight:bolder;
+        }
         @media (max-width:1090px) {
             .container{
                 width: 100%;
@@ -184,7 +190,12 @@
                             $req3 = "SELECT * FROM `cardscollection` WHERE cardName='$cardName'";
                             $res3 = mysqli_query($conn,$req2);
                             while($rowsOwners = $res3->fetch_assoc()){
-                                echo('<li>' . $rowsOwners['cardOwner']. '</li>');
+                                if($rowsOwners['cardOwner'] ==$userFullName){
+                                    echo('<li class="theUser">' . $rowsOwners['cardOwner']. '</li>');
+                                }else{
+                                    echo('<li>' . $rowsOwners['cardOwner']. '</li>');
+                                }
+                                
                             }
                         ?>
                     </ul>

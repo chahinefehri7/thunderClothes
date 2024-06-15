@@ -91,6 +91,7 @@ main{
     align-items: center;
     position:relative;
     margin: 100px 0;
+    margin-bottom: 20px;
 }
 .news-discription{
     width: 35%;
@@ -238,7 +239,27 @@ main{
     align-items: center;
     flex-direction: column;
 }
+/* scroll down icon */
+.scroll-down{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    margin-bottom: 40px;
+    transition: 0.7s;
+    opacity: 1;
+    display: none;
+}
+.scroll-down img{
+    width: 10%;
+    height: auto;
+}
 @media (max-width:500px) {
+    .scroll-down{
+        display: flex;
+    }
     .thunder-Ad nav:nth-child(2){
         overflow: hidden;
     }

@@ -17,12 +17,12 @@ if (isset($_GET["cardName"])){
     $res2 = mysqli_query($conn,$req2);
 }
 $AlreadyHavetheCard="";
-if(mysqli_num_rows($res2)>0){
-    $AlreadyHavetheCard = "You already have this Card";
-}else{
-    $insertNewCard = "INSERT INTO `cardscollection`(`cardName`, `cardRarity`, `cardOwner`, `ownerPhoneNumber`) VALUES('$cardName','$cardRarity','$fullUserName',$userPhoneNumber)";
-    $insertNewCardResult = mysqli_query($conn,$insertNewCard);
-}
+// if(mysqli_num_rows($res2)>0){
+//     $AlreadyHavetheCard = "You already have this Card";
+// }else{
+//     $insertNewCard = "INSERT INTO `cardscollection`(`cardName`, `cardRarity`, `cardOwner`, `ownerPhoneNumber`) VALUES('$cardName','$cardRarity','$fullUserName',$userPhoneNumber)";
+//     $insertNewCardResult = mysqli_query($conn,$insertNewCard);
+// }
 ?>
 
 <!DOCTYPE html>
@@ -303,6 +303,82 @@ if(mysqli_num_rows($res2)>0){
         .error p{
             font-family:'Outfit';
         }
+        .cardsOwnersLink{
+            font-family:'Outfit';
+            color:#212121;
+            margin-top:15px;
+            font-size:15px;
+        }
+        /* cards */
+        .cards{
+            margin:0px;
+            width: 90%;
+            height: 390px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            position: relative;
+        }
+        .card{
+            width:24%;
+            min-width: 250px;
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+            transition: 0.7s;
+        }
+        .card:hover{
+            transition: 0.5s 0s;
+            transform: scale(1.03);
+        }
+        .locked{
+            width: 10px;
+            height:auto;
+            display: block;
+            z-index: 1;
+        }
+        .cardImg{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(5px);
+        }
+        .graybackground{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #212121;            
+            opacity: 0.7;
+        }
+        .cardDiscription{
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #FAFDFF;
+        }
+        .cardName{
+            font-family: 'josefin sans';
+            font-size:25px;
+            font-weight: 900;
+            margin: 20px 0 10px 0;
+        }
+        .cardP{
+            font-size: 10px;
+            font-family: 'prompt';
+            font-weight: 300;
+        }
         @media (max-width:900px) {
             #container{
                 flex-direction: column;
@@ -387,6 +463,7 @@ if(mysqli_num_rows($res2)>0){
                         <img src="images/nothing found.png" alt="nothing found">
                         <h1>'.$AlreadyHavetheCard.'</h1>
                         <p>You Already Win a Free Card You Need To Start Collecting Your Own</p>
+                        <a href="cardsOwners.php?cardName='.$cardName.'" class="cardsOwnersLink">See '.$cardName.' Card Owners</a>
                     </div>
                     <hr>
                 ';
@@ -398,7 +475,7 @@ if(mysqli_num_rows($res2)>0){
                         <div class="hidden2">
                             <small>thunder clothes</small>
                             <h2 id="cardName" name="cardNAme" class="hidden3"><?php echo $cardName; ?></h2>
-                            <nav class="cardRarity hidden3"><small>Card Rarity</small><pre> </pre><p id="cardRarity" name="cardRarity"><?php echo $cardRarity;?></p></nav>
+                            <nav class="cardRarity hidden3"><small>Card Rarity</small><pre> </pre><p id="cardRarity" name="cardRarity">'.$cardRarity.'</p></nav>
                             <nav class="cardOwner hidden3"><small>Card Owner ' . $rows["name"] .'" "'. $rows['lastName'] .'" "' . $AlreadyHavetheCard . ' ... <br><a id="owners" href="cardsOwners.php?cardName='.$cardName.'"> See this Card Owners</a></small></nav>
                             <img src="images/'.$cardRarity.'.png" class="rarityIcon" id="cardRarityIcon">
                             <hr>
@@ -414,6 +491,9 @@ if(mysqli_num_rows($res2)>0){
             <nav>
                 <h3>Cards you Have</h3>
                 <p>these is the cards you own hope you're Taking care of them.</p>
+            </nav>
+            <nav class="cards">
+                <div class="card hidden4"><img class="cardImg" src="images/Its lit.png" alt="its lit card"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit Common</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
             </nav>
             
         </div>
