@@ -95,6 +95,10 @@ while($rows2 = $res->fetch_assoc()){
             height: 20%;
             text-align: center;
             margin:35px 0;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
         }
         .title h1{
             font-family: 'Josefin Sans';
@@ -302,6 +306,43 @@ while($rows2 = $res->fetch_assoc()){
             cursor: pointer;
             visibility: hidden;
         }
+        /* complete-order */
+        .complete-order-link{
+            width: 100%;
+            height:fit-content;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-decoration:none;
+        }
+        #completeOrder{
+            font-family:"outfit";
+            padding:15px 20px;
+            border-radius:50px;
+            background-color:#C1C1C1;
+            color: #F1F1F1;
+            border:none;
+            margin:10px 0;
+            cursor: pointer;
+            transition:0.7s;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        #completeOrder img{
+            width: 0;
+            opacity: 0;
+            height:auto;
+            margin-left:10px;
+            transition:0.7s;
+        }
+        #completeOrder img:hover{
+                opacity: 1;
+                width: 30px;
+        }
+        #completeOrder:hover{
+            background-color:#1D1FB8;
+        }
         @media (max-width:600px) {
             header ul li{
                 visibility: hidden;
@@ -444,7 +485,7 @@ while($rows2 = $res->fetch_assoc()){
             $cardsQuery = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userphoneNumber";
             $cardsResult = mysqli_query($conn,$cardsQuery);
 
-            echo "<div class='title'><h1>Welcom Back " . $clientName["name"] . "</h1><p>This is your Cart</p></div>";
+            echo "<div class='title'><h1>Welcom Back " . $clientName["name"] . "</h1><p>This is your Cart</p><a href='' class='complete-order-link'><button id='completeOrder'>Complete Your Order <img src='images/right-arrow.png'></button></a></div>";
             
             echo "<div class='thunderCard-div'>";
                  while($YourCards = $cardsResult->fetch_assoc()){
