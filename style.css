@@ -7,6 +7,14 @@
     src: url(fonts/Helvetica-Bold.ttf);
 }
 @font-face {
+    font-family: "PPeditorial bold";
+    src: url(fonts/PPEditorialNew-UltraboldItalic-BF644b214faef01.otf);
+}
+@font-face {
+    font-family: "PPeditorial regular italic";
+    src: url(fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf);
+}
+@font-face {
     font-family: "PPeditorial light italic";
     src: url(fonts/PPEditorialNew-UltralightItalic-BF644b214ff1e9b.otf);
 }
@@ -73,30 +81,31 @@ header ul li:hover{
     cursor: pointer;
 }
 .title{
+    padding:5% 5%;
     width: 90%;
-    height: 68vh;
-    position: relative;
-    margin: 20px 0;
-    padding: 5%;
+    height: fit-content;
+    text-align: start;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: flex-start;
-    text-align: start;
+    align-items: start;
+    border-bottom: 1px solid lightgray;
 }
 .title h1{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 90px;
     width: 100%;
+    font-size: 80px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .title h1 i{
-    font-family: 'PPeditorial';
-    font-weight: lighter;
+    font-family: 'PPeditorial light italic';
+    font-weight: 100;
+    width: 500px;
 }
 .title p{
-    font-family: 'outfit';
-    font-size: 20px;
-    width: 50%;
+    width: 70%;
+    font-family: sans-serif;
+    font-weight: lighter;
 }
 .title-button{
     padding: 20px 30px;
