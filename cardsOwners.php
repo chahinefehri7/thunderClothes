@@ -7,17 +7,20 @@
     }
     if (isset($_GET["cardName"])){
         $cardName = $_GET["cardName"];
+        $cardRarity = $_GET["rarity"];
+        $lock = $_GET["lock"];
         $userPhoneNumber = $_COOKIE["userPhoneNumber"];
+        
         $req = "SELECT * FROM `clients` WHERE phoneNumber=$userPhoneNumber";
         $res = mysqli_query($conn,$req);
         $rows = $res->fetch_assoc();
+
         $userName = $rows['name'];
         $userLastName = $rows['lastName'];
         $userFullName = $userName.' '.$userLastName;
+
         $req2 = "SELECT * FROM `cardscollection` WHERE cardName='$cardName'";
         $res2 = mysqli_query($conn,$req2);
-        $rows2 = $res2->fetch_assoc();
-        $cardRarity = $rows2['cardRarity'];
     }
 
 ?>
@@ -85,21 +88,21 @@
         }
         .container div{
             width: 49.5%;
-            height: 100%;
+            height: 90vh;
         }
         .card-image{
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-width: 550px;
         }
-        .card-image img{
+        .card-img{
             width: 60%;
             min-width: 400px;
             height:90%;
             border-radius: 20px;
             object-fit: cover;
+            box-shadow:0 0 20px 2px #212121;
         }
         .card-owners{
             display: flex;
@@ -136,6 +139,24 @@
             color:#1D1FB8;
             font-weight:bolder;
         }
+        .blur{
+            filter: blur(5px);
+        }
+        .graybackground{
+            position:absolute;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width: 100%;
+            height: 100%;
+            background-color: #212121;            
+            opacity: 0.7;
+            z-index: 99;
+        }
+        #lockIcon{
+            width: 30px;
+            height:30px
+        }
         @media (max-width:1090px) {
             .container{
                 width: 100%;
@@ -144,23 +165,35 @@
             }
             #cardImage{
                 width: 50%;
-                background-color: blue;
             }
-            #cardImage img{
-                width: 0;
-                height: 300px;
+            .card-img{
+                width: 100%;
+                height: 90%;
             }
             #cardOwners{
                 width: 100%;
-                background-color: red;
-            }
-            .card-image img{
-                width: 50%;
-                height:500px;
             }
             .card-owners{
                 width: 80%;
                 border: none;
+            }
+        }
+        @media(max-width:600px){
+            #cardImage{
+                position:relative;
+                width: 90%;
+                border-radius:20px;
+                overflow:hidden;
+                box-shadow:0 0 20px 2px #212121;
+            }
+            .card-img{
+                width: 100%;
+                height:100%;
+            }
+            #lockIcon{
+                width: 20px;
+                height:auto;
+                object-fit:cover;
             }
         }
     </style>
@@ -174,28 +207,40 @@
     </header>
     <div class="container">
         <div class="card-image" id="cardImage">
-            <?php echo '<img src="images/'.$cardName.'.png">';?>
+            <?php 
+                if($lock=='unlocked'){
+                    echo '<img src="images/'.$cardName.'.png" class="card-img hidden3">';
+                }else{
+                    echo '<img src="images/'.$cardName.'.png" class="card-img hidden3 blur"><nav class="graybackground"><img src="images/lockIcon.png" alt="lock" id="lockIcon"></nav>';
+                }
+            ?>
         </div>
         <div class="card-owners" id="cardOwners">
             <div>
                 <nav>
-                    <?php echo '<h1>'.$cardName .' Card Owners </h1>'; ?>
-                    <?php echo '<p>card rarity :'.$cardRarity.'</p>'?>
-                    <?php echo '<img src="images/'.$cardRarity.'.png" alt="" class="rarity-icon">';?>
+                    <?php 
+                        echo '<h1>'.$cardName .' Card Owners </h1>';
+                        echo '<p>card rarity :'.$cardRarity.'</p>';
+                        echo '<img src="images/'.$cardRarity.'.png" alt="" class="rarity-icon">';
+                    ?>
                 </nav>
                 <hr>
                 <div class="owners">
                     <ul>
                         <?php
                             $req3 = "SELECT * FROM `cardscollection` WHERE cardName='$cardName'";
-                            $res3 = mysqli_query($conn,$req2);
-                            while($rowsOwners = $res3->fetch_assoc()){
-                                if($rowsOwners['cardOwner'] ==$userFullName){
-                                    echo('<li class="theUser">' . $rowsOwners['cardOwner']. '</li>');
-                                }else{
-                                    echo('<li>' . $rowsOwners['cardOwner']. '</li>');
+                            $res3 = mysqli_query($conn,$req3);
+                            if(mysqli_num_rows($res3)>0){
+                                while($rowsOwners = $res3->fetch_assoc()){
+                                    if($rowsOwners['cardOwner'] ==$userFullName){
+                                        echo('<li class="theUser">' . $rowsOwners['cardOwner']. '</li>');
+                                    }else{
+                                        echo('<li>' . $rowsOwners['cardOwner']. '</li>');
+                                    }
+                                    
                                 }
-                                
+                            }else{
+                                echo '<p style="margin-left:-5%;">No Owners For This Card, <br>You Might Be The First Owner of '.$cardName.' Card.</p>';
                             }
                         ?>
                     </ul>
@@ -203,5 +248,6 @@
             </div>
         </div>
     </div>
+    <script src="js.js"></script>
 </body>
 </html>

@@ -1,4 +1,21 @@
+<?php
+include 'connect-db.php';
+if($_COOKIE['userPhoneNumber']==""){
+    header("location:signin.html");
+}
+$userphoneNumber = $_COOKIE['userPhoneNumber'];
+$findUserRq = "SELECT * FROM `clients` WHERE phoneNumber=$userphoneNumber";
+$findUserResult = mysqli_query($conn,$findUserRq);
+if(mysqli_num_rows($findUserResult)<1){
+    setcookie("userPhoneNumber" , "");
+    header("location:userNotFound.html");
+}
+// UPDATE `cards` SET `quantity`='[value-3]' WHERE 1
 
+$reqCards = "SELECT * FROM `cards`";
+$resCards =mysqli_query($conn,$reqCards);
+
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,6 +264,7 @@
             width: 100%;
             height: fit-content;
             display: flex;
+            flex-wrap:wrap;
             justify-content: center;
             align-items: center;
             margin-top: 25px;
@@ -257,20 +275,21 @@
             height: 390px;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-evenly;
+            justify-content:center;
+            align-items:center;
             position: relative;
         }
         .card{
-            width:24%;
+            width:300px;
             min-width: 250px;
-            height: 100%;
+            height:500px;
             border-radius: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
-            margin: 10px 0;
+            margin: 20px;
             transition: 0.7s;
         }
         .card:hover{
@@ -288,6 +307,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition:0.7s;
+        }
+        .card:hover{
+            box-shadow:0 0 20px 2px #212121;
+        }
+        .blur{
             filter: blur(5px);
         }
         .graybackground{
@@ -428,6 +453,7 @@
             /* text-decoration: none; */
         }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="newsBar"><p>thunder Clothes</p><br><p>New Collections</p></div>
@@ -457,12 +483,34 @@
                 </div>
             </ul>
     </div>    
-    <a href="card.php?cardName=Its Lit&rarity=common" class="win-card">Win a Card</a>
+    <a href="card.php?cardName=Its Lit&rarity=Common" class="win-card">Win a Card</a>
     <nav class="cards-pack">
         <h1>a Cards Pack!</h1>
-        <p>this is a cards pack that contain the same style&themes but different cards Rarity</p>
+        <p>this is a cards pack that contain the same Name but different cards Rarity</p>
     </nav>
     <div class="container">
+    <?php
+        while($cardsRows = $resCards->fetch_assoc()){
+            $cardName = $cardsRows['cardName'];
+            $cardRarity = $cardsRows['cardRarity'];
+            $cardDiscription = $cardsRows['discription'];
+
+            $reqCardCollection = "SELECT * FROM `cardscollection` WHERE `ownerPhoneNumber`=$userphoneNumber AND `cardName`='$cardName' AND `cardRarity`='$cardRarity';";
+            $resultCardCollection = mysqli_query($conn,$reqCardCollection);
+            if(mysqli_num_rows($resultCardCollection)>0){
+                echo'
+                    <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=unlocked"><div class="card hidden3"><img class="cardImg" src="images/'.$cardName.'.png" alt="'.$cardName.' card"></div></a>
+                ';
+            }else{
+                echo'
+                    <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=locked"><div class="card hidden3"><img class="cardImg blur" src="images/'.$cardName.'.png" alt="'.$cardName.'"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">'.$cardName.' '.$cardRarity.'</h4><p class="cardP">'.$cardDiscription.'</p></div></div></a>
+                ';
+            }
+        }
+
+    ?>
+    </div>
+    <!-- <div class="container">
         <nav class="cards">
             <div class="card hidden4"><img class="cardImg" src="images/Its lit.png" alt="its lit card"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit Common</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
             <div class="card hidden4"><img class="cardImg" src="images/its lit5.png" alt=""><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit uncommon</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
@@ -470,7 +518,6 @@
             <div class="card hidden4"><img class="cardImg" src="images/its lit post.png" alt=""><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit Ultra Rare</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
         </nav>
     </div>
-    <hr>
     <div class="container">
         <nav class="cards">
             <div class="card hidden4"><img class="cardImg" src="images/m.png" alt="its lit card"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Self Respect Rare</h4><p class="cardP">Self Respect is a card value how You show Respect to Yourself </p></div></div>
@@ -490,17 +537,17 @@
     <div class="container">
         <nav class="cards">
             <div class="card hidden4"><img class="cardImg" src="images/behind your eyes.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Behind your Eyes Rare</h4><p class="cardP">Behind your eyes card </p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-smoke.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Smoke Ultra Rare</h4><p class="cardP">thunder smoke is for the Stoners and </p></div></div>
+            <div class="card hidden4"><img class="cardImg" src="images/thunder-smoke.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Smoke Ultra Rare</h4><p class="cardP">thunder smoke is for the Stoners and weed Lovers</p></div></div>
             <div class="card hidden4"><img class="cardImg" src="images/thunder-logo.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Common</h4><p class="cardP">Thunder Logo</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-post-poster-new.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Acid</h4><p class="cardP">Thunder Acid is also a thunder Poster if You Got this card you will get a poster of it with your Next Order</p></div></div>
+            <div class="card hidden4"><img class="cardImg" src="images/thunder-post-poster-new.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Acid Rare</h4><p class="cardP">Thunder Acid is also a thunder Poster if You Got this card you will get a poster of it with your Next Order</p></div></div>
         </nav>
     </div>
     <div class="container">
         <nav class="cards">
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-poster-2024.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">thunder 2024</h4><p class="cardP">Thunder 2024 is also a thunder Poster if You Got this card you will get a poster of it with your Next Order</p></div></div>
+            <div class="card hidden4"><img class="cardImg" src="images/thunder-poster-2024.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">thunder 2024 uncommon</h4><p class="cardP">Thunder 2024 is also a thunder Poster if You Got this card you will get a poster of it with your Next Order</p></div></div>
           
         </nav>
-    </div>
+    </div> -->
     <footer>
         <h1>Thunder Clothes</h1>
         <p>You can check our social media and stay tuned</p>
