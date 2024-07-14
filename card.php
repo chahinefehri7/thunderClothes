@@ -463,7 +463,7 @@ $AlreadyHavetheCard="";
                         <img src="images/nothing found.png" alt="nothing found">
                         <h1>'.$AlreadyHavetheCard.'</h1>
                         <p>You Already Win a Free Card You Need To Start Collecting Your Own</p>
-                        <a href="cardsOwners.php?cardName='.$cardName.'" class="cardsOwnersLink">See '.$cardName.' Card Owners</a>
+                        <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=unlocked" class="cardsOwnersLink">See '.$cardName.' Card Owners</a>
                     </div>
                     <hr>
                 ';

@@ -1,3 +1,20 @@
+<?php
+include 'connect-db.php';
+if($_COOKIE['userPhoneNumber']==""){
+    header("location:signin.html");
+}
+$userphoneNumber = $_COOKIE['userPhoneNumber'];
+$findUserRq = "SELECT * FROM `clients` WHERE phoneNumber=$userphoneNumber";
+$findUserResult = mysqli_query($conn,$findUserRq);
+if(mysqli_num_rows($findUserResult)<1){
+    setcookie("userPhoneNumber" , "");
+    header("location:userNotFound.html");
+}else{
+    $UserRows = $findUserResult->fetch_assoc();
+    $UserFullName = $UserRows['name'] ." ". $UserRows['lastName'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,16 +139,10 @@
                                     </nav>
                                     <nav>
                                         <h4 class="name">Thunder Clothes</h4>
-                                        <p class="content">I really like your idea!</p>
+                                        <p class="content">Here where you can feel free and talk with the community of thunder, feel free</p>
                                     </nav>
                                 </div>
                                 <small class="time">1m ago</small>
-                            </div>
-                            <div class="cmnt hidden">
-                                <span></span>
-                                <h4 class="name">Developer</h4>
-                                <p class="content">Here where you can feel free and talk with the community of thunder, feel free </p>
-                                <small class="time">2h ago</small>
                             </div>
                         </div>
                         <a href="#top" id="comunityTalkSectionTop"></a>
@@ -282,7 +293,7 @@
                     <div id="comunityTalkSection-container" class="comunityTalkSection-container">
                         <div id="top" class="top" style="visibility: hidden; height: 10px;"></div>
                         <div id="comunityTalkSectionPost2" class="comunityTalkSection">
-                            <div class="cmnt thunder hidden">
+                        <div class="cmnt thunder hidden">
                                 <span></span>
                                 <div>
                                     <nav>
@@ -290,16 +301,10 @@
                                     </nav>
                                     <nav>
                                         <h4 class="name">Thunder Clothes</h4>
-                                        <p class="content">Welcom To Thunder Community</p>
+                                        <p class="content">Here where you can feel free and talk with the community of thunder, feel free</p>
                                     </nav>
                                 </div>
                                 <small class="time">1m ago</small>
-                            </div>
-                            <div class="cmnt hidden">
-                                <span></span>
-                                <h4 class="name">Developer</h4>
-                                <p class="content">Here where you can feel free and talk with the community of thunder, feel free </p>
-                                <small class="time">2h ago</small>
                             </div>
                         </div>
                         <a href="#top" id="comunityTalkSectionTop"></a>
@@ -351,7 +356,7 @@
         </div>
         <nav class="devId">Made By Chahine Fehri</nav>
     </footer>
-    <script src="comunity.js"></script>
+    <!-- <script src="comunity.js"></script> -->
     <script>
         // first observer for elements animation
         const observer = new IntersectionObserver(entries =>{
@@ -407,7 +412,57 @@
         const hiddenElements4 = document.querySelectorAll('.hidden4');
         hiddenElements4.forEach((el) => observer4.observe(el));
     </script>
+    <script>
+            
+            // var post = document.getElementById('post');
+            function post(section){
+            let postId = section.id;
+            let sectionId = "comunityTalkSection"+postId;
+            let comunityTalkInputId= "comunityTalkInput"+postId;
+            let comunityTalkInput = document.getElementById(comunityTalkInputId);
 
+            if(comunityTalkInput.value==""){
+                alert("Please Write Something")
+            }else{
+
+                let comunityTalkSection = document.getElementById(sectionId);
+    
+                let cmnt = document.createElement('div');
+                let span = document.createElement('span');
+                let h4cmnt = document.createElement('h4');
+                let p = document.createElement('p');
+                let cmntTime = document.createElement('small');
+                // setting the date
+                var formatter = new Intl.RelativeTimeFormat('en');
+                let dateNow = new Date();
+                // dateNow = dateNow.getDate();
+
+                var UserName = '<?= $UserFullName?>';
+                let UserName = document.createTextNode(Username);
+                inputV = comunityTalkInput.value;
+                comunityTalkInput.value ="";
+                let theComment = document.createTextNode(inputV);
+                cmntTime.innerHTML = dateNow;
+    
+                cmnt.classList.add('cmnt');
+                h4cmnt.classList.add('name');
+                p.classList.add('content');
+                cmntTime.classList.add('time');
+    
+    
+                cmnt.appendChild(span);
+                h4cmnt.appendChild(UserName);
+                p.appendChild(theComment);
+                cmnt.appendChild(h4cmnt);
+                cmnt.appendChild(p);
+                cmnt.appendChild(cmntTime)
+                comunityTalkSection.prepend(cmnt);
+                console.log("posted :"+theComment.textContent);
+            }
+            // comunityTalkSectionTop.click()
+
+        }
+    </script>
     <script>
         function AdAnimation(ad){
             ad.classList.add("adAnimation");

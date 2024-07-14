@@ -485,7 +485,12 @@ while($rows2 = $res->fetch_assoc()){
             $cardsQuery = "SELECT * FROM `fidelity card` WHERE phoneNumber=$userphoneNumber";
             $cardsResult = mysqli_query($conn,$cardsQuery);
 
-            echo "<div class='title'><h1>Welcom Back " . $clientName["name"] . "</h1><p>This is your Cart</p><a href='' class='complete-order-link'><button id='completeOrder'>Complete Your Order <img src='images/right-arrow.png'></button></a></div>";
+            echo "
+            <div class='title'>
+                <h1>Welcom Back " . $clientName["name"] . "</h1>
+                <p>This is your Cart</p>
+                <a href='confirmOrder.php?userPhoneNumber=".$userphoneNumber."' class='complete-order-link'><button id='completeOrder'>Complete Your Order <img src='images/right-arrow.png'></button></a>
+            </div>";
             
             echo "<div class='thunderCard-div'>";
                  while($YourCards = $cardsResult->fetch_assoc()){

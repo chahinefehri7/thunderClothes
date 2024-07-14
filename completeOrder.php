@@ -15,7 +15,7 @@ $date = date("Y-m-d");
 // converting the total price to a string the concat with "DT"
 $orderPrice = (string)$orderPrice ." DT";
 
-$req = "INSERT INTO `orders` (name,lastName,adresse,phoneNumber,orderName,size,quantity,price,date) values('$name','$lastName','$adresse',$phoneNumber,'$orderName','$size',$quantity,'$orderPrice' ,'$date')";
+$req = "INSERT INTO `completed-orders` (name,lastName,adresse,phoneNumber,orderName,size,quantity,price,date) values('$name','$lastName','$adresse',$phoneNumber,'$orderName','$size',$quantity,'$orderPrice' ,'$date')";
 $result = mysqli_query($conn , $req);
 ?>
 <!DOCTYPE html>
