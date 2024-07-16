@@ -7,14 +7,8 @@ include "connect-db.php";
 
 if (isset($_GET["userPhoneNumber"])){
     $userPhoneNumber = $_GET["userPhoneNumber"];
-
     $req = "SELECT * FROM `orders` WHERE phoneNumber=$userPhoneNumber";
     $res = mysqli_query($conn,$req);
-
-    // $rows = $res->fetch_assoc();
-    // $fullUserName = $rows['name'] ." ".$rows['lastName'];
-    // $req2 = "SELECT * FROM `cardscollection` WHERE ownerPhoneNumber=$userPhoneNumber and cardName='$cardName'";
-    // $res2 = mysqli_query($conn,$req2);
 }
 ?>
 
@@ -36,7 +30,7 @@ if (isset($_GET["userPhoneNumber"])){
         body{
             background-image: url();
         }
-        .nothing-found{
+        .container{
             width: 100%;
             height:100vh;
             display:flex;
@@ -45,21 +39,22 @@ if (isset($_GET["userPhoneNumber"])){
             align-items:center;
             text-align:center;
         }
-        .nothing-found img{
+        .container img{
             height:300px;
-            width: 300px;
+            width: auto;
             object-fit:cover;
             margin-left:70px;
+            margin-bottom:30px;
         }
-        .nothing-found h1{
+        .container h1{
             font-size:80px;
             font-family:'josefin sans';
         }
-        .nothing-found p{
+        .container p{
             font-size:20px;
             font-family:'Outfit';
         }
-        .nothing-found button{
+        .container button{
             font-size:15px;
             font-family:'Outfit';
             padding:15px 20px;
@@ -69,7 +64,7 @@ if (isset($_GET["userPhoneNumber"])){
             cursor: pointer;
             transition:0.7s;
         }
-        .nothing-found button:hover{
+        .container button:hover{
             padding:15px 30px;
         }
     </style>
@@ -78,7 +73,7 @@ if (isset($_GET["userPhoneNumber"])){
     <?php
         if(mysqli_num_rows($res)<1){
             echo '
-                <div class="nothing-found">
+                <div class="container">
                     <img src="images/nothing-found.png">
                     <h1>Nothing Found</h1>
                     <p>Your cart is empty go fill it with some art work to wear</p>
@@ -87,7 +82,89 @@ if (isset($_GET["userPhoneNumber"])){
     
             ';
         }else{
-            echo 'sahit ya nayek';
+
+            // selecting everything from orders cart
+            $reqCart = ("SELECT * FROM `orders` WHERE phoneNumber = $userPhoneNumber");
+            $resCart = mysqli_query($conn , $req);
+
+
+            while($cartRows = $resCart->fetch_assoc()){
+                $cartOrderName = $cartRows['orderName'];
+                $cartOrderSize = $cartRows['size'];
+                // selecting everything from the confirmed orders
+                $reqConfirmedOrders = ("SELECT * FROM `completed-orders` WHERE phoneNumber = $userPhoneNumber AND orderName='$cartOrderName' AND size='$cartOrderSize'");
+                $resConfirmedOrders = mysqli_query($conn , $reqConfirmedOrders);
+                //taking the number of rows to count on
+                $rowsNumber = mysqli_num_rows($resConfirmedOrders);
+                if($rowsNumber>0){
+                    $confirmedRows = $resConfirmedOrders->fetch_assoc();
+                    $confirmedOrderName = $confirmedRows['orderName'];
+                    $confirmedOrderSize = $confirmedRows['size'];
+
+                    //cart orders price and quantity
+                    $cartOrderQuantity = $cartRows['quantity'];
+                    $cartOrderPrice = $cartRows['price'];
+                    // confirmed order price and quantity
+                    $confirmedOrderQuantity = $confirmedRows['quantity'];
+                    $confirmedOrderPrice = $confirmedRows['price'];
+                    
+                    // updating the price and quantity of the repetetive cart order
+                    
+                    $newConfirmedOrderQuantity = $cartOrderQuantity+$confirmedOrderQuantity;//updating quantity
+
+                    //updating price
+                    // cutting the actual price to convert it into a float number
+                    $theConfirmedPrice = explode("D" , $confirmedOrderPrice);
+                    $theCartPrice = explode("D" , $cartOrderPrice);
+
+                    $theConfirmedPrice = $theConfirmedPrice[0];
+                    $theCartPrice = $theCartPrice[0];
+                    // converting the price to a float
+                    $theConfirmedPrice = (float)$theConfirmedPrice;
+                    $theCartPrice = (float)$theCartPrice;
+
+                    // calculating the total of the prices
+                    $newConfirmedOrderPrice = $theConfirmedPrice+$theCartPrice;
+                    // converting the total price to a string and concat it with "DT"
+                    $newConfirmedOrderPrice = (string)$newConfirmedOrderPrice ." DT";
+
+                    //setting a new date
+                    $date = date("Y-m-d");
+
+                    //updating the confirmed orders
+                    $reqUpdate = ("UPDATE `completed-orders` SET `quantity`=".$newConfirmedOrderQuantity.",`price`='".$newConfirmedOrderPrice."',`date`='".$date."' WHERE phoneNumber=".$userPhoneNumber." and `orderName`='".$confirmedOrderName."' and `size`='".$confirmedOrderSize."'");
+                    $resUpdate = mysqli_query($conn , $reqUpdate);
+                }else{
+                    $cartOrderQuantity = $cartRows['quantity'];
+                    $cartOrderPrice = $cartRows['price'];
+                    $name = $cartRows['name'];
+                    $lastName = $cartRows['lastName'];
+                    $adresse = $cartRows['adresse'];
+                    $phoneNumber = $cartRows['phoneNumber'];
+                    // date
+                    $date = date("Y-m-d");
+
+                    // inserting orders into confirmed orders
+                    $reqInserting = "INSERT INTO `completed-orders` (name,lastName,adresse,phoneNumber,orderName,size,quantity,price,date) 
+                    values('$name','$lastName','$adresse',$phoneNumber,'$cartOrderName','$cartOrderSize',$cartOrderQuantity,'$cartOrderPrice' ,'$date')";
+                    $Insertingresult = mysqli_query($conn , $reqInserting);
+                }
+            }
+
+            // deleting orders from the cart after moving them to the confirmed orders
+            $reqDeleteOrders = "DELETE FROM `orders` WHERE phoneNumber=$userPhoneNumber";
+            $resultDeleteOrders = mysqli_query($conn , $reqDeleteOrders);
+
+
+            echo '
+            <div class="container">
+                <img src="images/done.png">
+                <h1>Thanks For Shopping</h1>
+                <p>Thanks for shopping, happy that you helped spreading artistic wok <br> to the world</p>
+                <nav> <a href="user.php"><button>Go back</button></a><a href="store.html"><button style="background-color:#1D1FB8; color:white;">Go Shopping</button></a></nav>
+            </div>
+
+        ';
         }
     
     ?>

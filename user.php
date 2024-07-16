@@ -11,13 +11,14 @@ if(mysqli_num_rows($findUserResult)<1){
     setcookie("userPhoneNumber" , "");
     header("location:userNotFound.html");
 }
+// selecting everything from orders
 $req = ("SELECT * FROM `orders` WHERE phoneNumber = $userphoneNumber");
 $res = mysqli_query($conn , $req);
-
+//selecting client name request
 $reqName = ("SELECT `name` FROM `clients` WHERE phoneNumber = $userphoneNumber");
 $resName = mysqli_query($conn , $reqName);
 
-$clientName = $resName->fetch_assoc();
+$clientName = $resName->fetch_assoc(); //clients name
 $orderNbrRows = $res->fetch_assoc();
 $ordersN = mysqli_num_rows($res);
 
@@ -25,6 +26,7 @@ while($rows2 = $res->fetch_assoc()){
     $orderName = $rows2["orderName"];    // taking the order Name
     $orderSize = $rows2["size"];         //taking the order size
 
+    // selecting from table orders to count the repetetive orders
     $reqt2 = ("SELECT * FROM `orders` WHERE phoneNumber = $userphoneNumber and orderName ='$orderName' and size ='$orderSize'");   //selecting the repetetive orders
     $res2 = mysqli_query($conn,$reqt2);
 
@@ -43,7 +45,7 @@ while($rows2 = $res->fetch_assoc()){
         $updateQuantity = "UPDATE `orders` SET quantity = $ordersQuantity WHERE phoneNumber = $userphoneNumber and orderName ='$orderName' and size ='$orderSize' LIMIT 1";
         $updateQuantityResult = mysqli_query($conn,$updateQuantity);
 
-    // updating total privce
+    // updating total price
     
         // cutting the actual price to convert it to an integer
         $thePrice = $rows2["price"];
@@ -62,6 +64,7 @@ while($rows2 = $res->fetch_assoc()){
 
         $reqt3 = ("SELECT * FROM `orders` WHERE phoneNumber = $userphoneNumber and orderName ='$orderName' and size ='$orderSize'");   //selecting the repetetive orders
         $res3 = mysqli_query($conn,$reqt2);
+
 
         while($quantityRows2 = $res3->fetch_assoc()){
             if($quantityRows2["quantity"]<$ordersQuantity){
@@ -110,7 +113,7 @@ while($rows2 = $res->fetch_assoc()){
             font-weight: lighter;
         }
         .orders{
-            margin: 100px 0;
+            margin: 50px 0;
         }
         .orders hr{
             width: 95%;
@@ -137,7 +140,6 @@ while($rows2 = $res->fetch_assoc()){
             overflow-x: hidden;
             overflow-x: scroll;
             font-family: prompt;
-            font-weight: lighter;
             /* max-width: 80px; */
         }
         .line nav p::-webkit-scrollbar{
@@ -343,6 +345,82 @@ while($rows2 = $res->fetch_assoc()){
         #completeOrder:hover{
             background-color:#1D1FB8;
         }
+        /* confirmed-orders-display */
+        .confirmed-orders-display{
+            position:relative;
+            width: 90%;
+            height:110px;
+            padding:20px 4.5%;
+            margin:0 0.5%;
+            border:none;
+            border-radius:25px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            box-shadow:0 0 20px 0px gray;
+            color:#212121;
+        }
+        .confirmed-orders-display div{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .confirmed-orders-images{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width: 150px;
+        }
+        .confirmed-orders-images img{
+            width:auto;
+            height:90px;
+            border-radius:20px;
+            margin:0 20px;
+            border:1px solid #212121;
+            position:absolute;
+            background-color:#ffff;
+            transition:0.2s;
+        }
+        .confirmed-orders-images img:nth-child(0){
+            margin-left:20px;
+        }
+        .confirmed-orders-images img:nth-child(1){
+            margin-left:-13px;
+        }
+        .confirmed-orders-images img:nth-child(2){
+            margin-left:-0px;
+        }
+        .confirmed-orders-images img:nth-child(3){
+            margin-left:10px;
+        }
+        .confirmed-orders-images img:nth-last-child(1){
+            margin-left:30px;
+        }
+        .confirmed-orders-images img:hover{
+            transform:scale(1.03);
+            z-index: 99;
+        }
+        .confirmed-orders-display p{
+            font-size:12px;
+            font-family:'montserrat';
+            overflow:hidden;
+        }
+        .confirmed-orders-display button{
+            padding:10px 20px;
+            border:none;
+            border-radius:50px;
+            font-family:'josefin sans';
+            font-size:15px;
+            cursor:pointer;
+            transition:0.7s;
+        }
+        .confirmed-orders-display button:hover{
+            background-color: lightgray;
+            padding:10px 30px;
+        }
+        .orderName{
+            width: 300px;
+        }
         @media (max-width:600px) {
             header ul li{
                 visibility: hidden;
@@ -529,6 +607,36 @@ while($rows2 = $res->fetch_assoc()){
         </div>
         <hr>
         <div class="orders">
+            <div class="confirmed-orders-display">
+                <div>
+                    <nav class="confirmed-orders-images">
+                        <?php
+                            $reqConfirmedDisplayimg = ("SELECT * FROM `completed-orders` WHERE phoneNumber = $userphoneNumber");
+                            $resltConfirmedDisplayimg = mysqli_query($conn , $reqConfirmedDisplayimg);
+                            while($confirmedRowsimg = $resltConfirmedDisplayimg->fetch_assoc()){
+                                echo '<img src="images/'.$confirmedRowsimg['orderName'].'.png"> ';
+                            }
+                        ?>
+                        
+                    </nav>
+                    <nav class="orderName">
+                        <h4 style="font-family:'josefin sans';">Confirmed Orders</h4>
+                        <p>
+                            <?php
+                                $reqConfirmedDisplay = ("SELECT * FROM `completed-orders` WHERE phoneNumber = $userphoneNumber");
+                                $resltConfirmedDisplay = mysqli_query($conn , $reqConfirmedDisplay);
+                                while($confirmedRows = $resltConfirmedDisplay->fetch_assoc()){
+                                    echo
+                                    $confirmedRows['quantity'].'-'.$confirmedRows['orderName'].'-size ('.$confirmedRows['size'].'), ';
+                                }
+                            ?>
+                        </p>
+                    </nav>
+                </div>
+                <div>
+                    <a href="confirmed-orders-display.php"><button>See Your Orders</button></a>
+                </div>
+            </div>
             <?php
 
                 $reqt = ("SELECT * FROM `orders` WHERE phoneNumber = $userphoneNumber");
