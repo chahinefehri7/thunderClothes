@@ -93,7 +93,7 @@ while($rows2 = $res->fetch_assoc()){
     <link rel="stylesheet" href="style.css">
     <title>Profile</title>
     <style>
-        .title{
+        .titleuser{
             width: 100%;
             height: 20%;
             text-align: center;
@@ -103,11 +103,11 @@ while($rows2 = $res->fetch_assoc()){
             justify-content:center;
             align-items:center;
         }
-        .title h1{
+        .titleuser h1{
             font-family: 'Josefin Sans';
             font-size: 50px;
         }
-        .title p{
+        .titleuser p{
             font-family: 'Prompt';
             color: gray;
             font-weight: lighter;
@@ -564,7 +564,7 @@ while($rows2 = $res->fetch_assoc()){
             $cardsResult = mysqli_query($conn,$cardsQuery);
 
             echo "
-            <div class='title'>
+            <div class='titleuser'>
                 <h1>Welcom Back " . $clientName["name"] . "</h1>
                 <p>This is your Cart</p>
                 <a href='confirmOrder.php?userPhoneNumber=".$userphoneNumber."' class='complete-order-link'><button id='completeOrder'>Complete Your Order <img src='images/right-arrow.png'></button></a>
