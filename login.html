@@ -13,6 +13,7 @@
         *{
             padding: 0;
             margin: 0;
+            scroll-behavior: smooth;
         }
         .d{
             width: 50%;
@@ -20,18 +21,51 @@
             float: left;
         }
         .thunder{
-            background-color: #1a1a1a;
+            background-color: none;
+            position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
         }
         nav{
             color: #f1f1f1;
-            text-align:  center;
+            text-align: center;
         }
-        .thunder nav img{
-            width: 90%;
+        .thunder-design{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+            z-index: -1;
+        }
+        .thunder-text{
+            width: 87%;
+            height: fit-content;
+            padding: 7%;
+            text-align: start;
+            margin: 5% 0 0 0;
+            position: absolute;
+            bottom: 5%;
+        }
+        .thunder-text .text{
+            width: 80%;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            font-family: 'outfit';
+            font-weight:400;
+        }
+        .thunder-text .small{
+            width: 85%;
+            font-size: 13px;
+            display: block;
+            padding-left:-10%;
+            color: rgb(232, 232, 232);
+            font-family: 'outfit';
+            font-weight: 300;
         }
         .thunder nav h1{
             font-family:'Josefin Sans';
@@ -40,7 +74,7 @@
         .thunder nav h2{
             font-family:'Josefin Sans';
             font-size: 30px;
-            margin-top: 30px;
+            margin-top: 90%;
         }
         .thunder nav small{
             font-family: Arial, Helvetica, sans-serif;
@@ -105,6 +139,12 @@
         .idont-have-acc:hover{
             text-decoration: underline;
         }
+        .scroll-bar{
+            width: 30px;
+            height: auto;
+            margin-top: 15px; 
+            display: none;
+        }
         @media (max-width:1000px) {
             .thunder nav small{
                 text-align: start;
@@ -128,6 +168,9 @@
             .d{
                 width: 100%;
             }
+            .scroll-bar{
+                display:unset;
+            }
         }
         a{
             color: aliceblue;
@@ -139,9 +182,14 @@
     <main>
         <div class="all">
             <div class="d thunder">
+                <nav class="thunder-text">
+                    <p class="text">welcome to thunder clothes where you can find an artistic products and a whole new mindset in the tunisian clothing industry.</p>
+                    <p class="small">signup and became one of the thunder community and a mindset changer who can spread art everywhere you go for a better life click <a href="https://www.instagram.com/thunder_clothes_tn/">here</a> to keep yourself updated</small>
+                </nav>
                 <nav>
-                    <a href="index.html"><img src="images/white-logo.png" alt="Thunder logo"></a>
+                    <a href="index.html"><img src="images/explosion-post.png" alt="Thunder logo" class="thunder-design"></a>
                     <h2>welcom back</h2>
+                    <a href="#email"><img src="images/scroll-bar-white.png" class="scroll-bar"></a>
                 </nav>
             </div>
             <div class="d">

@@ -12,6 +12,7 @@
         *{
             padding: 0;
             margin: 0;
+            scroll-behavior: smooth;
         }
         body{
             overflow: hidden;
@@ -20,19 +21,45 @@
             width: 50%;
             height: 100vh;
             float: left;
+            position: relative;
         }
         .thunder{
-            background-color: #000;
+            background-color:none;
             position: relative;
             text-align: center;
         }
-        .thunder img{
-            width: 98%;
-            height: auto;
+        .thunder-text{
+            width: 87%;
+            height: fit-content;
+            padding: 7%;
+            text-align: start;
+            margin: 5% 0 0 0;
+        }
+        .thunder-text .text{
+            width: 70%;
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+            font-family: 'outfit';
+            font-weight:400;
+        }
+        .thunder-text .small{
+            width: 85%;
+            font-size: 15px;
+            display: block;
+            padding-left:-10%;
+            color: rgb(232, 232, 232);
+            font-family: 'outfit';
+            font-weight: 300;
+        }
+        .thunder-design{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50% , -50%);
+            z-index: -1;
         }
         .thunder h1{
             font-size: 20px;
@@ -107,6 +134,15 @@
         .already-have-acc:hover{
             text-decoration: underline;
         }
+        .scroll-bar{
+            width: 30px;
+            height: auto;
+            margin-top: 40%; 
+            display: none;
+        }
+        a{
+            color: rgb(75, 129, 255);
+        }
         @media (max-width:1000px) {
           .input{
             font-size: 14px;
@@ -119,6 +155,12 @@
         @media (max-width:900px) {
             .theDiv{
                 width: 100%;
+            }
+            .scroll-bar{
+                display:unset;
+            }
+            .thunder-text{
+                margin: 25% 0 0 0;
             }
         }
         @media (max-width:500px) {
@@ -134,8 +176,12 @@
 <body>
     <main>
         <div class="theDiv thunder">
-            <h1>Welcom to</h1>
-            <a href="index.html"><img src="images/thundersticker.png" alt="back home"></a>
+            <nav class="thunder-text">
+                <p class="text">welcome to thunder clothes where you can find an artistic products and a whole new mindset in the tunisian clothing industry.</p>
+                <p class="small">signup and became one of the thunder community and a mindset changer who can spread art everywhere you go for a better life click <a href="https://www.instagram.com/thunder_clothes_tn/">here</a> to keep yourself updated</small>
+            </nav>
+            <a href="index.html"><img src="images/events.png" alt="back home" class="thunder-design"></a>
+            <a href="#name"><img src="images/scroll-bar-white.png" class="scroll-bar"></a>
         </div>
         <div class="theDiv">
             <fieldset class="f"><legend>login</legend>
