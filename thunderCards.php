@@ -12,8 +12,8 @@ if(mysqli_num_rows($findUserResult)<1){
 }
 // UPDATE `cards` SET `quantity`='[value-3]' WHERE 1
 
-$reqCards = "SELECT * FROM `cards`";
-$resCards =mysqli_query($conn,$reqCards);
+// $reqCards = "SELECT * FROM `cards` ";
+// $resCards =mysqli_query($conn,$reqCards);
 
 ?> 
 <!DOCTYPE html>
@@ -31,6 +31,10 @@ $resCards =mysqli_query($conn,$reqCards);
         *{
             margin: 0;
             padding: 0;
+        }
+        @font-face {
+            font-family: 'PPEditorialNew-Italic';
+            src: url(fonts/PPEditorialNew-UltralightItalic-BF644b214ff1e9b.otf);
         }
         /* cards animation */
         .hidden{
@@ -300,7 +304,7 @@ $resCards =mysqli_query($conn,$reqCards);
             width: 10px;
             height:auto;
             display: block;
-            z-index: 1;
+            z-index: 99;
         }
         .cardImg{
             position: absolute;
@@ -452,6 +456,145 @@ $resCards =mysqli_query($conn,$reqCards);
             color: #212121;
             /* text-decoration: none; */
         }
+
+
+        /*  */
+        .container nav{
+            /* width:100%;
+            min-width:100%;
+            height:100%;
+            border-radius:20px;
+            margin:0 1%;
+            box-shadow:0 0 20px 0 #000000;
+            overflow:hidden;
+            color:#000000;
+            font-family:'outfit'; */
+        }
+        .flip-container{
+            width:100%;
+            height:90%;
+            max-width:100%;
+            position:relative;
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            align-items:center;
+        }
+        .the-card{
+            width:300px;
+            height:400px;
+            position:relative;
+            transform-style:preserve-3d;
+            transition:all 0.5s ease;
+            margin:0 5%;
+            border-radius:25px;
+            overflow:hidden;
+            margin:20px 10px;
+            box-shadow:0 0 20px 0 #000000;
+            cursor:default;
+        }
+        .the-front{
+            width:100%;
+            height:100%;
+            position:absolute;
+            z-index: 0;
+            border-radius:25px;
+        }
+        .the-front a{
+            width:100%;
+            height:100%;
+            position:absolute;
+        }
+        .the-front img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            border-radius:25px;
+        }
+        .the-back{
+            width:100%;
+            height:100%;
+            position:absolute;
+            opacity: 0;
+            z-index: 10;
+            transition:0.5s ease;
+            border-radius:25px;
+        }
+        .the-back-img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            filter: blur(4px); 
+            position:absolute;
+            border-radius:25px;
+        }
+        .the-card:hover{
+            transform:rotateY(180deg);
+            .the-back{
+                opacity: 1;
+                transform:rotateY(180deg);
+            }
+        }
+        .the-back .p{
+            width:90%;
+            padding:5%;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50% , -50%);
+            color:#FFFFFF;
+            text-align:center;
+            font-weight:300;
+            z-index: 99;
+            font-family:'outfit';
+        }
+        .p h1{
+            font-family:'PPEditorialNew-Italic';
+            font-size:5vw;
+        }
+        .p p{
+            /* width:100%; */
+            /* overflow-y:scroll; */
+        }
+        .locked{
+            width:100%;
+            height:100%;
+            filter:blur(7px);
+        }
+        .gray-background img{
+            width:30px;
+            height:auto;
+            object-fit:cover;
+        }
+        .gray-background{
+            position:absolute;
+            width:100%;
+            height:100%;
+            background-color:rgba(0, 0, 0, 0.5);
+            top:0;
+            left:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            border-radius:25px;
+            overflow:hidden;
+        }
+        .img-rarity{
+            width:20px;
+            height:auto;
+        }
+        .card-banner{
+            width: 90%;
+            height:90vh;
+            margin:2% 5%;
+            border-radius:30px;
+            overflow:hidden;
+        }
+        .card-banner img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
     </style>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -488,66 +631,83 @@ $resCards =mysqli_query($conn,$reqCards);
         <h1>a Cards Pack!</h1>
         <p>this is a cards pack that contain the same Name but different cards Rarity</p>
     </nav>
+    <div class="card-banner">
+        <img src="images/Business_Card_Mockup_22.png">
+    </div>
     <div class="container">
     <?php
-        while($cardsRows = $resCards->fetch_assoc()){
-            $cardName = $cardsRows['cardName'];
-            $cardRarity = $cardsRows['cardRarity'];
-            $cardDiscription = $cardsRows['discription'];
-
-            $reqCardCollection = "SELECT * FROM `cardscollection` WHERE `ownerPhoneNumber`=$userphoneNumber AND `cardName`='$cardName' AND `cardRarity`='$cardRarity';";
+        $allThunderCards = "SELECT * FROM `cards` ORDER BY `cards`.`cardName` DESC";
+        $allThunderCardsResult = mysqli_query($conn,$allThunderCards);
+        echo '<div class="flip-container">'; 
+        while($AllCardsRows = $allThunderCardsResult->fetch_assoc()){
+            $cardName = $AllCardsRows['cardName'];
+            $cardRarity = $AllCardsRows['cardRarity'];
+            $discription = $AllCardsRows['discription'];
+            $reqCardCollection = "SELECT * FROM `cardscollection` WHERE `ownerPhoneNumber`=$userphoneNumber AND `cardName`='$cardName' AND `cardRarity`='$cardRarity'";
             $resultCardCollection = mysqli_query($conn,$reqCardCollection);
-            if(mysqli_num_rows($resultCardCollection)>0){
-                echo'
-                    <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=unlocked"><div class="card hidden3"><img class="cardImg" src="images/'.$cardName.'.png" alt="'.$cardName.' card"></div></a>
-                ';
-            }else{
-                echo'
-                    <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=locked"><div class="card hidden3"><img class="cardImg blur" src="images/'.$cardName.'.png" alt="'.$cardName.'"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">'.$cardName.' '.$cardRarity.'</h4><p class="cardP">'.$cardDiscription.'</p></div></div></a>
-                ';
-            }
+            $resultCardCollectionRows = mysqli_num_rows($resultCardCollection);
+            echo '
+                <div class="the-card">
+                        <nav class="the-front">';
+                            if($resultCardCollectionRows>0){
+                                echo '<img src="images/'.$cardName.' '.$cardRarity.'.png">';
+                            }else{
+                                echo '<img src="images/'.$cardName.' '.$cardRarity.'.png" class="locked"><div class="gray-background"><img src="images/lock.png" class="img-lock"></div>';
+                            }
+                    echo '</nav>
+                        <nav class="the-back">';
+                        if($resultCardCollectionRows>0){
+                            echo '
+                            <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=unlocked">
+                                <div class="p">
+                                    <img src="images/'.$cardRarity.'.png" class="img-rarity">
+                                    <h1>'.$cardName.'</h1>
+                                    <h5>'.$cardRarity.'</h5>
+                                    <p>'.$discription.'</p>
+                                </div>
+                            </a>';
+                        }else{
+                            echo '
+                            <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=locked">
+                                <div class="p">
+                                    <img src="images/'.$cardRarity.'.png" class="img-rarity">
+                                    <h1>'.$cardName.'</h1>
+                                    <h5>'.$cardRarity.'</h5>
+                                    <p>'.$discription.'</p>
+                                </div>
+                            </a>';
+                        }
+                        
+                        echo '
+                        <div class="gray-background"></div>
+                        <img src="images/'.$cardName.' '.$cardRarity.'.png" class="the-backImg"">
+                            
+                    </nav>
+                </div>';            
         }
+        echo '</div>';
+    ?>
+    <?php
+        // while($cardsRows = $resCards->fetch_assoc()){
+        //     $cardName = $cardsRows['cardName'];
+        //     $cardRarity = $cardsRows['cardRarity'];
+        //     $cardDiscription = $cardsRows['discription'];
+
+        //     $reqCardCollection = "SELECT * FROM `cardscollection` WHERE `ownerPhoneNumber`=$userphoneNumber AND `cardName`='$cardName' AND `cardRarity`='$cardRarity';";
+        //     $resultCardCollection = mysqli_query($conn,$reqCardCollection);
+        //     if(mysqli_num_rows($resultCardCollection)>0){
+        //         echo'
+        //             <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=unlocked"><div class="card hidden3"><img class="cardImg" src="images/'.$cardName.' '.$cardRarity.'.png" alt="'.$cardName.' card"></div></a>
+        //         ';
+        //     }else{
+        //         echo'
+        //             <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=locked"><div class="card hidden3"><img class="cardImg blur" src="images/'.$cardName.' '.$cardRarity.'.png" alt="'.$cardName.'"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">'.$cardName.' '.$cardRarity.'</h4><p class="cardP">'.$cardDiscription.'</p></div></div></a>
+        //         ';
+        //     }
+        // }
 
     ?>
     </div>
-    <!-- <div class="container">
-        <nav class="cards">
-            <div class="card hidden4"><img class="cardImg" src="images/Its lit.png" alt="its lit card"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit Common</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/its lit5.png" alt=""><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit uncommon</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/its lit1.png" alt=""><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit Rare</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/its lit post.png" alt=""><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit Ultra Rare</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
-        </nav>
-    </div>
-    <div class="container">
-        <nav class="cards">
-            <div class="card hidden4"><img class="cardImg" src="images/m.png" alt="its lit card"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Self Respect Rare</h4><p class="cardP">Self Respect is a card value how You show Respect to Yourself </p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunderpost.png" alt=""><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Self Respect Ultra Rare</h4><p class="cardP">Self Respect is a card value how You show Respect to Yourself </p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/On the Wall.png" alt=""><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">On the Wall uncommon</h4><p class="cardP">hang other people opinion about you on the wall and walk away</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder Rock.png" alt=""><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Rock Rare</h4><p class="cardP">thunder Rock a Card for Rock Music Lovers </p></div></div>
-        </nav>
-    </div>
-    <div class="container">
-        <nav class="cards">
-            <div class="card hidden4"><img class="cardImg" src="images/thunderClothes-stayTuned.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Clothes Rare</h4><p class="cardP">Thunder Clothes Card</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-pill2.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Pill Rare</h4><p class="cardP">thunder pill is a thunder event for Techno Lovers</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-secrets.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Secret Rare</h4><p class="cardP">thunder secrets is a disk contains some thunder secrets</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-secret2.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Secret Ultra Rare</h4><p class="cardP">thunder secrets is a disk contains some thunder secrets</p></div></div>
-        </nav>
-    </div>
-    <div class="container">
-        <nav class="cards">
-            <div class="card hidden4"><img class="cardImg" src="images/behind your eyes.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Behind your Eyes Rare</h4><p class="cardP">Behind your eyes card </p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-smoke.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Smoke Ultra Rare</h4><p class="cardP">thunder smoke is for the Stoners and weed Lovers</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-logo.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Common</h4><p class="cardP">Thunder Logo</p></div></div>
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-post-poster-new.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Thunder Acid Rare</h4><p class="cardP">Thunder Acid is also a thunder Poster if You Got this card you will get a poster of it with your Next Order</p></div></div>
-        </nav>
-    </div>
-    <div class="container">
-        <nav class="cards">
-            <div class="card hidden4"><img class="cardImg" src="images/thunder-poster-2024.png"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">thunder 2024 uncommon</h4><p class="cardP">Thunder 2024 is also a thunder Poster if You Got this card you will get a poster of it with your Next Order</p></div></div>
-          
-        </nav>
-    </div> -->
     <footer>
         <h1>Thunder Clothes</h1>
         <p>You can check our social media and stay tuned</p>

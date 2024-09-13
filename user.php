@@ -625,9 +625,12 @@ while($rows2 = $res->fetch_assoc()){
                             <?php
                                 $reqConfirmedDisplay = ("SELECT * FROM `completed-orders` WHERE phoneNumber = $userphoneNumber");
                                 $resltConfirmedDisplay = mysqli_query($conn , $reqConfirmedDisplay);
-                                while($confirmedRows = $resltConfirmedDisplay->fetch_assoc()){
-                                    echo
-                                    $confirmedRows['quantity'].'-'.$confirmedRows['orderName'].'-size ('.$confirmedRows['size'].'), ';
+                                if(mysqli_num_rows($resltConfirmedDisplay)>0){
+                                    while($confirmedRows = $resltConfirmedDisplay->fetch_assoc()){
+                                        echo $confirmedRows['quantity'].'-'.$confirmedRows['orderName'].'-size ('.$confirmedRows['size'].'), ';
+                                    }
+                                }else{
+                                    echo 'here where your confirmed orders is displyed, buy some products and confirm them so you can see your orders here';
                                 }
                             ?>
                         </p>

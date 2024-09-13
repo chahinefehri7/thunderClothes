@@ -227,7 +227,7 @@ $AlreadyHavetheCard="";
         }
         .Other-products{
             width: 90%;
-            height: 200px;
+            height: fit-content;
             margin: 50px 5%;
             /* background-color: #212121; */
             border-radius: 20px;
@@ -309,14 +309,15 @@ $AlreadyHavetheCard="";
             margin-top:15px;
             font-size:15px;
         }
-        /* cards */
         .cards{
             margin:0px;
+            margin-top:30px;
             width: 90%;
             height: 390px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-evenly;
+            align-items:center;
             position: relative;
         }
         .card{
@@ -343,11 +344,9 @@ $AlreadyHavetheCard="";
             z-index: 1;
         }
         .cardImg{
-            position: absolute;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: blur(5px);
         }
         .graybackground{
             position: absolute;
@@ -378,6 +377,9 @@ $AlreadyHavetheCard="";
             font-size: 10px;
             font-family: 'prompt';
             font-weight: 300;
+        }
+        p{
+            font-weight:400;
         }
         @media (max-width:900px) {
             #container{
@@ -463,8 +465,7 @@ $AlreadyHavetheCard="";
                         <img src="images/nothing found.png" alt="nothing found">
                         <h1>'.$AlreadyHavetheCard.'</h1>
                         <p>You Already Win a Free Card You Need To Start Collecting Your Own</p>
-                        <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=unlocked" class="cardsOwnersLink">See '.$cardName.' Card Owners</a>
-                    </div>
+                        <a href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=unlocked" class="cardsOwnersLink">See '.$cardName.' Card Owners</a></div>
                     <hr>
                 ';
             }else{
@@ -476,7 +477,7 @@ $AlreadyHavetheCard="";
                             <small>thunder clothes</small>
                             <h2 id="cardName" name="cardNAme" class="hidden3"><?php echo $cardName; ?></h2>
                             <nav class="cardRarity hidden3"><small>Card Rarity</small><pre> </pre><p id="cardRarity" name="cardRarity">'.$cardRarity.'</p></nav>
-                            <nav class="cardOwner hidden3"><small>Card Owner ' . $rows["name"] .'" "'. $rows['lastName'] .'" "' . $AlreadyHavetheCard . ' ... <br><a id="owners" href="cardsOwners.php?cardName='.$cardName.'"> See this Card Owners</a></small></nav>
+                            <nav class="cardOwner hidden3"><small>Card Owner ' . $rows["name"] .'" "'. $rows['lastName'] .'" "' . $AlreadyHavetheCard . ' ... <br><a id="owners" href="cardsOwners.php?cardName='.$cardName.'&rarity='.$cardRarity.'&lock=unlocked"> See this Card Owners</a></small></nav>
                             <img src="images/'.$cardRarity.'.png" class="rarityIcon" id="cardRarityIcon">
                             <hr>
                         </div>
@@ -493,7 +494,17 @@ $AlreadyHavetheCard="";
                 <p>these is the cards you own hope you're Taking care of them.</p>
             </nav>
             <nav class="cards">
-                <div class="card hidden4"><img class="cardImg" src="images/Its lit.png" alt="its lit card"><div class="graybackground"></div><div class="cardDiscription"><img src="images/lockIcon.png" alt="lock" class="locked"><h4 class="cardName">Its Lit Common</h4><p class="cardP">its lit card is a card that shows how dope and cool you are</p></div></div>
+                
+                    <?php
+                        $userCardsReq = "SELECT * FROM `cardscollection` WHERE `ownerPhoneNumber`=$userPhoneNumber";
+                        $userCardsResult = mysqli_query($conn,$userCardsReq);
+                        while($userCardsRows = $userCardsResult->fetch_assoc()){
+                            echo '
+                            <div class="card hidden">
+                                <img class="cardImg" src="images/'.$userCardsRows['cardName'].'.png" alt="'.$userCardsRows['cardName'].'">
+                            </div>';
+                        }
+                    ?>
             </nav>
             
         </div>
